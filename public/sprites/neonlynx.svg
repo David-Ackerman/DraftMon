@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+<ellipse cx="48" cy="84.90497164614499" rx="30.005996424145998" ry="4" fill="#000" fill-opacity="0.15"/>
+<path d="M77.33999602682889 62 l 14 -10 l -4 10 l 12 -6 l -14 18 l 4 -10 z" fill="#F7D02C" stroke="#b18a00" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="27.99600238390267" cy="37.32127126539126" r="8" fill="#F7D02C" stroke="#b18a00" stroke-width="2"/>
+<circle cx="68.00399761609734" cy="37.32127126539126" r="8" fill="#F7D02C" stroke="#b18a00" stroke-width="2"/>
+<ellipse cx="48" cy="56" rx="33.339996026828885" ry="24.904971646144986" fill="#F7D02C" stroke="#b18a00" stroke-width="2.5"/>
+<ellipse cx="31.330001986585557" cy="78.90497164614499" rx="7" ry="4" fill="#d9b20e" stroke="#b18a00" stroke-width="2"/>
+<ellipse cx="64.66999801341444" cy="78.90497164614499" rx="7" ry="4" fill="#d9b20e" stroke="#b18a00" stroke-width="2"/>
+<ellipse cx="48" cy="64.71674007615074" rx="18.33699781475589" ry="11.207237240765243" fill="#ffff72" fill-opacity="0.85"/>
+<ellipse cx="34.75113684454098" cy="52.26425425307825" rx="6.361466142348945" ry="7.315686063701286" fill="#fff" stroke="#b18a00" stroke-width="1.5"/>
+<circle cx="33.95113684454098" cy="53.064254253078246" r="3.8168796854093667" fill="#1f1f2e"/>
+<circle cx="32.75113684454098" cy="51.26425425307825" r="1.399522551316768" fill="#fff"/>
+<path d="M42.38489621535972 42.085908425319936 L 27.75352408795714 46.5389347249642" stroke="#b18a00" stroke-width="2.5" stroke-linecap="round"/>
+<ellipse cx="61.24886315545902" cy="52.26425425307825" rx="6.361466142348945" ry="7.315686063701286" fill="#fff" stroke="#b18a00" stroke-width="1.5"/>
+<circle cx="62.04886315545902" cy="53.064254253078246" r="3.8168796854093667" fill="#1f1f2e"/>
+<circle cx="60.848863155459014" cy="51.26425425307825" r="1.399522551316768" fill="#fff"/>
+<path d="M53.61510378464028 42.085908425319936 L 68.24647591204285 46.5389347249642" stroke="#b18a00" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M42 63.625720395427194 Q 48 68.6257203954272 54 63.625720395427194" fill="none" stroke="#b18a00" stroke-width="2" stroke-linecap="round"/>
+<path d="M44 64.6257203954272 l 1.5 3 l 1.5 -2.5 M52 64.6257203954272 l -1.5 3 l -1.5 -2.5" fill="#fff" stroke="#fff" stroke-width="1"/>
+</svg>

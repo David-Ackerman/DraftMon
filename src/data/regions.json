@@ -1,0 +1,572 @@
+[
+  {
+    "id": 1,
+    "name": "emberreach",
+    "is_main_series": true,
+    "names": [
+      {
+        "name": "Emberreach",
+        "language": {
+          "name": "en",
+          "url": ""
+        }
+      }
+    ],
+    "descriptions": [
+      {
+        "description": "A chain of volcanoes and ash fields where fire and stone creatures thrive.",
+        "language": {
+          "name": "en",
+          "url": ""
+        }
+      }
+    ],
+    "pokemon_entries": [
+      {
+        "entry_number": 1,
+        "pokemon_species": {
+          "name": "cindrel",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 2,
+        "pokemon_species": {
+          "name": "pyrrhound",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 3,
+        "pokemon_species": {
+          "name": "magmaw",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 4,
+        "pokemon_species": {
+          "name": "cragling",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 5,
+        "pokemon_species": {
+          "name": "basaltor",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 6,
+        "pokemon_species": {
+          "name": "ashwyrm",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 7,
+        "pokemon_species": {
+          "name": "scorchfist",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 8,
+        "pokemon_species": {
+          "name": "smoldrake",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 9,
+        "pokemon_species": {
+          "name": "obsidjack",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 10,
+        "pokemon_species": {
+          "name": "terrapyre",
+          "url": ""
+        }
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "frostmere",
+    "is_main_series": true,
+    "names": [
+      {
+        "name": "Frostmere",
+        "language": {
+          "name": "en",
+          "url": ""
+        }
+      }
+    ],
+    "descriptions": [
+      {
+        "description": "A frozen northern lake ringed by glaciers and silent, haunted pines.",
+        "language": {
+          "name": "en",
+          "url": ""
+        }
+      }
+    ],
+    "pokemon_entries": [
+      {
+        "entry_number": 1,
+        "pokemon_species": {
+          "name": "frostkit",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 2,
+        "pokemon_species": {
+          "name": "glacirn",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 3,
+        "pokemon_species": {
+          "name": "rimeowl",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 4,
+        "pokemon_species": {
+          "name": "brinewhal",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 5,
+        "pokemon_species": {
+          "name": "wraithfrost",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 6,
+        "pokemon_species": {
+          "name": "aurorym",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 7,
+        "pokemon_species": {
+          "name": "drifmuff",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 8,
+        "pokemon_species": {
+          "name": "tundrax",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 9,
+        "pokemon_species": {
+          "name": "chillshade",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 10,
+        "pokemon_species": {
+          "name": "cryostag",
+          "url": ""
+        }
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "verdant-hollow",
+    "is_main_series": true,
+    "names": [
+      {
+        "name": "Verdant Hollow",
+        "language": {
+          "name": "en",
+          "url": ""
+        }
+      }
+    ],
+    "descriptions": [
+      {
+        "description": "An ancient forest of giant trees, glowing fungi and buzzing swarms.",
+        "language": {
+          "name": "en",
+          "url": ""
+        }
+      }
+    ],
+    "pokemon_entries": [
+      {
+        "entry_number": 1,
+        "pokemon_species": {
+          "name": "sproutle",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 2,
+        "pokemon_species": {
+          "name": "thornback",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 3,
+        "pokemon_species": {
+          "name": "bloomira",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 4,
+        "pokemon_species": {
+          "name": "mothquill",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 5,
+        "pokemon_species": {
+          "name": "larvine",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 6,
+        "pokemon_species": {
+          "name": "hornvex",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 7,
+        "pokemon_species": {
+          "name": "pixwing",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 8,
+        "pokemon_species": {
+          "name": "fungoss",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 9,
+        "pokemon_species": {
+          "name": "elkenwood",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 10,
+        "pokemon_species": {
+          "name": "featherwisp",
+          "url": ""
+        }
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "tidecrest-isles",
+    "is_main_series": true,
+    "names": [
+      {
+        "name": "Tidecrest Isles",
+        "language": {
+          "name": "en",
+          "url": ""
+        }
+      }
+    ],
+    "descriptions": [
+      {
+        "description": "Storm-battered islands surrounded by reefs and open sea.",
+        "language": {
+          "name": "en",
+          "url": ""
+        }
+      }
+    ],
+    "pokemon_entries": [
+      {
+        "entry_number": 1,
+        "pokemon_species": {
+          "name": "puddlit",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 2,
+        "pokemon_species": {
+          "name": "reefjaw",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 3,
+        "pokemon_species": {
+          "name": "gullstrike",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 4,
+        "pokemon_species": {
+          "name": "voltfin",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 5,
+        "pokemon_species": {
+          "name": "sparkit",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 6,
+        "pokemon_species": {
+          "name": "tempestra",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 7,
+        "pokemon_species": {
+          "name": "seadrak",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 8,
+        "pokemon_species": {
+          "name": "shellbash",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 9,
+        "pokemon_species": {
+          "name": "driftseal",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 10,
+        "pokemon_species": {
+          "name": "coralyn",
+          "url": ""
+        }
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "duskmarsh",
+    "is_main_series": true,
+    "names": [
+      {
+        "name": "Duskmarsh",
+        "language": {
+          "name": "en",
+          "url": ""
+        }
+      }
+    ],
+    "descriptions": [
+      {
+        "description": "A misty swamp where the sun barely reaches and strange lights drift.",
+        "language": {
+          "name": "en",
+          "url": ""
+        }
+      }
+    ],
+    "pokemon_entries": [
+      {
+        "entry_number": 1,
+        "pokemon_species": {
+          "name": "bogling",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 2,
+        "pokemon_species": {
+          "name": "mirelurk",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 3,
+        "pokemon_species": {
+          "name": "hexmoth",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 4,
+        "pokemon_species": {
+          "name": "venomaw",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 5,
+        "pokemon_species": {
+          "name": "gloomshade",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 6,
+        "pokemon_species": {
+          "name": "creepvine",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 7,
+        "pokemon_species": {
+          "name": "ravenox",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 8,
+        "pokemon_species": {
+          "name": "wispet",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 9,
+        "pokemon_species": {
+          "name": "croakmire",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 10,
+        "pokemon_species": {
+          "name": "morbelich",
+          "url": ""
+        }
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "ironspire",
+    "is_main_series": true,
+    "names": [
+      {
+        "name": "Ironspire",
+        "language": {
+          "name": "en",
+          "url": ""
+        }
+      }
+    ],
+    "descriptions": [
+      {
+        "description": "A sprawling city of towers, factories and neon-lit alleys.",
+        "language": {
+          "name": "en",
+          "url": ""
+        }
+      }
+    ],
+    "pokemon_entries": [
+      {
+        "entry_number": 1,
+        "pokemon_species": {
+          "name": "boltbot",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 2,
+        "pokemon_species": {
+          "name": "gearhulk",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 3,
+        "pokemon_species": {
+          "name": "mindroid",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 4,
+        "pokemon_species": {
+          "name": "punchron",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 5,
+        "pokemon_species": {
+          "name": "rooflet",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 6,
+        "pokemon_species": {
+          "name": "neonlynx",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 7,
+        "pokemon_species": {
+          "name": "seraphyne",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 8,
+        "pokemon_species": {
+          "name": "scrapcat",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 9,
+        "pokemon_species": {
+          "name": "dojoka",
+          "url": ""
+        }
+      },
+      {
+        "entry_number": 10,
+        "pokemon_species": {
+          "name": "voltitan",
+          "url": ""
+        }
+      }
+    ]
+  }
+]

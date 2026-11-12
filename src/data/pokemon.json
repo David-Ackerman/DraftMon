@@ -1,0 +1,7457 @@
+[
+  {
+    "id": 1,
+    "name": "cindrel",
+    "base_experience": 103,
+    "height": 5,
+    "weight": 50,
+    "order": 1,
+    "species": {
+      "name": "cindrel",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "fire",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 40,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 52,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 43,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 65,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "kindling",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "cinder",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "bash",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "flame-lash",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "quick-jab",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/cindrel.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/cindrel.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 2,
+    "name": "pyrrhound",
+    "base_experience": 157,
+    "height": 6,
+    "weight": 87,
+    "order": 2,
+    "species": {
+      "name": "pyrrhound",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "fire",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 75,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 105,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 65,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "blaze-heart",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "flame-lash",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "magma-fist",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "sneak-bite",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "battle-focus",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/pyrrhound.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/pyrrhound.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 3,
+    "name": "magmaw",
+    "base_experience": 163,
+    "height": 7,
+    "weight": 124,
+    "order": 3,
+    "species": {
+      "name": "magmaw",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "fire",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "rock",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 110,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 100,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "molten-hide",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "magma-fist",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "boulder-smash",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "quake-stomp",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "plating",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/magmaw.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/magmaw.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 4,
+    "name": "cragling",
+    "base_experience": 100,
+    "height": 8,
+    "weight": 161,
+    "order": 4,
+    "species": {
+      "name": "cragling",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "rock",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 30,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 40,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 25,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "sturdy-shell",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "pebble-toss",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "dust-kick",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "bash",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "plating",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/cragling.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/cragling.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 5,
+    "name": "basaltor",
+    "base_experience": 167,
+    "height": 9,
+    "weight": 198,
+    "order": 5,
+    "species": {
+      "name": "basaltor",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "rock",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "ground",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 100,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 120,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 130,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 40,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "sturdy-shell",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "boulder-smash",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "fault-line",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "iron-knuckle",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "plating",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/basaltor.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/basaltor.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 6,
+    "name": "ashwyrm",
+    "base_experience": 183,
+    "height": 10,
+    "weight": 235,
+    "order": 6,
+    "species": {
+      "name": "ashwyrm",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "dragon",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "fire",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 110,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "blaze-heart",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "wyrm-breath",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "inferno-burst",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "drake-claw",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "scale-dance",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/ashwyrm.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/ashwyrm.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 7,
+    "name": "scorchfist",
+    "base_experience": 163,
+    "height": 11,
+    "weight": 272,
+    "order": 7,
+    "species": {
+      "name": "scorchfist",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "fighting",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "fire",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 115,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 75,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "iron-will",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "iron-knuckle",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "flame-lash",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "palm-strike",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "fighting-stance",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/scorchfist.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/scorchfist.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 8,
+    "name": "smoldrake",
+    "base_experience": 128,
+    "height": 12,
+    "weight": 309,
+    "order": 8,
+    "species": {
+      "name": "smoldrake",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "dragon",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 75,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 65,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "kindling",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "drake-claw",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "cinder",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "bash",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "scale-dance",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/smoldrake.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/smoldrake.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 9,
+    "name": "obsidjack",
+    "base_experience": 158,
+    "height": 13,
+    "weight": 346,
+    "order": 9,
+    "species": {
+      "name": "obsidjack",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "dark",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "rock",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 100,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 100,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "night-hunter",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "shadow-maul",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "boulder-smash",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "sneak-bite",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "battle-focus",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/obsidjack.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/obsidjack.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 10,
+    "name": "terrapyre",
+    "base_experience": 173,
+    "height": 14,
+    "weight": 383,
+    "order": 10,
+    "species": {
+      "name": "terrapyre",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "ground",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "fire",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 105,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "molten-hide",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "quake-stomp",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "blaze-wave",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "mudslide",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "second-wind",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/terrapyre.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/terrapyre.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 11,
+    "name": "frostkit",
+    "base_experience": 107,
+    "height": 15,
+    "weight": 420,
+    "order": 11,
+    "species": {
+      "name": "frostkit",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "ice",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 45,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 45,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "snow-coat",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "frost-chip",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "bash",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "glacier-fang",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "quick-jab",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/frostkit.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/frostkit.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 12,
+    "name": "glacirn",
+    "base_experience": 163,
+    "height": 16,
+    "weight": 457,
+    "order": 12,
+    "species": {
+      "name": "glacirn",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "ice",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "steel",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 120,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 40,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "cold-forge",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "avalanche-crush",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "alloy-slam",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "glacier-fang",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "plating",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/glacirn.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/glacirn.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 13,
+    "name": "rimeowl",
+    "base_experience": 158,
+    "height": 17,
+    "weight": 494,
+    "order": 13,
+    "species": {
+      "name": "rimeowl",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "ice",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "flying",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 65,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 105,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "snow-coat",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "rime-ray",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "cyclone",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "frost-chip",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "updraft",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/rimeowl.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/rimeowl.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 14,
+    "name": "brinewhal",
+    "base_experience": 172,
+    "height": 18,
+    "weight": 531,
+    "order": 14,
+    "species": {
+      "name": "brinewhal",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "water",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "ice",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 110,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "thick-blubber",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "torrent-beam",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "rime-ray",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "tide-slam",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "second-wind",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/brinewhal.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/brinewhal.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 15,
+    "name": "wraithfrost",
+    "base_experience": 167,
+    "height": 19,
+    "weight": 568,
+    "order": 15,
+    "species": {
+      "name": "wraithfrost",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "ghost",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "ice",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 65,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 115,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 110,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "cursed-chill",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "phantom-wave",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "rime-ray",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "dread-gaze",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "haunt",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/wraithfrost.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/wraithfrost.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 16,
+    "name": "aurorym",
+    "base_experience": 175,
+    "height": 5,
+    "weight": 605,
+    "order": 16,
+    "species": {
+      "name": "aurorym",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "psychic",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "ice",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 75,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 120,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 110,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "aurora-mind",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "psy-lance",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "rime-ray",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "focus-trance",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "mindquake",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/aurorym.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/aurorym.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 17,
+    "name": "drifmuff",
+    "base_experience": 107,
+    "height": 6,
+    "weight": 642,
+    "order": 17,
+    "species": {
+      "name": "drifmuff",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "normal",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 40,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "thick-blubber",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "bash",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "quick-jab",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "crushing-blow",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "battle-focus",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/drifmuff.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/drifmuff.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 18,
+    "name": "tundrax",
+    "base_experience": 168,
+    "height": 7,
+    "weight": 679,
+    "order": 18,
+    "species": {
+      "name": "tundrax",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "normal",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "ice",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 105,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 110,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 75,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 75,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "snow-coat",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "crushing-blow",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "avalanche-crush",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "rampage-slam",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "battle-focus",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/tundrax.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/tundrax.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 19,
+    "name": "chillshade",
+    "base_experience": 115,
+    "height": 8,
+    "weight": 716,
+    "order": 19,
+    "species": {
+      "name": "chillshade",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "ghost",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 45,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 45,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 75,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "cursed-chill",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "haunt",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "shade-claw",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "dread-gaze",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "mind-pulse",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/chillshade.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/chillshade.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 20,
+    "name": "cryostag",
+    "base_experience": 183,
+    "height": 9,
+    "weight": 753,
+    "order": 20,
+    "species": {
+      "name": "cryostag",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "steel",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "psychic",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 100,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 100,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "cold-forge",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "alloy-slam",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "psi-blade",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "chrome-ray",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "focus-trance",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/cryostag.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/cryostag.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 21,
+    "name": "sproutle",
+    "base_experience": 103,
+    "height": 10,
+    "weight": 790,
+    "order": 21,
+    "species": {
+      "name": "sproutle",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "grass",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 45,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 49,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 49,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 45,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "overgrowth",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "leaf-dart",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "bash",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "sap-drain",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "spore-cloud",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/sproutle.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/sproutle.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 22,
+    "name": "thornback",
+    "base_experience": 160,
+    "height": 11,
+    "weight": 827,
+    "order": 22,
+    "species": {
+      "name": "thornback",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "grass",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "fighting",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 110,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "overgrowth",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "thorn-whip",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "iron-knuckle",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "timber-crash",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "fighting-stance",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/thornback.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/thornback.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 23,
+    "name": "bloomira",
+    "base_experience": 165,
+    "height": 12,
+    "weight": 864,
+    "order": 23,
+    "species": {
+      "name": "bloomira",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "grass",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "fairy",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 75,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 110,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 105,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "petal-veil",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "verdant-beam",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "lunar-glow",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "sap-drain",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "spore-cloud",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/bloomira.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/bloomira.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 24,
+    "name": "mothquill",
+    "base_experience": 143,
+    "height": 13,
+    "weight": 901,
+    "order": 24,
+    "species": {
+      "name": "mothquill",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "bug",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "flying",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 75,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "dust-wings",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "chitin-beam",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "cyclone",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "gust-cut",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "focus-trance",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/mothquill.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/mothquill.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 25,
+    "name": "larvine",
+    "base_experience": 88,
+    "height": 14,
+    "weight": 938,
+    "order": 25,
+    "species": {
+      "name": "larvine",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "bug",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 45,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 30,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 40,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 45,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "swarm-sense",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "mandible",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "swarm-rush",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "bash",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "quick-jab",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/larvine.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/larvine.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 26,
+    "name": "hornvex",
+    "base_experience": 165,
+    "height": 15,
+    "weight": 75,
+    "order": 26,
+    "species": {
+      "name": "hornvex",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "bug",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "steel",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 125,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 110,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 40,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "swarm-sense",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "swarm-rush",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "alloy-slam",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "iron-knuckle",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "battle-focus",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/hornvex.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/hornvex.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 27,
+    "name": "pixwing",
+    "base_experience": 143,
+    "height": 16,
+    "weight": 112,
+    "order": 27,
+    "species": {
+      "name": "pixwing",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "fairy",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "flying",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 45,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 110,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "petal-veil",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "glimmer",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "gust-cut",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "lunar-glow",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "charm-veil",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/pixwing.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/pixwing.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 28,
+    "name": "fungoss",
+    "base_experience": 157,
+    "height": 17,
+    "weight": 149,
+    "order": 28,
+    "species": {
+      "name": "fungoss",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "poison",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "grass",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 40,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "spore-skin",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "toxic-spit",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "sap-drain",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "miasma",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "spore-cloud",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/fungoss.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/fungoss.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 29,
+    "name": "elkenwood",
+    "base_experience": 175,
+    "height": 18,
+    "weight": 186,
+    "order": 29,
+    "species": {
+      "name": "elkenwood",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "grass",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "normal",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 105,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 75,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "overgrowth",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "timber-crash",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "crushing-blow",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "quake-stomp",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "second-wind",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/elkenwood.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/elkenwood.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 30,
+    "name": "featherwisp",
+    "base_experience": 108,
+    "height": 19,
+    "weight": 223,
+    "order": 30,
+    "species": {
+      "name": "featherwisp",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "flying",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "normal",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 45,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 40,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 45,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "dust-wings",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "gust-cut",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "quick-jab",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "sky-dive",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "updraft",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/featherwisp.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/featherwisp.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 31,
+    "name": "puddlit",
+    "base_experience": 105,
+    "height": 5,
+    "weight": 260,
+    "order": 31,
+    "species": {
+      "name": "puddlit",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "water",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 45,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "tide-born",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "splash-shot",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "bash",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "torrent-beam",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "second-wind",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/puddlit.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/puddlit.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 32,
+    "name": "reefjaw",
+    "base_experience": 167,
+    "height": 6,
+    "weight": 297,
+    "order": 32,
+    "species": {
+      "name": "reefjaw",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "water",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "dark",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 115,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "night-hunter",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "riptide-claw",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "shadow-maul",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "sneak-bite",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "glacier-fang",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/reefjaw.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/reefjaw.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 33,
+    "name": "gullstrike",
+    "base_experience": 150,
+    "height": 7,
+    "weight": 334,
+    "order": 33,
+    "species": {
+      "name": "gullstrike",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "flying",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "water",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 65,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 110,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "tide-born",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "sky-dive",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "tide-slam",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "talon-rush",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "quick-jab",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/gullstrike.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/gullstrike.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 34,
+    "name": "voltfin",
+    "base_experience": 163,
+    "height": 8,
+    "weight": 371,
+    "order": 34,
+    "species": {
+      "name": "voltfin",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "electric",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "water",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 75,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 105,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 100,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "static-skin",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "thunder-arc",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "torrent-beam",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "jolt-wave",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "splash-shot",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/voltfin.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/voltfin.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 35,
+    "name": "sparkit",
+    "base_experience": 117,
+    "height": 9,
+    "weight": 408,
+    "order": 35,
+    "species": {
+      "name": "sparkit",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "electric",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 45,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 40,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "static-skin",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "static-jab",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "thunder-arc",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "quick-jab",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "jolt-wave",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/sparkit.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/sparkit.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 36,
+    "name": "tempestra",
+    "base_experience": 182,
+    "height": 10,
+    "weight": 445,
+    "order": 36,
+    "species": {
+      "name": "tempestra",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "electric",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "flying",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 75,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 120,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 110,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "storm-call",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "storm-surge",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "cyclone",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "thunder-arc",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "updraft",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/tempestra.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/tempestra.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 37,
+    "name": "seadrak",
+    "base_experience": 185,
+    "height": 11,
+    "weight": 482,
+    "order": 37,
+    "species": {
+      "name": "seadrak",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "dragon",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "water",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 110,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "tide-born",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "drake-claw",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "riptide-claw",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "wyrm-breath",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "scale-dance",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/seadrak.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/seadrak.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 38,
+    "name": "shellbash",
+    "base_experience": 147,
+    "height": 12,
+    "weight": 519,
+    "order": 38,
+    "species": {
+      "name": "shellbash",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "water",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "rock",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 120,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 40,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "sturdy-shell",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "tide-slam",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "boulder-smash",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "plating",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "pebble-toss",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/shellbash.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/shellbash.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 39,
+    "name": "driftseal",
+    "base_experience": 150,
+    "height": 13,
+    "weight": 556,
+    "order": 39,
+    "species": {
+      "name": "driftseal",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "normal",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "water",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 100,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "thick-blubber",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "crushing-blow",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "torrent-beam",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "second-wind",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "rime-ray",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/driftseal.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/driftseal.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 40,
+    "name": "coralyn",
+    "base_experience": 158,
+    "height": 14,
+    "weight": 593,
+    "order": 40,
+    "species": {
+      "name": "coralyn",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "water",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "fairy",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 75,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 105,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "petal-veil",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "torrent-beam",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "lunar-glow",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "charm-veil",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "second-wind",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/coralyn.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/coralyn.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 41,
+    "name": "bogling",
+    "base_experience": 107,
+    "height": 15,
+    "weight": 630,
+    "order": 41,
+    "species": {
+      "name": "bogling",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "poison",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "water",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 45,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "spore-skin",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "venom-sting",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "splash-shot",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "miasma",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "bash",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/bogling.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/bogling.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 42,
+    "name": "mirelurk",
+    "base_experience": 160,
+    "height": 16,
+    "weight": 667,
+    "order": 42,
+    "species": {
+      "name": "mirelurk",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "water",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "ground",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 110,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 75,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 45,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "thick-blubber",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "tide-slam",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "quake-stomp",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "mudslide",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "second-wind",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/mirelurk.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/mirelurk.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 43,
+    "name": "hexmoth",
+    "base_experience": 152,
+    "height": 17,
+    "weight": 704,
+    "order": 43,
+    "species": {
+      "name": "hexmoth",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "bug",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "ghost",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 100,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 100,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "dust-wings",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "chitin-beam",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "phantom-wave",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "dread-gaze",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "haunt",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/hexmoth.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/hexmoth.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 44,
+    "name": "venomaw",
+    "base_experience": 165,
+    "height": 18,
+    "weight": 741,
+    "order": 44,
+    "species": {
+      "name": "venomaw",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "poison",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "dark",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 110,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 75,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 65,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "night-hunter",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "blight-fang",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "shadow-maul",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "sneak-bite",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "battle-focus",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/venomaw.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/venomaw.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 45,
+    "name": "gloomshade",
+    "base_experience": 172,
+    "height": 19,
+    "weight": 778,
+    "order": 45,
+    "species": {
+      "name": "gloomshade",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "ghost",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "dark",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 75,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 65,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 115,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "cursed-chill",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "phantom-wave",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "night-pulse",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "sinister-plot",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "haunt",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/gloomshade.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/gloomshade.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 46,
+    "name": "creepvine",
+    "base_experience": 142,
+    "height": 5,
+    "weight": 815,
+    "order": 46,
+    "species": {
+      "name": "creepvine",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "grass",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "poison",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 65,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "spore-skin",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "thorn-whip",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "toxic-spit",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "sap-drain",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "miasma",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/creepvine.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/creepvine.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 47,
+    "name": "ravenox",
+    "base_experience": 157,
+    "height": 6,
+    "weight": 852,
+    "order": 47,
+    "species": {
+      "name": "ravenox",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "dark",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "flying",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 105,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "night-hunter",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "shadow-maul",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "sky-dive",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "sneak-bite",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "night-pulse",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/ravenox.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/ravenox.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 48,
+    "name": "wispet",
+    "base_experience": 103,
+    "height": 7,
+    "weight": 889,
+    "order": 48,
+    "species": {
+      "name": "wispet",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "ghost",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 40,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 40,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 40,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 65,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "cursed-chill",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "haunt",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "mind-pulse",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "dread-gaze",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "bash",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/wispet.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/wispet.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 49,
+    "name": "croakmire",
+    "base_experience": 162,
+    "height": 8,
+    "weight": 926,
+    "order": 49,
+    "species": {
+      "name": "croakmire",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "water",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "poison",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "spore-skin",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "riptide-claw",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "blight-fang",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "mudslide",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "miasma",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/croakmire.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/croakmire.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 50,
+    "name": "morbelich",
+    "base_experience": 188,
+    "height": 9,
+    "weight": 63,
+    "order": 50,
+    "species": {
+      "name": "morbelich",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "ghost",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "poison",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 125,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 110,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "cursed-chill",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "phantom-wave",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "toxic-spit",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "sinister-plot",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "night-pulse",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/morbelich.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/morbelich.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 51,
+    "name": "boltbot",
+    "base_experience": 118,
+    "height": 10,
+    "weight": 100,
+    "order": 51,
+    "species": {
+      "name": "boltbot",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "electric",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "steel",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 65,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "static-skin",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "static-jab",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "iron-tap",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "thunder-arc",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "plating",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/boltbot.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/boltbot.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 52,
+    "name": "gearhulk",
+    "base_experience": 167,
+    "height": 11,
+    "weight": 137,
+    "order": 52,
+    "species": {
+      "name": "gearhulk",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "steel",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 115,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 130,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 75,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 40,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "cold-forge",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "alloy-slam",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "iron-knuckle",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "quake-stomp",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "plating",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/gearhulk.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/gearhulk.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 53,
+    "name": "mindroid",
+    "base_experience": 172,
+    "height": 12,
+    "weight": 174,
+    "order": 53,
+    "species": {
+      "name": "mindroid",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "psychic",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "steel",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 75,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 115,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 100,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 75,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "aurora-mind",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "psy-lance",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "chrome-ray",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "focus-trance",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "thunder-arc",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/mindroid.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/mindroid.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 54,
+    "name": "punchron",
+    "base_experience": 167,
+    "height": 13,
+    "weight": 211,
+    "order": 54,
+    "species": {
+      "name": "punchron",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "fighting",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "steel",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 125,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 75,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "iron-will",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "iron-knuckle",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "alloy-slam",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "palm-strike",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "fighting-stance",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/punchron.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/punchron.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 55,
+    "name": "rooflet",
+    "base_experience": 112,
+    "height": 14,
+    "weight": 248,
+    "order": 55,
+    "species": {
+      "name": "rooflet",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "normal",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "flying",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 45,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 45,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "dust-wings",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "bash",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "gust-cut",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "quick-jab",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "sky-dive",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/rooflet.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/rooflet.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 56,
+    "name": "neonlynx",
+    "base_experience": 163,
+    "height": 15,
+    "weight": 285,
+    "order": 56,
+    "species": {
+      "name": "neonlynx",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "electric",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 65,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 70,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 105,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 75,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 115,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "storm-call",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "thunder-arc",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "storm-surge",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "night-pulse",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "jolt-wave",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/neonlynx.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/neonlynx.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 57,
+    "name": "seraphyne",
+    "base_experience": 173,
+    "height": 16,
+    "weight": 322,
+    "order": 57,
+    "species": {
+      "name": "seraphyne",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "fairy",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "psychic",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 75,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 115,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 115,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "aurora-mind",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "lunar-glow",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "psy-lance",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "focus-trance",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "second-wind",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/seraphyne.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/seraphyne.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 58,
+    "name": "scrapcat",
+    "base_experience": 130,
+    "height": 17,
+    "weight": 359,
+    "order": 58,
+    "species": {
+      "name": "scrapcat",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "normal",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "dark",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 45,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "night-hunter",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "crushing-blow",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "sneak-bite",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "quick-jab",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "shadow-maul",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/scrapcat.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/scrapcat.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 59,
+    "name": "dojoka",
+    "base_experience": 117,
+    "height": 18,
+    "weight": 396,
+    "order": 59,
+    "species": {
+      "name": "dojoka",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "fighting",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 60,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 55,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 35,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 50,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 65,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "iron-will",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "palm-strike",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "iron-knuckle",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "bash",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "fighting-stance",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/dojoka.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/dojoka.svg"
+        }
+      }
+    }
+  },
+  {
+    "id": 60,
+    "name": "voltitan",
+    "base_experience": 190,
+    "height": 19,
+    "weight": 433,
+    "order": 60,
+    "species": {
+      "name": "voltitan",
+      "url": ""
+    },
+    "types": [
+      {
+        "slot": 1,
+        "type": {
+          "name": "electric",
+          "url": ""
+        }
+      },
+      {
+        "slot": 2,
+        "type": {
+          "name": "fighting",
+          "url": ""
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 100,
+        "effort": 0,
+        "stat": {
+          "name": "hp",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 120,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 95,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 80,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": ""
+        }
+      },
+      {
+        "base_stat": 85,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": ""
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "storm-call",
+          "url": ""
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "volt-lance",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "titan-kick",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "thunder-arc",
+          "url": ""
+        },
+        "version_group_details": []
+      },
+      {
+        "move": {
+          "name": "fighting-stance",
+          "url": ""
+        },
+        "version_group_details": []
+      }
+    ],
+    "sprites": {
+      "front_default": "/sprites/voltitan.svg",
+      "other": {
+        "official-artwork": {
+          "front_default": "/sprites/voltitan.svg"
+        }
+      }
+    }
+  }
+]

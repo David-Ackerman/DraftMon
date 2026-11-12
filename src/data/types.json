@@ -1,0 +1,1263 @@
+[
+  {
+    "id": 1,
+    "name": "normal",
+    "damage_relations": {
+      "double_damage_to": [],
+      "half_damage_to": [
+        {
+          "name": "rock",
+          "url": ""
+        },
+        {
+          "name": "steel",
+          "url": ""
+        }
+      ],
+      "no_damage_to": [
+        {
+          "name": "ghost",
+          "url": ""
+        }
+      ],
+      "double_damage_from": [
+        {
+          "name": "fighting",
+          "url": ""
+        }
+      ],
+      "half_damage_from": [],
+      "no_damage_from": [
+        {
+          "name": "ghost",
+          "url": ""
+        }
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "name": "fire",
+    "damage_relations": {
+      "double_damage_to": [
+        {
+          "name": "grass",
+          "url": ""
+        },
+        {
+          "name": "ice",
+          "url": ""
+        },
+        {
+          "name": "bug",
+          "url": ""
+        },
+        {
+          "name": "steel",
+          "url": ""
+        }
+      ],
+      "half_damage_to": [
+        {
+          "name": "fire",
+          "url": ""
+        },
+        {
+          "name": "water",
+          "url": ""
+        },
+        {
+          "name": "rock",
+          "url": ""
+        },
+        {
+          "name": "dragon",
+          "url": ""
+        }
+      ],
+      "no_damage_to": [],
+      "double_damage_from": [
+        {
+          "name": "water",
+          "url": ""
+        },
+        {
+          "name": "ground",
+          "url": ""
+        },
+        {
+          "name": "rock",
+          "url": ""
+        }
+      ],
+      "half_damage_from": [
+        {
+          "name": "fire",
+          "url": ""
+        },
+        {
+          "name": "grass",
+          "url": ""
+        },
+        {
+          "name": "ice",
+          "url": ""
+        },
+        {
+          "name": "bug",
+          "url": ""
+        },
+        {
+          "name": "steel",
+          "url": ""
+        },
+        {
+          "name": "fairy",
+          "url": ""
+        }
+      ],
+      "no_damage_from": []
+    }
+  },
+  {
+    "id": 3,
+    "name": "water",
+    "damage_relations": {
+      "double_damage_to": [
+        {
+          "name": "fire",
+          "url": ""
+        },
+        {
+          "name": "ground",
+          "url": ""
+        },
+        {
+          "name": "rock",
+          "url": ""
+        }
+      ],
+      "half_damage_to": [
+        {
+          "name": "water",
+          "url": ""
+        },
+        {
+          "name": "grass",
+          "url": ""
+        },
+        {
+          "name": "dragon",
+          "url": ""
+        }
+      ],
+      "no_damage_to": [],
+      "double_damage_from": [
+        {
+          "name": "electric",
+          "url": ""
+        },
+        {
+          "name": "grass",
+          "url": ""
+        }
+      ],
+      "half_damage_from": [
+        {
+          "name": "fire",
+          "url": ""
+        },
+        {
+          "name": "water",
+          "url": ""
+        },
+        {
+          "name": "ice",
+          "url": ""
+        },
+        {
+          "name": "steel",
+          "url": ""
+        }
+      ],
+      "no_damage_from": []
+    }
+  },
+  {
+    "id": 4,
+    "name": "electric",
+    "damage_relations": {
+      "double_damage_to": [
+        {
+          "name": "water",
+          "url": ""
+        },
+        {
+          "name": "flying",
+          "url": ""
+        }
+      ],
+      "half_damage_to": [
+        {
+          "name": "electric",
+          "url": ""
+        },
+        {
+          "name": "grass",
+          "url": ""
+        },
+        {
+          "name": "dragon",
+          "url": ""
+        }
+      ],
+      "no_damage_to": [
+        {
+          "name": "ground",
+          "url": ""
+        }
+      ],
+      "double_damage_from": [
+        {
+          "name": "ground",
+          "url": ""
+        }
+      ],
+      "half_damage_from": [
+        {
+          "name": "electric",
+          "url": ""
+        },
+        {
+          "name": "flying",
+          "url": ""
+        },
+        {
+          "name": "steel",
+          "url": ""
+        }
+      ],
+      "no_damage_from": []
+    }
+  },
+  {
+    "id": 5,
+    "name": "grass",
+    "damage_relations": {
+      "double_damage_to": [
+        {
+          "name": "water",
+          "url": ""
+        },
+        {
+          "name": "ground",
+          "url": ""
+        },
+        {
+          "name": "rock",
+          "url": ""
+        }
+      ],
+      "half_damage_to": [
+        {
+          "name": "fire",
+          "url": ""
+        },
+        {
+          "name": "grass",
+          "url": ""
+        },
+        {
+          "name": "poison",
+          "url": ""
+        },
+        {
+          "name": "flying",
+          "url": ""
+        },
+        {
+          "name": "bug",
+          "url": ""
+        },
+        {
+          "name": "dragon",
+          "url": ""
+        },
+        {
+          "name": "steel",
+          "url": ""
+        }
+      ],
+      "no_damage_to": [],
+      "double_damage_from": [
+        {
+          "name": "fire",
+          "url": ""
+        },
+        {
+          "name": "ice",
+          "url": ""
+        },
+        {
+          "name": "poison",
+          "url": ""
+        },
+        {
+          "name": "flying",
+          "url": ""
+        },
+        {
+          "name": "bug",
+          "url": ""
+        }
+      ],
+      "half_damage_from": [
+        {
+          "name": "water",
+          "url": ""
+        },
+        {
+          "name": "electric",
+          "url": ""
+        },
+        {
+          "name": "grass",
+          "url": ""
+        },
+        {
+          "name": "ground",
+          "url": ""
+        }
+      ],
+      "no_damage_from": []
+    }
+  },
+  {
+    "id": 6,
+    "name": "ice",
+    "damage_relations": {
+      "double_damage_to": [
+        {
+          "name": "grass",
+          "url": ""
+        },
+        {
+          "name": "ground",
+          "url": ""
+        },
+        {
+          "name": "flying",
+          "url": ""
+        },
+        {
+          "name": "dragon",
+          "url": ""
+        }
+      ],
+      "half_damage_to": [
+        {
+          "name": "fire",
+          "url": ""
+        },
+        {
+          "name": "water",
+          "url": ""
+        },
+        {
+          "name": "ice",
+          "url": ""
+        },
+        {
+          "name": "steel",
+          "url": ""
+        }
+      ],
+      "no_damage_to": [],
+      "double_damage_from": [
+        {
+          "name": "fire",
+          "url": ""
+        },
+        {
+          "name": "fighting",
+          "url": ""
+        },
+        {
+          "name": "rock",
+          "url": ""
+        },
+        {
+          "name": "steel",
+          "url": ""
+        }
+      ],
+      "half_damage_from": [
+        {
+          "name": "ice",
+          "url": ""
+        }
+      ],
+      "no_damage_from": []
+    }
+  },
+  {
+    "id": 7,
+    "name": "fighting",
+    "damage_relations": {
+      "double_damage_to": [
+        {
+          "name": "normal",
+          "url": ""
+        },
+        {
+          "name": "ice",
+          "url": ""
+        },
+        {
+          "name": "rock",
+          "url": ""
+        },
+        {
+          "name": "dark",
+          "url": ""
+        },
+        {
+          "name": "steel",
+          "url": ""
+        }
+      ],
+      "half_damage_to": [
+        {
+          "name": "poison",
+          "url": ""
+        },
+        {
+          "name": "flying",
+          "url": ""
+        },
+        {
+          "name": "psychic",
+          "url": ""
+        },
+        {
+          "name": "bug",
+          "url": ""
+        },
+        {
+          "name": "fairy",
+          "url": ""
+        }
+      ],
+      "no_damage_to": [
+        {
+          "name": "ghost",
+          "url": ""
+        }
+      ],
+      "double_damage_from": [
+        {
+          "name": "flying",
+          "url": ""
+        },
+        {
+          "name": "psychic",
+          "url": ""
+        },
+        {
+          "name": "fairy",
+          "url": ""
+        }
+      ],
+      "half_damage_from": [
+        {
+          "name": "bug",
+          "url": ""
+        },
+        {
+          "name": "rock",
+          "url": ""
+        },
+        {
+          "name": "dark",
+          "url": ""
+        }
+      ],
+      "no_damage_from": []
+    }
+  },
+  {
+    "id": 8,
+    "name": "poison",
+    "damage_relations": {
+      "double_damage_to": [
+        {
+          "name": "grass",
+          "url": ""
+        },
+        {
+          "name": "fairy",
+          "url": ""
+        }
+      ],
+      "half_damage_to": [
+        {
+          "name": "poison",
+          "url": ""
+        },
+        {
+          "name": "ground",
+          "url": ""
+        },
+        {
+          "name": "rock",
+          "url": ""
+        },
+        {
+          "name": "ghost",
+          "url": ""
+        }
+      ],
+      "no_damage_to": [
+        {
+          "name": "steel",
+          "url": ""
+        }
+      ],
+      "double_damage_from": [
+        {
+          "name": "ground",
+          "url": ""
+        },
+        {
+          "name": "psychic",
+          "url": ""
+        }
+      ],
+      "half_damage_from": [
+        {
+          "name": "grass",
+          "url": ""
+        },
+        {
+          "name": "fighting",
+          "url": ""
+        },
+        {
+          "name": "poison",
+          "url": ""
+        },
+        {
+          "name": "bug",
+          "url": ""
+        },
+        {
+          "name": "fairy",
+          "url": ""
+        }
+      ],
+      "no_damage_from": []
+    }
+  },
+  {
+    "id": 9,
+    "name": "ground",
+    "damage_relations": {
+      "double_damage_to": [
+        {
+          "name": "fire",
+          "url": ""
+        },
+        {
+          "name": "electric",
+          "url": ""
+        },
+        {
+          "name": "poison",
+          "url": ""
+        },
+        {
+          "name": "rock",
+          "url": ""
+        },
+        {
+          "name": "steel",
+          "url": ""
+        }
+      ],
+      "half_damage_to": [
+        {
+          "name": "grass",
+          "url": ""
+        },
+        {
+          "name": "bug",
+          "url": ""
+        }
+      ],
+      "no_damage_to": [
+        {
+          "name": "flying",
+          "url": ""
+        }
+      ],
+      "double_damage_from": [
+        {
+          "name": "water",
+          "url": ""
+        },
+        {
+          "name": "grass",
+          "url": ""
+        },
+        {
+          "name": "ice",
+          "url": ""
+        }
+      ],
+      "half_damage_from": [
+        {
+          "name": "poison",
+          "url": ""
+        },
+        {
+          "name": "rock",
+          "url": ""
+        }
+      ],
+      "no_damage_from": [
+        {
+          "name": "electric",
+          "url": ""
+        }
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "name": "flying",
+    "damage_relations": {
+      "double_damage_to": [
+        {
+          "name": "grass",
+          "url": ""
+        },
+        {
+          "name": "fighting",
+          "url": ""
+        },
+        {
+          "name": "bug",
+          "url": ""
+        }
+      ],
+      "half_damage_to": [
+        {
+          "name": "electric",
+          "url": ""
+        },
+        {
+          "name": "rock",
+          "url": ""
+        },
+        {
+          "name": "steel",
+          "url": ""
+        }
+      ],
+      "no_damage_to": [],
+      "double_damage_from": [
+        {
+          "name": "electric",
+          "url": ""
+        },
+        {
+          "name": "ice",
+          "url": ""
+        },
+        {
+          "name": "rock",
+          "url": ""
+        }
+      ],
+      "half_damage_from": [
+        {
+          "name": "grass",
+          "url": ""
+        },
+        {
+          "name": "fighting",
+          "url": ""
+        },
+        {
+          "name": "bug",
+          "url": ""
+        }
+      ],
+      "no_damage_from": [
+        {
+          "name": "ground",
+          "url": ""
+        }
+      ]
+    }
+  },
+  {
+    "id": 11,
+    "name": "psychic",
+    "damage_relations": {
+      "double_damage_to": [
+        {
+          "name": "fighting",
+          "url": ""
+        },
+        {
+          "name": "poison",
+          "url": ""
+        }
+      ],
+      "half_damage_to": [
+        {
+          "name": "psychic",
+          "url": ""
+        },
+        {
+          "name": "steel",
+          "url": ""
+        }
+      ],
+      "no_damage_to": [
+        {
+          "name": "dark",
+          "url": ""
+        }
+      ],
+      "double_damage_from": [
+        {
+          "name": "bug",
+          "url": ""
+        },
+        {
+          "name": "ghost",
+          "url": ""
+        },
+        {
+          "name": "dark",
+          "url": ""
+        }
+      ],
+      "half_damage_from": [
+        {
+          "name": "fighting",
+          "url": ""
+        },
+        {
+          "name": "psychic",
+          "url": ""
+        }
+      ],
+      "no_damage_from": []
+    }
+  },
+  {
+    "id": 12,
+    "name": "bug",
+    "damage_relations": {
+      "double_damage_to": [
+        {
+          "name": "grass",
+          "url": ""
+        },
+        {
+          "name": "psychic",
+          "url": ""
+        },
+        {
+          "name": "dark",
+          "url": ""
+        }
+      ],
+      "half_damage_to": [
+        {
+          "name": "fire",
+          "url": ""
+        },
+        {
+          "name": "fighting",
+          "url": ""
+        },
+        {
+          "name": "poison",
+          "url": ""
+        },
+        {
+          "name": "flying",
+          "url": ""
+        },
+        {
+          "name": "ghost",
+          "url": ""
+        },
+        {
+          "name": "steel",
+          "url": ""
+        },
+        {
+          "name": "fairy",
+          "url": ""
+        }
+      ],
+      "no_damage_to": [],
+      "double_damage_from": [
+        {
+          "name": "fire",
+          "url": ""
+        },
+        {
+          "name": "flying",
+          "url": ""
+        },
+        {
+          "name": "rock",
+          "url": ""
+        }
+      ],
+      "half_damage_from": [
+        {
+          "name": "grass",
+          "url": ""
+        },
+        {
+          "name": "fighting",
+          "url": ""
+        },
+        {
+          "name": "ground",
+          "url": ""
+        }
+      ],
+      "no_damage_from": []
+    }
+  },
+  {
+    "id": 13,
+    "name": "rock",
+    "damage_relations": {
+      "double_damage_to": [
+        {
+          "name": "fire",
+          "url": ""
+        },
+        {
+          "name": "ice",
+          "url": ""
+        },
+        {
+          "name": "flying",
+          "url": ""
+        },
+        {
+          "name": "bug",
+          "url": ""
+        }
+      ],
+      "half_damage_to": [
+        {
+          "name": "fighting",
+          "url": ""
+        },
+        {
+          "name": "ground",
+          "url": ""
+        },
+        {
+          "name": "steel",
+          "url": ""
+        }
+      ],
+      "no_damage_to": [],
+      "double_damage_from": [
+        {
+          "name": "water",
+          "url": ""
+        },
+        {
+          "name": "grass",
+          "url": ""
+        },
+        {
+          "name": "fighting",
+          "url": ""
+        },
+        {
+          "name": "ground",
+          "url": ""
+        },
+        {
+          "name": "steel",
+          "url": ""
+        }
+      ],
+      "half_damage_from": [
+        {
+          "name": "normal",
+          "url": ""
+        },
+        {
+          "name": "fire",
+          "url": ""
+        },
+        {
+          "name": "poison",
+          "url": ""
+        },
+        {
+          "name": "flying",
+          "url": ""
+        }
+      ],
+      "no_damage_from": []
+    }
+  },
+  {
+    "id": 14,
+    "name": "ghost",
+    "damage_relations": {
+      "double_damage_to": [
+        {
+          "name": "psychic",
+          "url": ""
+        },
+        {
+          "name": "ghost",
+          "url": ""
+        }
+      ],
+      "half_damage_to": [
+        {
+          "name": "dark",
+          "url": ""
+        }
+      ],
+      "no_damage_to": [
+        {
+          "name": "normal",
+          "url": ""
+        }
+      ],
+      "double_damage_from": [
+        {
+          "name": "ghost",
+          "url": ""
+        },
+        {
+          "name": "dark",
+          "url": ""
+        }
+      ],
+      "half_damage_from": [
+        {
+          "name": "poison",
+          "url": ""
+        },
+        {
+          "name": "bug",
+          "url": ""
+        }
+      ],
+      "no_damage_from": [
+        {
+          "name": "normal",
+          "url": ""
+        },
+        {
+          "name": "fighting",
+          "url": ""
+        }
+      ]
+    }
+  },
+  {
+    "id": 15,
+    "name": "dragon",
+    "damage_relations": {
+      "double_damage_to": [
+        {
+          "name": "dragon",
+          "url": ""
+        }
+      ],
+      "half_damage_to": [
+        {
+          "name": "steel",
+          "url": ""
+        }
+      ],
+      "no_damage_to": [
+        {
+          "name": "fairy",
+          "url": ""
+        }
+      ],
+      "double_damage_from": [
+        {
+          "name": "ice",
+          "url": ""
+        },
+        {
+          "name": "dragon",
+          "url": ""
+        },
+        {
+          "name": "fairy",
+          "url": ""
+        }
+      ],
+      "half_damage_from": [
+        {
+          "name": "fire",
+          "url": ""
+        },
+        {
+          "name": "water",
+          "url": ""
+        },
+        {
+          "name": "electric",
+          "url": ""
+        },
+        {
+          "name": "grass",
+          "url": ""
+        }
+      ],
+      "no_damage_from": []
+    }
+  },
+  {
+    "id": 16,
+    "name": "dark",
+    "damage_relations": {
+      "double_damage_to": [
+        {
+          "name": "psychic",
+          "url": ""
+        },
+        {
+          "name": "ghost",
+          "url": ""
+        }
+      ],
+      "half_damage_to": [
+        {
+          "name": "fighting",
+          "url": ""
+        },
+        {
+          "name": "dark",
+          "url": ""
+        },
+        {
+          "name": "fairy",
+          "url": ""
+        }
+      ],
+      "no_damage_to": [],
+      "double_damage_from": [
+        {
+          "name": "fighting",
+          "url": ""
+        },
+        {
+          "name": "bug",
+          "url": ""
+        },
+        {
+          "name": "fairy",
+          "url": ""
+        }
+      ],
+      "half_damage_from": [
+        {
+          "name": "ghost",
+          "url": ""
+        },
+        {
+          "name": "dark",
+          "url": ""
+        }
+      ],
+      "no_damage_from": [
+        {
+          "name": "psychic",
+          "url": ""
+        }
+      ]
+    }
+  },
+  {
+    "id": 17,
+    "name": "steel",
+    "damage_relations": {
+      "double_damage_to": [
+        {
+          "name": "ice",
+          "url": ""
+        },
+        {
+          "name": "rock",
+          "url": ""
+        },
+        {
+          "name": "fairy",
+          "url": ""
+        }
+      ],
+      "half_damage_to": [
+        {
+          "name": "fire",
+          "url": ""
+        },
+        {
+          "name": "water",
+          "url": ""
+        },
+        {
+          "name": "electric",
+          "url": ""
+        },
+        {
+          "name": "steel",
+          "url": ""
+        }
+      ],
+      "no_damage_to": [],
+      "double_damage_from": [
+        {
+          "name": "fire",
+          "url": ""
+        },
+        {
+          "name": "fighting",
+          "url": ""
+        },
+        {
+          "name": "ground",
+          "url": ""
+        }
+      ],
+      "half_damage_from": [
+        {
+          "name": "normal",
+          "url": ""
+        },
+        {
+          "name": "grass",
+          "url": ""
+        },
+        {
+          "name": "ice",
+          "url": ""
+        },
+        {
+          "name": "flying",
+          "url": ""
+        },
+        {
+          "name": "psychic",
+          "url": ""
+        },
+        {
+          "name": "bug",
+          "url": ""
+        },
+        {
+          "name": "rock",
+          "url": ""
+        },
+        {
+          "name": "dragon",
+          "url": ""
+        },
+        {
+          "name": "steel",
+          "url": ""
+        },
+        {
+          "name": "fairy",
+          "url": ""
+        }
+      ],
+      "no_damage_from": [
+        {
+          "name": "poison",
+          "url": ""
+        }
+      ]
+    }
+  },
+  {
+    "id": 18,
+    "name": "fairy",
+    "damage_relations": {
+      "double_damage_to": [
+        {
+          "name": "fighting",
+          "url": ""
+        },
+        {
+          "name": "dragon",
+          "url": ""
+        },
+        {
+          "name": "dark",
+          "url": ""
+        }
+      ],
+      "half_damage_to": [
+        {
+          "name": "fire",
+          "url": ""
+        },
+        {
+          "name": "poison",
+          "url": ""
+        },
+        {
+          "name": "steel",
+          "url": ""
+        }
+      ],
+      "no_damage_to": [],
+      "double_damage_from": [
+        {
+          "name": "poison",
+          "url": ""
+        },
+        {
+          "name": "steel",
+          "url": ""
+        }
+      ],
+      "half_damage_from": [
+        {
+          "name": "fighting",
+          "url": ""
+        },
+        {
+          "name": "bug",
+          "url": ""
+        },
+        {
+          "name": "dark",
+          "url": ""
+        }
+      ],
+      "no_damage_from": [
+        {
+          "name": "dragon",
+          "url": ""
+        }
+      ]
+    }
+  }
+]
