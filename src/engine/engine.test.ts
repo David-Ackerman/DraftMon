@@ -204,7 +204,7 @@ describe('league', () => {
         const res = simulateBattle(
           team.map((name) => ({ name })),
           trainerTeamForMatch(match.trainer, rng),
-          { data: gameData, chart, rng, levels: [PLAYER_LEVEL, match.trainer.level] },
+          { data: gameData, chart, rng, levels: [PLAYER_LEVEL, match.level] },
         )
         if (res.winner !== 0) break
         wins++
@@ -215,5 +215,25 @@ describe('league', () => {
     console.log(`balance: avg wins ${(totalWins / runs).toFixed(2)}/7, champions ${champions}/${runs}`)
     expect(champions).toBeLessThan(runs * 0.6)
     expect(totalWins / runs).toBeGreaterThan(1.5)
+  })
+})
+
+describe('run summary', () => {
+  it('credits knockouts and defeats consistently with the battle', async () => {
+    const { summarizeBattle } = await import('./summary')
+    for (let seed = 0; seed < 20; seed++) {
+      const res = simulateBattle(
+        [{ name: 'pyrrhound' }, { name: 'brinewhal' }, { name: 'bloomira' }],
+        [{ name: 'gearhulk' }, { name: 'voltfin' }, { name: 'gloomshade' }],
+        { data: gameData, chart, rng: createRng(seed), levels: [50, 50], names: ['David', 'Mira'] },
+      )
+      const s = summarizeBattle(res, 'mira', 'Group 1')
+      const foeFaints = res.events.filter((e) => e.kind === 'faint' && e.side === 1).length
+      const kos = Object.values(s.kos).reduce((a, b) => a + b, 0)
+      expect(kos).toBeLessThanOrEqual(foeFaints)
+      expect(s.fainted.length + s.survivors).toBe(3)
+      expect(s.won).toBe(res.winner === 0)
+      expect(res.events[0].text).toBe('David chose Pyrrhound')
+    }
   })
 })

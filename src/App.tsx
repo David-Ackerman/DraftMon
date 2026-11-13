@@ -7,12 +7,14 @@ import type { BattleResult } from './engine/battle'
 import { simulateBattle } from './engine/battle'
 import type { LeagueMatch, RerollMode, Roll } from './engine/game'
 import { createLeague, PLAYER_LEVEL, REROLLS_PER_RUN, rollOptions, TEAM_SIZE, trainerTeamForMatch } from './engine/game'
+import type { MatchSummary } from './engine/summary'
+import { summarizeBattle } from './engine/summary'
 import { Home } from './ui/Home'
 import { Draft } from './ui/Draft'
 import { Prep } from './ui/Prep'
 import { BattleView } from './ui/BattleView'
 import { RunEnd } from './ui/RunEnd'
-import { loadStats, recordRun } from './ui/storage'
+import { loadName, loadStats, recordRun, saveName } from './ui/storage'
 
 type Phase = 'home' | 'draft' | 'prep' | 'battle' | 'end'
 
@@ -25,6 +27,7 @@ export interface Run {
   league: LeagueMatch[]
   matchIndex: number
   results: boolean[]
+  summaries: MatchSummary[]
 }
 
 const today = () => new Date().toISOString().slice(0, 10)
@@ -34,7 +37,14 @@ export default function App() {
   const [run, setRun] = useState<Run | null>(null)
   const [battle, setBattle] = useState<BattleResult | null>(null)
   const [stats, setStats] = useState(loadStats)
+  const [name, setName] = useState(loadName)
   const rngRef = useRef<Rng>(createRng(1))
+  const playerName = name.trim() || 'Player'
+
+  const changeName = (n: string) => {
+    setName(n)
+    saveName(n)
+  }
 
   const startRun = (mode: 'random' | 'daily') => {
     const seed = mode === 'daily' ? seedFromString(`daily-${today()}`) : (Math.random() * 2 ** 32) >>> 0
@@ -50,14 +60,15 @@ export default function App() {
       league,
       matchIndex: 0,
       results: [],
+      summaries: [],
     })
     setBattle(null)
     setPhase('draft')
   }
 
-  const pickCreature = (name: string) => {
+  const pickCreature = (creature: string) => {
     if (!run) return
-    const team = [...run.team, name]
+    const team = [...run.team, creature]
     const done = team.length >= TEAM_SIZE
     setRun({ ...run, team, roll: done ? null : rollOptions(gameData, rngRef.current, team) })
     if (done) setPhase('prep')
@@ -77,14 +88,14 @@ export default function App() {
     const match = run.league[run.matchIndex]
     const rng = rngRef.current
     const result = simulateBattle(
-      order.map((name) => ({ name })),
+      order.map((n) => ({ name: n })),
       trainerTeamForMatch(match.trainer, rng),
       {
         data: gameData,
         chart,
         rng,
-        levels: [PLAYER_LEVEL, match.trainer.level],
-        names: ['You', `${match.trainer.title} ${match.trainer.name}`],
+        levels: [PLAYER_LEVEL, match.level],
+        names: [playerName, match.trainer.name],
       },
     )
     setRun({ ...run, team: order })
@@ -94,9 +105,11 @@ export default function App() {
 
   const finishBattle = () => {
     if (!run || !battle) return
+    const match = run.league[run.matchIndex]
     const won = battle.winner === 0
     const results = [...run.results, won]
-    const next: Run = { ...run, results, matchIndex: run.matchIndex + 1 }
+    const summaries = [...run.summaries, summarizeBattle(battle, match.trainer.id, match.stage)]
+    const next: Run = { ...run, results, summaries, matchIndex: run.matchIndex + 1 }
     setRun(next)
     setBattle(null)
     if (!won || next.matchIndex >= run.league.length) {
@@ -108,20 +121,22 @@ export default function App() {
   const content = useMemo(() => {
     switch (phase) {
       case 'home':
-        return <Home stats={stats} onStart={startRun} />
+        return <Home stats={stats} name={name} onNameChange={changeName} onStart={startRun} />
       case 'draft':
         return run?.roll ? <Draft run={run} onPick={pickCreature} onReroll={reroll} /> : null
       case 'prep':
         return run ? <Prep run={run} onStart={startBattle} /> : null
       case 'battle':
         return run && battle ? (
-          <BattleView result={battle} match={run.league[run.matchIndex]} onDone={finishBattle} />
+          <BattleView result={battle} match={run.league[run.matchIndex]} playerName={playerName} onDone={finishBattle} />
         ) : null
       case 'end':
-        return run ? <RunEnd run={run} onAgain={() => startRun('random')} onHome={() => setPhase('home')} /> : null
+        return run ? (
+          <RunEnd run={run} playerName={playerName} onAgain={() => startRun('random')} onHome={() => setPhase('home')} />
+        ) : null
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [phase, run, battle, stats])
+  }, [phase, run, battle, stats, name])
 
   return (
     <div className="app">

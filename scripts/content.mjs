@@ -230,14 +230,15 @@ export const CREATURES = [
 ]
 
 // ---------------------------------------------------------------------------
-// Trainers. tier 1 = matches 1-3, tier 2 = matches 4-6, tier 3 = final.
+// Trainers: [id, name, title, tier, (unused), team]. tier 1 = matches 1-3,
+// tier 2 = matches 4-6, tier 3 = final. Levels come from STAGE_LEVELS in src/engine/game.ts.
 // ---------------------------------------------------------------------------
 export const TRAINERS = [
-  ['pip', 'Pip', 'Bug Catcher', 1, 46, ['larvine', 'mothquill', 'sproutle', 'pixwing', 'featherwisp', 'hornvex']],
-  ['rosa', 'Rosa', 'Ember Novice', 1, 46, ['cindrel', 'smoldrake', 'cragling', 'pyrrhound', 'scorchfist', 'sparkit']],
-  ['finn', 'Finn', 'Island Kid', 1, 46, ['puddlit', 'sparkit', 'shellbash', 'gullstrike', 'driftseal', 'coralyn']],
-  ['mira', 'Mira', 'Snow Scout', 1, 46, ['frostkit', 'drifmuff', 'chillshade', 'rimeowl', 'glacirn', 'brinewhal']],
-  ['rook', 'Rook', 'Street Brawler', 1, 46, ['dojoka', 'scrapcat', 'rooflet', 'boltbot', 'punchron', 'venomaw']],
+  ['pip', 'Pip', 'Bug Catcher', 1, 46, ['mothquill', 'hornvex', 'pixwing', 'thornback', 'hexmoth', 'fungoss']],
+  ['rosa', 'Rosa', 'Ember Novice', 1, 46, ['pyrrhound', 'scorchfist', 'smoldrake', 'obsidjack', 'magmaw', 'cragling']],
+  ['finn', 'Finn', 'Island Kid', 1, 46, ['gullstrike', 'voltfin', 'shellbash', 'driftseal', 'coralyn', 'puddlit']],
+  ['mira', 'Mira', 'Snow Scout', 1, 46, ['rimeowl', 'glacirn', 'brinewhal', 'chillshade', 'tundrax', 'frostkit']],
+  ['rook', 'Rook', 'Street Brawler', 1, 46, ['dojoka', 'scrapcat', 'punchron', 'venomaw', 'ravenox', 'boltbot']],
   ['selene', 'Selene', 'Marsh Witch', 2, 50, ['gloomshade', 'hexmoth', 'croakmire', 'creepvine', 'venomaw', 'morbelich']],
   ['brannoc', 'Brannoc', 'Volcano Warden', 2, 50, ['magmaw', 'basaltor', 'terrapyre', 'obsidjack', 'scorchfist', 'ashwyrm']],
   ['kael', 'Kael', 'Storm Rider', 2, 50, ['tempestra', 'voltfin', 'gullstrike', 'seadrak', 'reefjaw', 'neonlynx']],

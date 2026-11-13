@@ -3,7 +3,17 @@ import { LEAGUE_MATCHES, OPTIONS_PER_ROLL, REROLLS_PER_RUN, TEAM_SIZE } from '..
 import type { PlayerStats } from './storage'
 import { Sprite } from './common'
 
-export function Home({ stats, onStart }: { stats: PlayerStats; onStart: (mode: 'random' | 'daily') => void }) {
+export function Home({
+  stats,
+  name,
+  onNameChange,
+  onStart,
+}: {
+  stats: PlayerStats
+  name: string
+  onNameChange: (name: string) => void
+  onStart: (mode: 'random' | 'daily') => void
+}) {
   const today = new Date().toISOString().slice(0, 10)
   const showcase = ['ashwyrm', 'tempestra', 'morbelich', 'seraphyne', 'voltitan', 'aurorym']
     .map((n) => gameData.pokemonByName.get(n))
@@ -23,6 +33,15 @@ export function Home({ stats, onStart }: { stats: PlayerStats; onStart: (mode: '
           Roll creatures by region and type, build a team of {TEAM_SIZE}, then battle through a {LEAGUE_MATCHES}-match
           league of rival trainers. One loss ends the run.
         </p>
+        <label className="name-field">
+          <span>Your trainer name</span>
+          <input
+            value={name}
+            maxLength={16}
+            placeholder="Player"
+            onChange={(e) => onNameChange(e.target.value)}
+          />
+        </label>
         <div className="hero-actions">
           <button className="btn primary big" onClick={() => onStart('random')}>
             Play as guest

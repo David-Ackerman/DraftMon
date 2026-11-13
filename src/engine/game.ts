@@ -87,9 +87,16 @@ export function rollOptions(
 export interface LeagueMatch {
   trainer: TrainerData
   stage: string
+  level: number
 }
 
 const STAGES = ['Group 1', 'Group 2', 'Group 3', 'Round of 16', 'Quarterfinal', 'Semifinal', 'Final']
+/**
+ * Opponent level per stage. Tier-2 rosters are much stronger than tier-1, so
+ * group opponents get higher levels to keep losses spread across the run
+ * (tuned by simulation: ~7-11% of runs go 7-0).
+ */
+export const STAGE_LEVELS = [50, 51, 52, 47, 48, 49, 51]
 
 /** 3 tier-1 trainers, 3 tier-2 trainers, then a tier-3 champion; random each run. */
 export function createLeague(data: GameData, rng: Rng): LeagueMatch[] {
@@ -108,7 +115,11 @@ export function createLeague(data: GameData, rng: Rng): LeagueMatch[] {
     return out
   }
   const trainers = [...take(1, 3), ...take(2, 3), ...take(3, 1)]
-  return trainers.map((trainer, i) => ({ trainer, stage: STAGES[i] ?? `Match ${i + 1}` }))
+  return trainers.map((trainer, i) => ({
+    trainer,
+    stage: STAGES[i] ?? `Match ${i + 1}`,
+    level: STAGE_LEVELS[i] ?? STAGE_LEVELS[STAGE_LEVELS.length - 1],
+  }))
 }
 
 /** Trainers keep their creatures but shuffle the order every match. */

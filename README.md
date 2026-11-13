@@ -26,7 +26,7 @@ The **daily challenge** uses a seed based on the date, so everyone gets the same
 
 ## Battle engine (`src/engine/battle.ts`)
 
-- Main-series stat formula (level 50 player; trainers: tier 1 = Lv46, tier 2 = Lv50, champion = Lv53)
+- Main-series stat formula. The player is Lv50; opponent level depends on the stage (`STAGE_LEVELS` in `src/engine/game.ts`: 50/51/52 in groups, 47/48/49 in knockouts, 51 in the final) because tier-2 rosters are much stronger than tier-1
 - All 18 types with the full effectiveness chart, dual-type multipliers and 1.5× same-type bonus
 - Physical/special split, accuracy, priority, critical hits, random damage roll
 - Stat stages, drain, healing
@@ -45,7 +45,7 @@ shapes, so you can replace the files with other PokeAPI-shaped data without chan
 | `moves.json` | array of `/move/{id}` | `name`, `power`, `accuracy`, `priority`, `damage_class.name`, `type.name`, `target.name`, `meta.{ailment, ailment_chance, category, crit_rate, drain, healing, stat_chance}`, `stat_changes`, `effect_entries` |
 | `types.json` | array of `/type/{id}` | `name`, `damage_relations.{double,half,no}_damage_to` |
 | `regions.json` | array of `/pokedex/{id}` | `name`, `names[]`, `descriptions[]`, `pokemon_entries[].pokemon_species.name` |
-| `trainers.json` | game-specific (PokeAPI has no trainers) | `id`, `name`, `title`, `tier` (1–3), `level`, `sprite`, `pokemon[].name`, optional `pokemon[].moves` |
+| `trainers.json` | game-specific (PokeAPI has no trainers) | `id`, `name`, `title`, `tier` (1–3), `sprite`, `pokemon[].name`, optional `pokemon[].moves` |
 
 Notes for swapping data:
 - A creature's region comes from the pokedex files, matched by `species.name`.

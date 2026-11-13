@@ -130,9 +130,9 @@ write('regions.json', regions)
 
 // ---------------------------------------------------------------- trainers
 const known = new Set(CREATURES.map((c) => c[0]))
-const trainers = TRAINERS.map(([id, name, title, tier, level, team]) => {
+const trainers = TRAINERS.map(([id, name, title, tier, , team]) => {
   for (const p of team) if (!known.has(p)) throw new Error(`${id}: unknown creature ${p}`)
-  return { id, name, title, tier, level, sprite: `/trainers/${id}.svg`, pokemon: team.map((p) => ({ name: p })) }
+  return { id, name, title, tier, sprite: `/trainers/${id}.svg`, pokemon: team.map((p) => ({ name: p })) }
 })
 write('trainers.json', trainers)
 

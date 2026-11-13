@@ -1,6 +1,9 @@
+import type { ReactNode } from 'react'
 import type { ApiMove, ApiPokemon } from '../engine/data'
 import { abilityOf, baseStat, baseStatTotal, displayName, gameData, moveEffect, regionLabel, spriteOf, STAT_LABELS, STAT_NAMES, typesOf } from '../engine/data'
 import { chooseMoveset } from '../engine/battle'
+import { effectiveness } from '../engine/typeChart'
+import { chart } from './chart'
 
 export const TYPE_COLORS: Record<string, string> = {
   normal: '#A8A77A', fire: '#EE8130', water: '#6390F0', electric: '#F7D02C', grass: '#7AC74C',
@@ -10,8 +13,55 @@ export const TYPE_COLORS: Record<string, string> = {
 }
 const DARK_TEXT = new Set(['electric', 'ice', 'ground', 'steel', 'normal', 'grass', 'bug', 'rock'])
 
-export function TypeBadge({ type, small }: { type: string; small?: boolean }) {
+/** Hover/focus/tap tooltip. */
+export function Tip({ content, children }: { content: ReactNode; children: ReactNode }) {
   return (
+    <span className="tip" tabIndex={0}>
+      {children}
+      <span className="tip-box" role="tooltip">
+        {content}
+      </span>
+    </span>
+  )
+}
+
+function TypeList({ label, types, tone }: { label: string; types: string[]; tone: 'good' | 'bad' | 'none' }) {
+  if (types.length === 0) return null
+  return (
+    <div className="tip-row">
+      <span className={`tip-label ${tone}`}>{label}</span>
+      <span>
+        {types.map((t) => (
+          <span key={t} className="tip-type" style={{ color: TYPE_COLORS[t] }}>
+            {t}
+          </span>
+        ))}
+      </span>
+    </div>
+  )
+}
+
+function TypeInfo({ type }: { type: string }) {
+  const all = [...chart.keys()]
+  const atk = (def: string) => effectiveness(chart, type, [def])
+  const def = (a: string) => effectiveness(chart, a, [type])
+  return (
+    <>
+      <div className="tip-title">{type} type</div>
+      <div className="tip-section">Attacking</div>
+      <TypeList label="2× vs" types={all.filter((t) => atk(t) > 1)} tone="good" />
+      <TypeList label="½× vs" types={all.filter((t) => atk(t) > 0 && atk(t) < 1)} tone="bad" />
+      <TypeList label="0× vs" types={all.filter((t) => atk(t) === 0)} tone="none" />
+      <div className="tip-section">Defending</div>
+      <TypeList label="Weak to" types={all.filter((t) => def(t) > 1)} tone="bad" />
+      <TypeList label="Resists" types={all.filter((t) => def(t) > 0 && def(t) < 1)} tone="good" />
+      <TypeList label="Immune" types={all.filter((t) => def(t) === 0)} tone="good" />
+    </>
+  )
+}
+
+export function TypeBadge({ type, small, tip = true }: { type: string; small?: boolean; tip?: boolean }) {
+  const badge = (
     <span
       className={`type-badge${small ? ' small' : ''}`}
       style={{ background: TYPE_COLORS[type] ?? '#888', color: DARK_TEXT.has(type) ? '#1d1d1d' : '#fff' }}
@@ -19,6 +69,7 @@ export function TypeBadge({ type, small }: { type: string; small?: boolean }) {
       {type}
     </span>
   )
+  return tip ? <Tip content={<TypeInfo type={type} />}>{badge}</Tip> : badge
 }
 
 export function Sprite({ pokemon, size = 96, className = '' }: { pokemon: ApiPokemon; size?: number; className?: string }) {
@@ -61,12 +112,31 @@ export function StatBars({ pokemon }: { pokemon: ApiPokemon }) {
 
 export function MoveChip({ move }: { move: ApiMove }) {
   const cls = move.damage_class.name
+  const info = (
+    <>
+      <div className="tip-title">{displayName(move.name)}</div>
+      <div className="tip-row">
+        <span className="tip-type" style={{ color: TYPE_COLORS[move.type.name] }}>
+          {move.type.name}
+        </span>
+        <span>{cls}</span>
+      </div>
+      <div className="tip-row">
+        <span>Power {move.power ?? '—'}</span>
+        <span>Accuracy {move.accuracy === null ? '—' : `${move.accuracy}%`}</span>
+        {move.priority !== 0 && <span>Priority {move.priority > 0 ? `+${move.priority}` : move.priority}</span>}
+      </div>
+      {moveEffect(move) && <div className="tip-effect">{moveEffect(move)}</div>}
+    </>
+  )
   return (
-    <span className="move-chip" title={moveEffect(move)} style={{ borderColor: TYPE_COLORS[move.type.name] }}>
-      <span className="move-dot" style={{ background: TYPE_COLORS[move.type.name] }} />
-      {displayName(move.name)}
-      <span className="move-meta">{cls === 'status' ? 'status' : `${move.power} ${cls === 'physical' ? 'phys' : 'spec'}`}</span>
-    </span>
+    <Tip content={info}>
+      <span className="move-chip" style={{ borderColor: TYPE_COLORS[move.type.name] }}>
+        <span className="move-dot" style={{ background: TYPE_COLORS[move.type.name] }} />
+        {displayName(move.name)}
+        <span className="move-meta">{cls === 'status' ? 'status' : `${move.power} ${cls === 'physical' ? 'phys' : 'spec'}`}</span>
+      </span>
+    </Tip>
   )
 }
 
@@ -128,22 +198,5 @@ export function HpBar({ hp, max }: { hp: number; max: number }) {
         {Math.max(0, hp)}/{max}
       </span>
     </div>
-  )
-}
-
-const STATUS_LABEL: Record<string, [string, string]> = {
-  burn: ['BRN', '#EE8130'],
-  poison: ['PSN', '#A33EA1'],
-  paralysis: ['PAR', '#c9a400'],
-  sleep: ['SLP', '#7f8c9a'],
-  freeze: ['FRZ', '#4fb3d9'],
-}
-export function StatusTag({ status }: { status: string | null }) {
-  if (!status) return null
-  const [label, color] = STATUS_LABEL[status] ?? [status, '#666']
-  return (
-    <span className="status-tag" style={{ background: color }}>
-      {label}
-    </span>
   )
 }

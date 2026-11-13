@@ -51,7 +51,7 @@ export type BattleEvent =
   | { kind: 'status'; side: Side; slot: number; status: Ailment | null; text: string }
   | { kind: 'stat'; side: Side; slot: number; stat: string; change: number; text: string }
   | { kind: 'faint'; side: Side; slot: number; text: string }
-  | { kind: 'info'; text: string }
+  | { kind: 'info'; side?: Side; text: string }
   | { kind: 'end'; winner: Side; text: string }
 
 export interface BattleResult {
@@ -191,11 +191,57 @@ function statTarget(move: ApiMove): 'user' | 'target' {
 
 // ------------------------------------------------------------------ AI
 
+/** Best expected damage per turn `a` can deal to `d` (optionally one damage class only). */
+function bestDamage(chart: TypeChart, a: BattleMon, d: BattleMon, cls?: 'physical' | 'special'): number {
+  let best = 0
+  for (const m of a.moves) {
+    if (!isDamaging(m) || (cls && m.damage_class.name !== cls)) continue
+    best = Math.max(best, calcDamage(chart, a, d, m, { roll: 0.925 }).damage * ((m.accuracy ?? 100) / 100))
+  }
+  return best
+}
+
+/**
+ * Value of a stat-changing status move, in the same unit as attack scores
+ * (expected damage): extra damage dealt or damage prevented over ~2 turns.
+ */
+function statMoveValue(chart: TypeChart, move: ApiMove, user: BattleMon, target: BattleMon, userFaster: boolean): number {
+  const onUser = statTarget(move) === 'user'
+  const myBest = bestDamage(chart, user, target)
+  const theirBest = bestDamage(chart, target, user)
+  // setting up is only worth it if we survive a couple of hits and the foe is not about to fall
+  const safe = theirBest < user.hp * 0.45 && myBest < target.hp * 0.6
+  let value = 0
+  for (const sc of move.stat_changes) {
+    const stat = sc.stat.name as BoostStat
+    const who = onUser ? user : target
+    const before = who.stages[stat]
+    const after = Math.max(-6, Math.min(6, before + sc.change))
+    const ratio = stageMult(after) / stageMult(before)
+    if (onUser && sc.change > 0) {
+      if (!safe || before >= 2) continue
+      if (stat === 'attack') value += bestDamage(chart, user, target, 'physical') * (ratio - 1) * 2
+      else if (stat === 'special-attack') value += bestDamage(chart, user, target, 'special') * (ratio - 1) * 2
+      else if (stat === 'defense') value += bestDamage(chart, target, user, 'physical') * (1 - 1 / ratio) * 2
+      else if (stat === 'special-defense') value += bestDamage(chart, target, user, 'special') * (1 - 1 / ratio) * 2
+      else if (stat === 'speed' && !userFaster && effectiveStat(user, 'speed') * ratio > effectiveStat(target, 'speed'))
+        value += myBest
+    } else if (!onUser && sc.change < 0) {
+      if (before <= -4) continue
+      if (stat === 'attack') value += bestDamage(chart, target, user, 'physical') * (1 - ratio) * 2
+      else if (stat === 'special-attack') value += bestDamage(chart, target, user, 'special') * (1 - ratio) * 2
+      else if (stat === 'defense') value += bestDamage(chart, user, target, 'physical') * (1 / ratio - 1) * 2
+      else if (stat === 'special-defense') value += bestDamage(chart, user, target, 'special') * (1 / ratio - 1) * 2
+      else if (stat === 'speed' && !userFaster && effectiveStat(target, 'speed') * ratio < effectiveStat(user, 'speed'))
+        value += myBest * 0.8
+    }
+  }
+  return value * ((move.accuracy ?? 100) / 100)
+}
+
 /** Picks the move with the best expected value against the current target. */
 export function chooseMove(chart: TypeChart, user: BattleMon, target: BattleMon, rng: Rng): ApiMove {
   const userFaster = effectiveStat(user, 'speed') >= effectiveStat(target, 'speed')
-  const usesPhysical = user.moves.filter(isDamaging).filter((m) => m.damage_class.name === 'physical').length
-  const usesSpecial = user.moves.filter(isDamaging).length - usesPhysical
   let best = user.moves[0]
   let bestScore = -Infinity
   for (const move of user.moves) {
@@ -231,21 +277,7 @@ export function chooseMove(chart: TypeChart, user: BattleMon, target: BattleMon,
         const missing = user.maxHp - user.hp
         if (user.hp / user.maxHp < 0.5) score = Math.min(missing, (user.maxHp * move.meta.healing) / 100) * 1.1
       } else if (move.stat_changes.length) {
-        const onUser = statTarget(move) === 'user'
-        const healthy = user.hp / user.maxHp > 0.6
-        for (const sc of move.stat_changes) {
-          const stat = sc.stat.name as BoostStat
-          if (onUser && sc.change > 0 && healthy && user.stages[stat] < 2) {
-            const relevant =
-              stat === 'speed' ? !userFaster
-                : stat === 'attack' ? usesPhysical > 0
-                : stat === 'special-attack' ? usesSpecial > 0
-                : true
-            if (relevant) score += target.maxHp * 0.18 * sc.change
-          } else if (!onUser && sc.change < 0 && target.stages[stat] > -2) {
-            score += target.maxHp * 0.1 * -sc.change
-          }
-        }
+        score = statMoveValue(chart, move, user, target, userFaster)
       }
     }
     score *= 0.9 + rng() * 0.2
@@ -277,20 +309,19 @@ export function simulateBattle(teamA: TeamMember[], teamB: TeamMember[], opts: S
   ]
   const active: [number, number] = [0, 0]
   const events: BattleEvent[] = []
-  const label = (side: Side) => (side === 0 ? '' : 'Foe ')
-  const monName = (side: Side) => `${label(side)}${teams[side][active[side]].name}`
+  const monName = (side: Side) => teams[side][active[side]].name
   const cur = (side: Side) => teams[side][active[side]]
   const emit = (e: BattleEvent) => events.push(e)
 
   for (const side of [0, 1] as Side[]) {
-    emit({ kind: 'switch', side, slot: 0, text: `${names[side]} sent out ${teams[side][0].name}!` })
+    emit({ kind: 'switch', side, slot: 0, text: `${names[side]} chose ${teams[side][0].name}` })
   }
 
   const applyStatus = (side: Side, ailment: Ailment) => {
     const mon = cur(side)
     mon.status = ailment
     if (ailment === 'sleep') mon.sleepTurns = randInt(rng, 1, 3)
-    const verb = { burn: 'was burned', poison: 'was poisoned', paralysis: 'is paralyzed', sleep: 'fell asleep', freeze: 'was frozen solid' }[ailment]
+    const verb = { burn: 'is burned', poison: 'is poisoned', paralysis: 'is paralyzed', sleep: 'fell asleep', freeze: 'is frozen' }[ailment]
     emit({ kind: 'status', side, slot: active[side], status: ailment, text: `${monName(side)} ${verb}!` })
   }
 
@@ -304,7 +335,7 @@ export function simulateBattle(teamA: TeamMember[], teamB: TeamMember[], opts: S
       const diff = mon.stages[stat] - before
       const statLabel = displayName(stat)
       if (diff === 0) {
-        emit({ kind: 'info', text: `${monName(side)}'s ${statLabel} won't go any ${sc.change > 0 ? 'higher' : 'lower'}!` })
+        emit({ kind: 'info', side, text: `${monName(side)}'s ${statLabel} won't go any ${sc.change > 0 ? 'higher' : 'lower'}!` })
       } else {
         const how = Math.abs(diff) >= 2 ? (diff > 0 ? 'rose sharply' : 'harshly fell') : diff > 0 ? 'rose' : 'fell'
         emit({ kind: 'stat', side, slot: active[side], stat, change: diff, text: `${monName(side)}'s ${statLabel} ${how}!` })
@@ -315,7 +346,7 @@ export function simulateBattle(teamA: TeamMember[], teamB: TeamMember[], opts: S
   const faintCheck = (side: Side) => {
     const mon = cur(side)
     if (mon.hp <= 0 && !events.some((e) => e.kind === 'faint' && e.side === side && e.slot === active[side])) {
-      emit({ kind: 'faint', side, slot: active[side], text: `${monName(side)} fainted!` })
+      emit({ kind: 'faint', side, slot: active[side], text: `${monName(side)} is defeated!` })
     }
   }
 
@@ -325,7 +356,7 @@ export function simulateBattle(teamA: TeamMember[], teamB: TeamMember[], opts: S
     if (mon.status === 'sleep') {
       mon.sleepTurns--
       if (mon.sleepTurns > 0) {
-        emit({ kind: 'info', text: `${monName(side)} is fast asleep.` })
+        emit({ kind: 'info', side, text: `${monName(side)} is asleep and can't move` })
         return false
       }
       mon.status = null
@@ -336,12 +367,12 @@ export function simulateBattle(teamA: TeamMember[], teamB: TeamMember[], opts: S
         mon.status = null
         emit({ kind: 'status', side, slot: active[side], status: null, text: `${monName(side)} thawed out!` })
       } else {
-        emit({ kind: 'info', text: `${monName(side)} is frozen solid!` })
+        emit({ kind: 'info', side, text: `${monName(side)} is frozen and can't move` })
         return false
       }
     }
     if (mon.status === 'paralysis' && rng() < 0.25) {
-      emit({ kind: 'info', text: `${monName(side)} is paralyzed! It can't move!` })
+      emit({ kind: 'info', side, text: `${monName(side)} is paralyzed and can't move` })
       return false
     }
     return true
@@ -351,10 +382,10 @@ export function simulateBattle(teamA: TeamMember[], teamB: TeamMember[], opts: S
     const foe = (1 - side) as Side
     const user = cur(side)
     const target = cur(foe)
-    emit({ kind: 'move', side, slot: active[side], move: move.name, moveType: move.type.name, text: `${monName(side)} used ${displayName(move.name)}!` })
+    emit({ kind: 'move', side, slot: active[side], move: move.name, moveType: move.type.name, text: `${monName(side)} used ${displayName(move.name)}` })
 
     if (move.accuracy !== null && rng() * 100 >= move.accuracy) {
-      emit({ kind: 'info', text: `${monName(side)}'s attack missed!` })
+      emit({ kind: 'info', side, text: `${monName(side)} missed!` })
       return
     }
     const ailment = asAilment(move.meta?.ailment.name)
@@ -362,17 +393,17 @@ export function simulateBattle(teamA: TeamMember[], teamB: TeamMember[], opts: S
     if (!isDamaging(move)) {
       if (move.meta?.healing) {
         if (user.hp >= user.maxHp) {
-          emit({ kind: 'info', text: `${monName(side)}'s HP is full!` })
+          emit({ kind: 'info', side, text: `${monName(side)}'s HP is already full` })
         } else {
           const amount = Math.min(user.maxHp - user.hp, Math.floor((user.maxHp * move.meta.healing) / 100))
           user.hp += amount
-          emit({ kind: 'heal', side, slot: active[side], hp: user.hp, text: `${monName(side)} regained health!` })
+          emit({ kind: 'heal', side, slot: active[side], hp: user.hp, text: `${monName(side)} recovered HP` })
         }
       }
       if (ailment) {
         if (effectiveness(chart, move.type.name, target.types) === 0) {
-          emit({ kind: 'info', text: `It doesn't affect ${monName(foe)}…` })
-        } else if (!canAfflict(target, ailment)) emit({ kind: 'info', text: 'But it failed!' })
+          emit({ kind: 'info', side: foe, text: `It doesn't affect ${monName(foe)}` })
+        } else if (!canAfflict(target, ailment)) emit({ kind: 'info', side, text: 'But it failed!' })
         else applyStatus(foe, ailment)
       }
       if (move.stat_changes.length) applyStages(statTarget(move) === 'user' ? side : foe, move.stat_changes)
@@ -383,12 +414,12 @@ export function simulateBattle(teamA: TeamMember[], teamB: TeamMember[], opts: S
     const crit = rng() < CRIT_CHANCE[critStage]
     const { damage, mult } = calcDamage(chart, user, target, move, { crit, roll: 0.85 + rng() * 0.15 })
     if (mult === 0) {
-      emit({ kind: 'info', text: `It doesn't affect ${monName(foe)}…` })
+      emit({ kind: 'info', side: foe, text: `It doesn't affect ${monName(foe)}` })
       return
     }
     const dealt = Math.min(target.hp, damage)
     target.hp -= dealt
-    const notes = [crit ? 'A critical hit!' : '', effectivenessLabel(mult) ?? ''].filter(Boolean).join(' ')
+    const notes = [crit ? 'Critical hit!' : '', effectivenessLabel(mult) ?? ''].filter(Boolean).join(' ')
     emit({
       kind: 'damage',
       side: foe,
@@ -397,14 +428,14 @@ export function simulateBattle(teamA: TeamMember[], teamB: TeamMember[], opts: S
       amount: dealt,
       mult,
       crit,
-      text: notes || `${monName(foe)} took ${dealt} damage.`,
+      text: `${notes ? notes + ' ' : ''}${monName(foe)} took ${dealt} damage`,
     })
 
     if (move.meta?.drain && dealt > 0) {
       const amount = Math.min(user.maxHp - user.hp, Math.max(1, Math.floor((dealt * move.meta.drain) / 100)))
       if (amount > 0) {
         user.hp += amount
-        emit({ kind: 'heal', side, slot: active[side], hp: user.hp, text: `${monName(foe)} had its energy drained!` })
+        emit({ kind: 'heal', side, slot: active[side], hp: user.hp, text: `${monName(side)} drained ${amount} HP` })
       }
     }
     if (target.hp > 0 && ailment && move.meta && rng() * 100 < move.meta.ailment_chance && canAfflict(target, ailment)) {
@@ -432,7 +463,7 @@ export function simulateBattle(teamA: TeamMember[], teamB: TeamMember[], opts: S
         amount: dmg,
         mult: 1,
         crit: false,
-        text: `${monName(side)} is hurt by its ${mon.status === 'burn' ? 'burn' : 'poison'}!`,
+        text: `${monName(side)} took ${dmg} damage from ${mon.status === 'burn' ? 'its burn' : 'poison'}`,
       })
       faintCheck(side)
     }
@@ -465,16 +496,16 @@ export function simulateBattle(teamA: TeamMember[], teamB: TeamMember[], opts: S
       const next = teams[side].findIndex((m) => m.hp > 0)
       if (next === -1) continue
       active[side] = next
-      emit({ kind: 'switch', side, slot: next, text: `${names[side]} sent out ${teams[side][next].name}!` })
+      emit({ kind: 'switch', side, slot: next, text: `${names[side]} chose ${teams[side][next].name}` })
     }
 
     if (!alive(0) || !alive(1)) winner = alive(0) ? 0 : 1
     else if (turn >= maxTurns) {
       const frac = (side: Side) => teams[side].reduce((s, m) => s + m.hp / m.maxHp, 0)
       winner = frac(0) > frac(1) ? 0 : 1
-      emit({ kind: 'info', text: 'The battle dragged on too long — the judges decide!' })
+      emit({ kind: 'info', text: 'Turn limit reached. The team with more HP left wins.' })
     }
   }
-  emit({ kind: 'end', winner, text: winner === 0 ? `You defeated ${names[1]}!` : `You were defeated by ${names[1]}…` })
+  emit({ kind: 'end', winner, text: `${names[winner]} defeated ${names[1 - winner]}!` })
   return { winner, turns: turn, events, teams }
 }

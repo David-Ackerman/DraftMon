@@ -78,7 +78,6 @@ export interface TrainerData {
   name: string
   title: string
   tier: number
-  level: number
   sprite: string
   pokemon: { name: string; moves?: string[] }[]
 }

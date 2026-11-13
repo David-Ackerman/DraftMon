@@ -4,26 +4,25 @@
     "name": "Pip",
     "title": "Bug Catcher",
     "tier": 1,
-    "level": 46,
     "sprite": "/trainers/pip.svg",
     "pokemon": [
-      {
-        "name": "larvine"
-      },
       {
         "name": "mothquill"
       },
       {
-        "name": "sproutle"
+        "name": "hornvex"
       },
       {
         "name": "pixwing"
       },
       {
-        "name": "featherwisp"
+        "name": "thornback"
       },
       {
-        "name": "hornvex"
+        "name": "hexmoth"
+      },
+      {
+        "name": "fungoss"
       }
     ]
   },
@@ -32,18 +31,8 @@
     "name": "Rosa",
     "title": "Ember Novice",
     "tier": 1,
-    "level": 46,
     "sprite": "/trainers/rosa.svg",
     "pokemon": [
-      {
-        "name": "cindrel"
-      },
-      {
-        "name": "smoldrake"
-      },
-      {
-        "name": "cragling"
-      },
       {
         "name": "pyrrhound"
       },
@@ -51,7 +40,16 @@
         "name": "scorchfist"
       },
       {
-        "name": "sparkit"
+        "name": "smoldrake"
+      },
+      {
+        "name": "obsidjack"
+      },
+      {
+        "name": "magmaw"
+      },
+      {
+        "name": "cragling"
       }
     ]
   },
@@ -60,26 +58,25 @@
     "name": "Finn",
     "title": "Island Kid",
     "tier": 1,
-    "level": 46,
     "sprite": "/trainers/finn.svg",
     "pokemon": [
       {
-        "name": "puddlit"
+        "name": "gullstrike"
       },
       {
-        "name": "sparkit"
+        "name": "voltfin"
       },
       {
         "name": "shellbash"
-      },
-      {
-        "name": "gullstrike"
       },
       {
         "name": "driftseal"
       },
       {
         "name": "coralyn"
+      },
+      {
+        "name": "puddlit"
       }
     ]
   },
@@ -88,18 +85,8 @@
     "name": "Mira",
     "title": "Snow Scout",
     "tier": 1,
-    "level": 46,
     "sprite": "/trainers/mira.svg",
     "pokemon": [
-      {
-        "name": "frostkit"
-      },
-      {
-        "name": "drifmuff"
-      },
-      {
-        "name": "chillshade"
-      },
       {
         "name": "rimeowl"
       },
@@ -108,6 +95,15 @@
       },
       {
         "name": "brinewhal"
+      },
+      {
+        "name": "chillshade"
+      },
+      {
+        "name": "tundrax"
+      },
+      {
+        "name": "frostkit"
       }
     ]
   },
@@ -116,7 +112,6 @@
     "name": "Rook",
     "title": "Street Brawler",
     "tier": 1,
-    "level": 46,
     "sprite": "/trainers/rook.svg",
     "pokemon": [
       {
@@ -126,16 +121,16 @@
         "name": "scrapcat"
       },
       {
-        "name": "rooflet"
-      },
-      {
-        "name": "boltbot"
-      },
-      {
         "name": "punchron"
       },
       {
         "name": "venomaw"
+      },
+      {
+        "name": "ravenox"
+      },
+      {
+        "name": "boltbot"
       }
     ]
   },
@@ -144,7 +139,6 @@
     "name": "Selene",
     "title": "Marsh Witch",
     "tier": 2,
-    "level": 50,
     "sprite": "/trainers/selene.svg",
     "pokemon": [
       {
@@ -172,7 +166,6 @@
     "name": "Brannoc",
     "title": "Volcano Warden",
     "tier": 2,
-    "level": 50,
     "sprite": "/trainers/brannoc.svg",
     "pokemon": [
       {
@@ -200,7 +193,6 @@
     "name": "Kael",
     "title": "Storm Rider",
     "tier": 2,
-    "level": 50,
     "sprite": "/trainers/kael.svg",
     "pokemon": [
       {
@@ -228,7 +220,6 @@
     "name": "Yuna",
     "title": "Frost Sage",
     "tier": 2,
-    "level": 50,
     "sprite": "/trainers/yuna.svg",
     "pokemon": [
       {
@@ -256,7 +247,6 @@
     "name": "Dr. Vex",
     "title": "Ironspire Engineer",
     "tier": 2,
-    "level": 50,
     "sprite": "/trainers/vex.svg",
     "pokemon": [
       {
@@ -284,7 +274,6 @@
     "name": "Aurelia",
     "title": "League Champion",
     "tier": 3,
-    "level": 53,
     "sprite": "/trainers/aurelia.svg",
     "pokemon": [
       {
@@ -312,7 +301,6 @@
     "name": "Orin",
     "title": "Grand Master",
     "tier": 3,
-    "level": 53,
     "sprite": "/trainers/orin.svg",
     "pokemon": [
       {

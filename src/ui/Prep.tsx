@@ -59,7 +59,7 @@ export function Prep({ run, onStart }: { run: Run; onStart: (order: string[]) =>
               <h2>
                 {match.trainer.title} {match.trainer.name}
               </h2>
-              <p className="muted small">Lv {match.trainer.level} · their order is shuffled every match</p>
+              <p className="muted small">Lv {match.level} · their order is shuffled every match</p>
             </div>
           </div>
           <div className="foe-list">
