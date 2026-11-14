@@ -255,3 +255,60 @@ p { margin: .3em 0 .8em; }
   .foe-list { grid-template-columns: 1fr; }
   .run-progress .pip { width: 10px; height: 10px; }
 }
+
+/* top bar audio */
+.topbar-right { display: flex; align-items: center; gap: 14px; }
+.audio { position: relative; }
+.audio-toggle { width: 38px; height: 38px; display: grid; place-items: center; color: var(--text); border-radius: 10px; font-size: 1rem; }
+.audio-toggle.muted { color: var(--muted); }
+.audio-panel { position: absolute; right: 0; top: calc(100% + 8px); width: 260px; z-index: 60; display: grid; gap: 10px; padding: 14px; box-shadow: 0 12px 30px #0008; }
+.audio-head { display: flex; justify-content: space-between; align-items: center; }
+.switch { display: flex; align-items: center; gap: 6px; font-size: .8rem; color: var(--muted); cursor: pointer; }
+.switch input { accent-color: var(--primary); width: 16px; height: 16px; }
+.slider-row { display: grid; grid-template-columns: 56px 1fr 30px; align-items: center; gap: 8px; font-size: .82rem; }
+.slider-row input { accent-color: var(--primary); width: 100%; }
+.slider-row input:disabled { opacity: .4; }
+.slider-value { text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); }
+
+/* roll machine */
+.slot.next { border-color: var(--primary); border-style: dashed; color: var(--primary); }
+.reels { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; min-height: 44px; }
+.reel { display: inline-flex; align-items: center; min-width: 40px; overflow: hidden; padding: 2px 4px; border-radius: 10px; transition: background .2s, box-shadow .2s; }
+.reel.spinning { background: #ffffff10; box-shadow: inset 0 0 0 1px var(--line); }
+.reel.landed { animation: land .45s ease-out; }
+.reel-item { display: inline-flex; align-items: center; animation: reel-in .07s ease-out; }
+.reel.landed .reel-item { animation: none; }
+.reel-item.mystery { color: var(--muted); letter-spacing: .1em; }
+@keyframes reel-in { from { transform: translateY(-60%); opacity: .3; } to { transform: none; opacity: 1; } }
+@keyframes land { 0% { transform: scale(1); } 40% { transform: scale(1.12); box-shadow: 0 0 0 3px #ffcb3d66; } 100% { transform: scale(1); box-shadow: none; } }
+.region-desc { min-height: 1.5em; }
+.roll-stage { position: relative; }
+.card-back {
+  min-height: 420px; display: grid; place-items: center; border: 2px solid var(--line);
+  background:
+    radial-gradient(circle at 50% 50%, #ffcb3d22 0 60px, transparent 61px),
+    repeating-linear-gradient(45deg, #232945 0 12px, #1d2238 12px 24px);
+}
+.card-back span { font-size: 4rem; font-weight: 800; color: #ffcb3d55; }
+.card-back.shuffling { animation: shuffle .5s ease-in-out infinite alternate; }
+@keyframes shuffle { from { transform: translateY(0) rotate(-1deg); } to { transform: translateY(-6px) rotate(1deg); } }
+.roll-btn { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 1.5rem; padding: 16px 34px; border-radius: 16px; gap: 12px; box-shadow: 0 12px 30px #0009, 0 0 0 6px #ffcb3d33; }
+.roll-btn:hover:not(:disabled) { transform: translate(-50%, -50%) scale(1.04); }
+.roll-btn:active:not(:disabled) { transform: translate(-50%, -48%); }
+.rolling-label { display: inline-flex; align-items: center; background: var(--card2); border: 1px solid var(--line); color: var(--text); font-weight: 700; }
+.dice { flex-shrink: 0; }
+.roll-btn:not(.rolling-label) .dice { animation: wiggle 1.6s ease-in-out infinite; }
+.dice.rolling { animation: dice-roll .5s linear infinite; }
+@keyframes dice-roll { to { transform: rotate(360deg); } }
+@keyframes wiggle { 0%, 80%, 100% { transform: rotate(0); } 85% { transform: rotate(-14deg); } 90% { transform: rotate(12deg); } 95% { transform: rotate(-6deg); } }
+.options.reveal .reveal-card { animation: flip-in .45s ease-out both; perspective: 800px; display: flex; }
+.options.reveal .reveal-card > .card { flex: 1; }
+@keyframes flip-in { from { opacity: 0; transform: rotateY(80deg) translateY(10px); } to { opacity: 1; transform: none; } }
+@media (max-width: 860px) {
+  .card-back { min-height: 160px; }
+  .card-back span { font-size: 2.5rem; }
+  .roll-btn { font-size: 1.25rem; padding: 14px 26px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reel-item, .reel.landed, .card-back.shuffling, .dice, .options.reveal .reveal-card { animation: none !important; }
+}

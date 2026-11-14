@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { gameData } from './engine/data'
 import { chart } from './ui/chart'
 import { createRng, seedFromString } from './engine/rng'
@@ -15,6 +15,8 @@ import { Prep } from './ui/Prep'
 import { BattleView } from './ui/BattleView'
 import { RunEnd } from './ui/RunEnd'
 import { loadName, loadStats, recordRun, saveName } from './ui/storage'
+import { AudioSettings } from './ui/AudioSettings'
+import { sound } from './ui/sound'
 
 type Phase = 'home' | 'draft' | 'prep' | 'battle' | 'end'
 
@@ -40,6 +42,21 @@ export default function App() {
   const [name, setName] = useState(loadName)
   const rngRef = useRef<Rng>(createRng(1))
   const playerName = name.trim() || 'Player'
+
+  // audio can only start after a user gesture; every button press also clicks
+  useEffect(() => {
+    const onPointer = (e: PointerEvent) => {
+      sound.unlock()
+      const btn = (e.target as HTMLElement).closest('button')
+      if (btn && !btn.disabled && !btn.classList.contains('silent')) sound.play('click')
+    }
+    document.addEventListener('pointerdown', onPointer)
+    return () => document.removeEventListener('pointerdown', onPointer)
+  }, [])
+
+  useEffect(() => {
+    sound.setMusic(phase === 'battle' ? 'battle' : 'menu')
+  }, [phase])
 
   const changeName = (n: string) => {
     setName(n)
@@ -69,6 +86,7 @@ export default function App() {
   const pickCreature = (creature: string) => {
     if (!run) return
     const team = [...run.team, creature]
+    sound.play('pick')
     const done = team.length >= TEAM_SIZE
     setRun({ ...run, team, roll: done ? null : rollOptions(gameData, rngRef.current, team) })
     if (done) setPhase('prep')
@@ -123,7 +141,7 @@ export default function App() {
       case 'home':
         return <Home stats={stats} name={name} onNameChange={changeName} onStart={startRun} />
       case 'draft':
-        return run?.roll ? <Draft run={run} onPick={pickCreature} onReroll={reroll} /> : null
+        return run?.roll ? <Draft key={run.team.length} run={run} onPick={pickCreature} onReroll={reroll} /> : null
       case 'prep':
         return run ? <Prep run={run} onStart={startBattle} /> : null
       case 'battle':
@@ -144,6 +162,7 @@ export default function App() {
         <button className="logo" onClick={() => setPhase('home')}>
           Draft<span>League</span>
         </button>
+        <div className="topbar-right">
         {run && phase !== 'home' && phase !== 'end' && (
           <div className="run-progress">
             {run.league.map((m, i) => (
@@ -155,6 +174,8 @@ export default function App() {
             ))}
           </div>
         )}
+        <AudioSettings />
+        </div>
       </header>
       <main>{content}</main>
     </div>

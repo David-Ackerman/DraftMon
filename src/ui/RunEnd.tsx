@@ -1,7 +1,9 @@
+import { useEffect } from 'react'
 import type { Run } from '../App'
 import { displayName, gameData } from '../engine/data'
 import { mvpOf } from '../engine/summary'
 import { Sprite } from './common'
+import { sound } from './sound'
 
 export function RunEnd({
   run,
@@ -17,6 +19,10 @@ export function RunEnd({
   const wins = run.results.filter(Boolean).length
   const perfect = wins === run.league.length
   const lostTo = !perfect ? run.league[run.results.length - 1] : null
+
+  useEffect(() => {
+    if (perfect) sound.play('champion')
+  }, [perfect])
 
   const totals = run.team.map((name) => ({
     name,

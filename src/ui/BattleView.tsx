@@ -6,6 +6,33 @@ import type { Stages, ViewState } from './battleState'
 import { viewAt } from './battleState'
 import type { LeagueMatch } from '../engine/game'
 import { HpBar, Sprite, TypeBadge } from './common'
+import type { SfxName } from './sound'
+import { sound } from './sound'
+
+function eventSound(e: BattleEvent, winner: Side): SfxName | null {
+  switch (e.kind) {
+    case 'switch':
+      return 'switch'
+    case 'move':
+      return 'move'
+    case 'damage':
+      return e.crit ? 'crit' : e.mult > 1 ? 'super' : e.mult < 1 ? 'weak' : 'hit'
+    case 'heal':
+      return 'heal'
+    case 'status':
+      return e.status ? 'status' : null
+    case 'stat':
+      return e.change > 0 ? 'statUp' : 'statDown'
+    case 'faint':
+      return 'faint'
+    case 'info':
+      return e.text.includes('missed') ? 'miss' : null
+    case 'end':
+      return winner === 0 ? 'win' : 'lose'
+    default:
+      return null
+  }
+}
 
 const DELAY: Record<BattleEvent['kind'], number> = {
   turn: 200,
@@ -105,6 +132,7 @@ export function BattleView({
   const [index, setIndex] = useState(0)
   const [speed, setSpeed] = useState(1)
   const logRef = useRef<HTMLDivElement>(null)
+  const skipped = useRef(false)
   const last = result.events.length - 1
   const finished = index >= last
   const view = useMemo(() => viewAt(result, index), [result, index])
@@ -119,7 +147,11 @@ export function BattleView({
 
   useEffect(() => {
     logRef.current?.scrollTo({ top: logRef.current.scrollHeight })
-  }, [index])
+    // after a skip only the final result is heard
+    if (skipped.current && index < last) return
+    const name = eventSound(result.events[index], result.winner)
+    if (name) sound.play(name)
+  }, [index, last, result])
 
   return (
     <div className="battle">
@@ -162,7 +194,13 @@ export function BattleView({
                 {s}×
               </button>
             ))}
-            <button className="btn" onClick={() => setIndex(last)}>
+            <button
+              className="btn"
+              onClick={() => {
+                skipped.current = true
+                setIndex(last)
+              }}
+            >
               Skip to result
             </button>
           </>
