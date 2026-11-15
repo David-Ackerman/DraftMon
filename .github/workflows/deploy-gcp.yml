@@ -50,7 +50,8 @@ jobs:
             live=$(curl -fsS --max-time 5 \
               "$SITE_URL/deploy-version.txt?revision=$REVISION&attempt=$attempt" 2>/dev/null || true)
             if [[ "$live" == "$REVISION" ]] && curl -fsS --max-time 5 \
-              "$SITE_URL/api/auth/session" -o /dev/null; then
+              "$SITE_URL/api/auth/session" -o /dev/null && curl -fsS --max-time 5 \
+              "$SITE_URL/ads.txt" -o /dev/null; then
               echo "Published $REVISION at $SITE_URL."
               exit 0
             fi

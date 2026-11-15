@@ -39,17 +39,17 @@ approved() {
 }
 
 build_release() {
-  as_app bash -s -- "$1" "$2" <<'BUILD'
+  as_app bash -s -- "$1" "$2" "$base" <<'BUILD'
 set -euo pipefail
 cd "$1"
-if [[ ! -e apps/web/public/ads.txt && -r /etc/draftmon/ads.txt ]]; then
-  cp /etc/draftmon/ads.txt apps/web/public/ads.txt
+if [[ ! -e apps/web/public/ads.txt && -r "$3/ads.txt" ]]; then
+  cp "$3/ads.txt" apps/web/public/ads.txt
 fi
 printf '%s\n' "$2" > apps/web/public/deploy-version.txt
 pnpm install --frozen-lockfile --reporter=append-only
 export API_URL=http://127.0.0.1:4000 NEXT_PUBLIC_SITE_URL=https://draftmon-league.app
 export NEXT_TELEMETRY_DISABLED=1 CI=1
-node --env-file-if-exists=/etc/draftmon/web-build.env -e '
+node --env-file-if-exists="$3/web-build.env" -e '
   const build = require("node:child_process").spawnSync("pnpm", [
     "--recursive", "--workspace-concurrency=1", "run", "build"
   ], {stdio: "inherit"});
@@ -80,6 +80,7 @@ verify_release() {
       [[ "$deployed" == "$1" ]] &&
       curl -fsSo /dev/null --max-time 3 http://127.0.0.1:4000/healthz &&
       curl -fsSo /dev/null --max-time 3 http://127.0.0.1:3000/api/auth/session &&
+      curl -fsSo /dev/null --max-time 3 http://127.0.0.1:3000/ads.txt &&
       curl -fsSo /dev/null --max-time 3 http://127.0.0.1:3000/; then
       return 0
     fi

@@ -59,6 +59,6 @@ sudo systemctl daemon-reload
 sudo systemctl enable --now draftmon-deploy.timer
 ```
 
-Set public build settings such as `NEXT_PUBLIC_ADSENSE_*` in `/etc/draftmon/web-build.env`. Application services continue to use their systemd environment files. Keep production data outside the release directory. Use backward-compatible database migrations so the prior application release can start against the current schema.
+Set public build settings such as `NEXT_PUBLIC_ADSENSE_*` in `/var/lib/draftmon-deploy/web-build.env`, readable by the `draftmon` user. Application services continue to use their systemd environment files. Keep production data outside the release directory. Use backward-compatible database migrations so the prior application release can start against the current schema.
 
 Check VM progress with `sudo journalctl -u draftmon-deploy.service -n 100`. To retry the same approved revision after fixing a build or startup error, run `sudo /usr/local/sbin/draftmon-deploy --retry`.
