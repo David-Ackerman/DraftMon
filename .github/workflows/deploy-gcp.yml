@@ -1,0 +1,67 @@
+name: Deploy to Google Cloud
+
+on:
+  workflow_run:
+    workflows: [CI]
+    branches: [main]
+    types: [completed]
+
+permissions:
+  contents: read
+  statuses: write
+
+jobs:
+  deploy:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_repository.full_name == github.repository
+    concurrency:
+      group: draftmon-production
+      cancel-in-progress: true
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REVISION: ${{ github.event.workflow_run.head_sha }}
+      RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      SITE_URL: https://draftmon-league.app
+    steps:
+      - name: Authorize the tested revision for deployment
+        id: release
+        shell: bash
+        run: |
+          [[ "$REVISION" =~ ^[a-f0-9]{40}$ ]]
+          head=$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq '.object.sha')
+          if [[ "$head" != "$REVISION" ]]; then
+            echo "main advanced after this CI run."
+            exit 0
+          fi
+          gh api --method POST "repos/$GITHUB_REPOSITORY/statuses/$REVISION" \
+            -f state=success -f context=draftmon/gcp-ready \
+            -f description='CI passed on main' -f target_url="$RUN_URL" >/dev/null
+          echo 'ready=true' >> "$GITHUB_OUTPUT"
+
+      - name: Verify the deployed revision
+        if: steps.release.outputs.ready == 'true'
+        shell: bash
+        run: |
+          for attempt in {1..72}; do
+            live=$(curl -fsS --max-time 5 \
+              "$SITE_URL/deploy-version.txt?revision=$REVISION&attempt=$attempt" 2>/dev/null || true)
+            if [[ "$live" == "$REVISION" ]] && curl -fsS --max-time 5 \
+              "$SITE_URL/api/auth/session" -o /dev/null; then
+              echo "Published $REVISION at $SITE_URL."
+              exit 0
+            fi
+            if (( attempt % 6 == 0 )); then
+              head=$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq '.object.sha')
+              if [[ "$head" != "$REVISION" ]]; then
+                echo "main advanced while this deployment was waiting."
+                exit 0
+              fi
+            fi
+            sleep 10
+          done
+          echo '::error::The VM did not publish this revision. Check journalctl -u draftmon-deploy.service.'
+          exit 1

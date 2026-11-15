@@ -1,0 +1,11 @@
+[Unit]
+Description=Check for approved Draftmon deploys
+
+[Timer]
+OnBootSec=2min
+OnUnitInactiveSec=3min
+AccuracySec=15s
+Unit=draftmon-deploy.service
+
+[Install]
+WantedBy=timers.target

@@ -47,3 +47,18 @@ Confirm that an account can sign in and that its Pokédex and tournament results
 ## Google Cloud VM
 
 To run both apps on a Compute Engine VM, install Node.js 24 and pnpm, set the web and API variables above and build on the VM. Use `API_URL=http://127.0.0.1:4000` and `HOST=127.0.0.1`. Run the web and API as separate services with `pnpm --filter @draftmon/web start` and `pnpm --filter @draftmon/api start`. Forward public HTTPS traffic to the Next server on port 3000 through Caddy or your Google Cloud load balancer. Keep the API on port 4000 internal to the VM.
+
+On the Draftmon VM, a push to `main` runs CI. The **Deploy to Google Cloud** workflow then authorizes the tested commit via the `draftmon/gcp-ready` GitHub status. A systemd timer polls the public repository every three minutes. It builds the approved revision in a separate directory as `draftmon`, switches the two services together, and rolls back the application release if a health check fails. The workflow confirms the deployed commit at `/deploy-version.txt`. The VM does not need a GitHub credential.
+
+Install or update the checked-in deploy script and unit files from a trusted checkout on the VM:
+
+```bash
+sudo install -m 0755 scripts/deploy/draftmon-deploy.sh /usr/local/sbin/draftmon-deploy
+sudo install -m 0644 scripts/deploy/draftmon-deploy.{service,timer} /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now draftmon-deploy.timer
+```
+
+Set public build settings such as `NEXT_PUBLIC_ADSENSE_*` in `/etc/draftmon/web-build.env`. Application services continue to use their systemd environment files. Keep production data outside the release directory. Use backward-compatible database migrations so the prior application release can start against the current schema.
+
+Check VM progress with `sudo journalctl -u draftmon-deploy.service -n 100`. To retry the same approved revision after fixing a build or startup error, run `sudo /usr/local/sbin/draftmon-deploy --retry`.
