@@ -27,3 +27,9 @@ dist-ssr
 
 .poke-battle/
 dist-server/
+.turbo/
+.next/
+next-env.d.ts
+.env
+.env.*
+!.env.example

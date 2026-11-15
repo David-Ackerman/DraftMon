@@ -1,0 +1,17 @@
+{
+  "name": "@draftmon/engine",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": {
+    "lint": "eslint src",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@draftmon/config": "workspace:*",
+    "@draftmon/content": "workspace:*",
+    "@types/node": "^24"
+  }
+}

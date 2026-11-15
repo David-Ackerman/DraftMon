@@ -1,0 +1,20 @@
+{
+  "name": "@draftmon/db",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "exports": { ".": "./src/index.ts", "./package.json": "./package.json" },
+  "scripts": {
+    "lint": "eslint src drizzle.config.ts",
+    "typecheck": "tsc -p tsconfig.json",
+    "generate": "drizzle-kit generate",
+    "migrate": "drizzle-kit migrate"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.4",
+    "drizzle-kit": "^0.31",
+    "drizzle-orm": "^0.45",
+    "postgres": "^3"
+  },
+  "devDependencies": { "@draftmon/config": "workspace:*", "@types/node": "^24" }
+}

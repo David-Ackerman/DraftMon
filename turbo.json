@@ -1,0 +1,25 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["eslint.config.js", "scripts/**"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/.env", "$TURBO_ROOT$/.env.*"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
+      "env": ["API_URL", "NEXT_PUBLIC_ADSENSE_*", "NEXT_PUBLIC_SITE_URL"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "passThroughEnv": ["HOST", "PORT", "API_URL", "DATABASE_URL", "PUBLIC_APP_URL", "RESEND_API_KEY", "POKE_BATTLE_*", "DRAFTMON_GITHUB_*", "NEXT_PUBLIC_*"]
+    },
+    "start": {
+      "cache": false,
+      "persistent": true,
+      "passThroughEnv": ["HOST", "PORT", "DATABASE_URL", "PUBLIC_APP_URL", "RESEND_API_KEY", "POKE_BATTLE_*", "DRAFTMON_GITHUB_*"]
+    },
+    "typecheck": { "dependsOn": ["^typecheck"] },
+    "lint": {},
+    "test": { "dependsOn": ["^typecheck"], "env": ["DATABASE_TEST_URL"] }
+  }
+}

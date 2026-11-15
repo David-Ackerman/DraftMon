@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: draftmon
+          POSTGRES_PASSWORD: draftmon-ci
+          POSTGRES_DB: draftmon_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U draftmon -d draftmon_ci"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 6
+    env:
+      NEXT_PUBLIC_SITE_URL: https://draftmon.example
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/cache@v4
+        with:
+          path: .turbo/cache
+          key: ${{ runner.os }}-turbo-${{ hashFiles('pnpm-lock.yaml') }}-${{ github.sha }}
+          restore-keys: ${{ runner.os }}-turbo-${{ hashFiles('pnpm-lock.yaml') }}-
+      - name: Apply Postgres migrations
+        run: pnpm db:migrate
+        env:
+          DATABASE_URL: postgres://draftmon:draftmon-ci@127.0.0.1:5432/draftmon_ci
+      - run: pnpm exec turbo run lint typecheck test build
+      - name: Test the Postgres API
+        run: pnpm --filter @draftmon/api exec vitest run src/postgres.test.ts
+        env:
+          DATABASE_TEST_URL: postgres://draftmon:draftmon-ci@127.0.0.1:5432/draftmon_ci
+      - name: Restore and verify a Postgres backup
+        env:
+          POSTGRES_CONTAINER: ${{ job.services.postgres.id }}
+        run: |
+          docker exec "$POSTGRES_CONTAINER" pg_dump --format=custom --no-owner --no-acl --username=draftmon draftmon_ci > "$RUNNER_TEMP/draftmon.dump"
+          docker exec "$POSTGRES_CONTAINER" createdb --username=draftmon draftmon_restore
+          docker exec -i "$POSTGRES_CONTAINER" pg_restore --exit-on-error --no-owner --no-acl --username=draftmon --dbname=draftmon_restore < "$RUNNER_TEMP/draftmon.dump"
+          restored=$(docker exec "$POSTGRES_CONTAINER" psql --username=draftmon --dbname=draftmon_restore -Atc "SELECT count(*) FROM tournaments")
+          test "$restored" = 1

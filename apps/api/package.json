@@ -1,0 +1,31 @@
+{
+  "name": "@draftmon/api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm run typecheck && esbuild src/main.ts --bundle --platform=node --format=esm --target=node24 --outfile=dist/main.js --external:hono --external:@hono/node-server --external:@electric-sql/pglite",
+    "dev": "tsx watch --env-file-if-exists=.env src/main.ts",
+    "start": "node --env-file-if-exists=.env dist/main.js",
+    "import-json": "tsx --env-file-if-exists=.env scripts/import-json.ts",
+    "typecheck": "tsc -p tsconfig.json",
+    "lint": "eslint src scripts",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@draftmon/content": "workspace:*",
+    "@draftmon/contracts": "workspace:*",
+    "@draftmon/db": "workspace:*",
+    "@draftmon/engine": "workspace:*",
+    "@electric-sql/pglite": "^0.4",
+    "@hono/node-server": "^2",
+    "bcryptjs": "^3",
+    "hono": "^4"
+  },
+  "devDependencies": {
+    "@draftmon/config": "workspace:*",
+    "@types/node": "^24",
+    "esbuild": "^0.25",
+    "tsx": "^4"
+  }
+}

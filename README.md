@@ -10,6 +10,16 @@ pnpm build
 pnpm start
 ```
 
+Use Node.js 24 and the pnpm version pinned in the root package manifest. Run commands from the repository root. `pnpm dev` starts Next.js on port 3000 and the Hono API on port 4000. Next rewrites same-origin `/api/*` requests to the backend. The API uses a persistent PGlite database in `.poke-battle/postgres` by default.
+
+- `apps/web` contains the Next.js App Router, public catalog pages, client game screens and Tailwind styles.
+- `apps/api` contains typed Hono routes, authentication and the tournament deadline job.
+- `packages/db` contains Drizzle migrations, Postgres repositories and their in-memory test implementation.
+- `packages/engine` contains the pure game engine. It receives the catalog at runtime and imports only its types.
+- `packages/content`, `packages/contracts` and `packages/config` contain the catalog, shared request schemas and TypeScript settings.
+
+See the [HTTP contract](docs/api-contract.md) and [deployment and migration instructions](docs/deploy.md). Run `pnpm exec turbo run lint typecheck test build` to check the whole workspace.
+
 ## Play
 
 1. Roll a region and a type. Catch one of the 10 Pokémon offered. Non-legendary Normal-type Pokémon fill open slots as wildcards. Each list can contain up to one Pokémon labeled Legendary, which includes Mythical Pokémon.
@@ -29,33 +39,7 @@ Each participant drafts privately. When creating a tournament, the host sets the
 
 The optional group stage pairs each eligible participant once, with the top half (at least two) advancing by wins. Ties use participant order. The knockout stage advances winners automatically and assigns a bye to the unpaired player. Players can replay their own matches and spectate finished matches against bots. Replays contain the Pokémon revealed in battle, and other players' draft choices are private.
 
-Run `pnpm build` and `pnpm start` to serve the app and API together. Participants must reach the same server. For LAN testing, run `pnpm dev --host 0.0.0.0` and use the server's LAN address before copying the invite. For an HTTPS deployment behind a reverse proxy, set `HOST=0.0.0.0`, the required `PORT`, and `POKE_BATTLE_SECURE_COOKIES=1`. Run a single instance with persistent storage for `.poke-battle/` (or set `POKE_BATTLE_ROOMS_FILE` and `POKE_BATTLE_ACCOUNTS_FILE`). Static hosting of `dist/` serves the solo game only.
-
-## Deploy on Google Cloud
-
-1. [Create one Compute Engine VM](https://docs.cloud.google.com/compute/docs/instances/create-start-instance) with Ubuntu and a persistent boot disk. An E2 shared-core VM is a starting point for a small pilot. Check the region, IPv4, disk and traffic costs and your [credit balance and expiry](https://docs.cloud.google.com/billing/docs/how-to/resolve-issues#view-promotional-credits-applied-to-your-account) before publishing.
-2. Connect via SSH, install a supported Node.js LTS release and pnpm, then copy the project to the VM or clone it from your own Git remote. Run `pnpm install --frozen-lockfile` and `pnpm build` in the project directory. Set the public `VITE_ADSENSE_*` variables before building if you are enabling ads.
-3. Run `node scripts/server.mjs` as an unprivileged account under a systemd service with restart on failure. Use the project directory as `WorkingDirectory`. Create a writable directory on the persistent disk for the app data and set:
-
-   ```dotenv
-   HOST=127.0.0.1
-   PORT=4173
-   POKE_BATTLE_ROOMS_FILE=/var/lib/draftmon/rooms.json
-   POKE_BATTLE_ACCOUNTS_FILE=/var/lib/draftmon/accounts.json
-   POKE_BATTLE_SECURE_COOKIES=1
-   PUBLIC_APP_URL=https://play.example.com
-   ```
-
-   The Pokédex is saved next to `rooms.json`. Keep the data directory separate from the code directory and include it in your backup plan. Set the Resend variables on the service if you want password recovery.
-4. Reserve a [static external IPv4](https://docs.cloud.google.com/compute/docs/ip-addresses/configure-static-external-ip-address) and point your hostname's DNS `A` record to it. Allow inbound TCP ports 80 and 443 and configure a [Caddy reverse proxy](https://caddyserver.com/docs/quick-starts/reverse-proxy) with automatic HTTPS:
-
-   ```caddy
-   play.example.com {
-       reverse_proxy 127.0.0.1:4173
-   }
-   ```
-
-5. On the HTTPS URL, test signing in and joining a tournament from another browser. Restart the service and confirm that the account and tournament are still present. Test password recovery if the mail provider is configured.
+Run `pnpm build` and `pnpm start` to preview both production builds. For LAN testing, run `pnpm --filter @draftmon/api dev` and `pnpm --filter @draftmon/web dev --hostname 0.0.0.0` in separate terminals. Open the Next.js LAN address before copying the invite.
 
 ## Accounts and password recovery
 
@@ -73,35 +57,28 @@ Draftmon uses three manual display units outside the game controls. The bottom b
 
 Create [display ad units](https://support.google.com/adsense/answer/9274025) in AdSense and set these public build-time variables before running `pnpm build`:
 
-- `VITE_ADSENSE_CLIENT` with your publisher ID, including the `ca-pub-` prefix.
-- `VITE_ADSENSE_LEFT_SLOT`, `VITE_ADSENSE_RIGHT_SLOT` and `VITE_ADSENSE_BOTTOM_SLOT` with the corresponding numeric ad slot IDs.
+- `NEXT_PUBLIC_ADSENSE_CLIENT` with your publisher ID, including the `ca-pub-` prefix.
+- `NEXT_PUBLIC_ADSENSE_LEFT_SLOT`, `NEXT_PUBLIC_ADSENSE_RIGHT_SLOT` and `NEXT_PUBLIC_ADSENSE_BOTTOM_SLOT` with the corresponding numeric ad slot IDs.
 
 Use AdSense's site setup to verify the production domain and publish its `ads.txt` entry at the web root. Keep Auto ads off if you want only the three manual placements. Development mode displays placeholders and makes zero ad requests. Production skips each slot that has no configured ID.
 
 ## In-game bug reports
 
-Set `DRAFTMON_GITHUB_REPOSITORY=owner/repo` and `DRAFTMON_GITHUB_TOKEN` on the Node service to enable issue creation. Enable Issues for that repository, and use a fine-grained personal access token restricted to it with **Issues: Read and write**. Keep the token on the server, outside Git and outside the `VITE_*` variables. [GitHub Issues API](https://docs.github.com/en/rest/issues/issues#create-an-issue)
+Set `DRAFTMON_GITHUB_REPOSITORY=owner/repo` and `DRAFTMON_GITHUB_TOKEN` on the Node service to enable issue creation. Enable Issues for that repository, and use a fine-grained personal access token restricted to it with **Issues: Read and write**. Keep the token on the server, outside Git and outside public build-time variables. [GitHub Issues API](https://docs.github.com/en/rest/issues/issues#create-an-issue)
 
-Set `PUBLIC_APP_URL` to the public HTTPS address to accept screenshots. The game previews the visible play area before submission and excludes the tournament invite fields. Account and password pages accept text reports only. Each screenshot is stored in `bug-screenshots/` alongside `rooms.json` and linked from its issue. Anyone with that link can open the screenshot, so it becomes public if the issue is public. Copy this folder separately if you migrate the server or back it up to retain existing links.
+Set `PUBLIC_APP_URL` to the public HTTPS address to accept screenshots. The game previews the visible play area before submission and excludes the tournament invite fields. Account and password pages accept text reports only. Each screenshot is stored in `POKE_BATTLE_SCREENSHOT_DIRECTORY` and linked from its issue. The default directory is `.poke-battle/bug-screenshots`. Anyone with that link can open the screenshot, so it becomes public if the issue is public. Copy this folder separately if you migrate the server or back it up to retain existing links.
 
 ## Back up and restore
 
-Stop the server before taking a backup so the account, room and Pokédex files represent the same point in time. Use a private destination outside the web root whose filesystem supports hard links.
-
-```bash
-pnpm backup /private-backups/draftmon-2026-11-14.json
-pnpm restore /private-backups/draftmon-2026-11-14.json
-```
-
-Before restoring, point `POKE_BATTLE_ROOMS_FILE` and `POKE_BATTLE_ACCOUNTS_FILE` to empty destination paths. The Pokédex file is restored alongside the rooms file. The restore checks the archive's checksums, refuses to overwrite existing files and invalidates active sessions and password reset links. Start the server with the same paths to verify the restored data. Keep dated copies on separate storage and restrict access because the archive contains email addresses and password hashes.
+See the [backup and restore instructions](docs/deploy.md#backup-and-restore). The automated suite imports legacy data and verifies a restore into a fresh PGlite directory.
 
 ## Catalog and assets
 
 The game ships with a local snapshot of the [PokéAPI](https://pokeapi.co/docs/v2#pokemon). It includes 332 Pokémon with stats, types, artwork, cries and supported moves. Legendary and Mythical labels come from the species endpoint. The ten draft regions come from the API's region resources and their associated Pokédexes. A species can appear in more than one region's Pokédex.
 
-`pnpm content` regenerates the snapshot using Node.js 20+ and FFmpeg with WebP support. It reads from `.pokeapi-cache/` and reuses downloaded assets. Run `pnpm content --refresh` to fetch fresh data and artwork. The browser serves the bundled assets locally during play.
+`pnpm content` regenerates the snapshot using Node.js and FFmpeg with WebP support. It reads from `.pokeapi-cache/`, writes catalog data to `packages/content/data` and reuses assets in `apps/web/public`. Run `pnpm content --refresh` to fetch fresh data and artwork. The browser serves the bundled assets locally during play.
 
-- `scripts/content.mjs` defines the selection of Pokémon, compatible moves and opponents. The 12 trainers' teams are adapted for six-on-six battles. `src/data/pokedex-pt-br.json` provides locally bundled translations where PokéAPI has no Portuguese text.
+- `scripts/content.mjs` defines the selection of Pokémon, compatible moves and opponents. The 12 trainers' teams are adapted for six-on-six battles. `packages/content/data/pokedex-pt-br.json` provides locally bundled translations where PokéAPI has no Portuguese text.
 - Pokémon artwork and cries come from [PokéAPI Sprites](https://github.com/PokeAPI/sprites) and [PokéAPI Cries](https://github.com/PokeAPI/cries).
 - Trainer portraits come from the [Pokémon Showdown trainer archive](https://play.pokemonshowdown.com/sprites/trainers/).
 - Region art comes from the [Pokémon Center map posters](https://www.pokemoncenter.com/en-gb/product/710-97604/pokemon-region-maps-posters-9-pack) and the [Pokémon Legends: Arceus story page](https://legends.arceus.pokemon.com/en-us/story/).

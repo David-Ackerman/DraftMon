@@ -1,0 +1,37 @@
+{
+  "name": "@draftmon/web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "lint": "eslint src next.config.ts",
+    "start": "next start --port 3000",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@draftmon/content": "workspace:*",
+    "@draftmon/contracts": "workspace:*",
+    "@draftmon/engine": "workspace:*",
+    "html-to-image": "1.11.13",
+    "next": "^16",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@draftmon/config": "workspace:*",
+    "@tailwindcss/postcss": "^4.3.5",
+    "@types/node": "^24",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "class-variance-authority": "^0.7",
+    "clsx": "^2",
+    "tailwind-merge": "^3",
+    "tailwindcss": "^4.3.5"
+  }
+}

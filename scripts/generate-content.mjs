@@ -50,7 +50,7 @@ function resource(kind, id) {
 
 async function asset(url, path) {
   if (!url) return null
-  const file = new URL(`public${path}`, root)
+  const file = new URL(`apps/web/public${path}`, root)
   await mkdir(new URL('.', file), { recursive: true })
   await retrieve(url, file, true)
   return path
@@ -59,7 +59,7 @@ async function asset(url, path) {
 async function artworkFor(url, id) {
   if (!url) return null
   const path = `/pokemon/${id}.webp`
-  const file = new URL(`public${path}`, root)
+  const file = new URL(`apps/web/public${path}`, root)
   await mkdir(new URL('.', file), { recursive: true })
   if (!refresh) {
     try {
@@ -137,7 +137,7 @@ const types = (await pool(Array.from({ length: 18 }, (_, index) => index + 1), (
 const species = new Set(pokemonResources.map((entry) => entry.species.name))
 const speciesData = await pool([...species], (name) => resource('pokemon-species', name))
 const speciesByName = new Map(speciesData.map((entry) => [entry.name, entry]))
-const portugueseDescriptions = JSON.parse(await readFile(new URL('src/data/pokedex-pt-br.json', root), 'utf8'))
+const portugueseDescriptions = JSON.parse(await readFile(new URL('packages/content/data/pokedex-pt-br.json', root), 'utf8'))
 const regionIds = ['kanto', 'johto', 'hoenn', 'sinnoh', 'unova', 'kalos', 'alola', 'galar', 'hisui', 'paldea']
 const regions = await pool(regionIds, async (regionId) => {
   const region = await resource('region', regionId)
@@ -191,6 +191,6 @@ const trainerData = await pool(teams, async ({ portrait, ...trainer }) => {
 })
 
 for (const [name, data] of Object.entries({ pokemon: pokemonData, moves, types, regions, trainers: trainerData })) {
-  await writeFile(new URL(`src/data/${name}.json`, root), `[\n${data.map((entry) => JSON.stringify(entry)).join(',\n')}\n]\n`)
+  await writeFile(new URL(`packages/content/data/${name}.json`, root), `[\n${data.map((entry) => JSON.stringify(entry)).join(',\n')}\n]\n`)
 }
 console.log(`Imported ${pokemonData.length} Pokémon, ${moves.length} moves, ${regions.length} regions and ${teams.length} trainers.`)

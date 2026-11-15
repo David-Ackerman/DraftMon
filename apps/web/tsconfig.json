@@ -1,0 +1,13 @@
+{
+  "extends": "@draftmon/config/tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+    "incremental": true,
+    "esModuleInterop": true,
+    "plugins": [{ "name": "next" }]
+  },
+  "include": ["next-env.d.ts", ".next/types/**/*.ts", ".next/dev/types/**/*.ts", "src/**/*.ts", "src/**/*.tsx"],
+  // Next 16.4 can emit unused imports in the dev validator. The build still checks its own generated validator.
+  "exclude": ["node_modules", ".next/dev/types/validator.ts"]
+}
