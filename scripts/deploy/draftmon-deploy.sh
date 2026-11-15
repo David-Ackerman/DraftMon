@@ -48,9 +48,11 @@ fi
 printf '%s\n' "$2" > apps/web/public/deploy-version.txt
 pnpm install --frozen-lockfile --reporter=append-only
 export API_URL=http://127.0.0.1:4000 NEXT_PUBLIC_SITE_URL=https://draftmon-league.app
-export NEXT_TELEMETRY_DISABLED=1 TURBO_TELEMETRY_DISABLED=1 CI=1
+export NEXT_TELEMETRY_DISABLED=1 CI=1
 node --env-file-if-exists=/etc/draftmon/web-build.env -e '
-  const build = require("node:child_process").spawnSync("pnpm", ["build"], {stdio: "inherit"});
+  const build = require("node:child_process").spawnSync("pnpm", [
+    "--recursive", "--workspace-concurrency=1", "run", "build"
+  ], {stdio: "inherit"});
   if (build.error) throw build.error;
   process.exitCode = build.status ?? 1;
 '
