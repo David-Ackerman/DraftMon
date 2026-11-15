@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 36">
+  <defs>
+    <pattern id="stripes" width="52" height="5.53846" patternUnits="userSpaceOnUse">
+      <path fill="#b22234" d="M0 0h52v2.76923H0z"/>
+    </pattern>
+    <pattern id="stars" width="3.4" height="4.14" patternUnits="userSpaceOnUse">
+      <path fill="#fff" d="m1.7.5.18.54.58.01-.46.34.17.55-.47-.33-.47.33.17-.55-.46-.34.58-.01zm1.7 2.07.18.54.58.01-.46.34.17.55-.47-.33-.47.33.17-.55-.46-.34.58-.01z"/>
+    </pattern>
+  </defs>
+  <path fill="#fff" d="M0 0h52v36H0z"/>
+  <path fill="url(#stripes)" d="M0 0h52v36H0z"/>
+  <path fill="#3c3b6e" d="M0 0h21v19.38H0z"/>
+  <path fill="url(#stars)" d="M.1 0h20.8v19.38H.1z"/>
+</svg>

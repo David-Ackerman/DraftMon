@@ -1,0 +1,38 @@
+.hero { text-align: center; padding: 36px 18px 28px; border: 1px solid var(--line); border-radius: 26px; background: radial-gradient(ellipse at 50% 12%, #fff1a0 0%, transparent 55%), linear-gradient(#eaf2ff, #fff 70%); display: flex; flex-direction: column; align-items: center; }
+.hero-sprites .sprite { width: clamp(44px, 12vw, 100px); height: auto; aspect-ratio: 1; filter: drop-shadow(0 8px 5px #214f9c24); animation: bob 2.4s ease-in-out infinite; }
+.hero-sprites .sprite:nth-child(2n) { animation-delay: -1.2s; }
+.name-field span { font-size: .75rem; color: var(--muted); font-weight: 600; }
+.name-field input { background: var(--card); border: 1px solid var(--line); color: var(--text); border-radius: 10px; padding: 10px 12px; font: inherit; width: 240px; max-width: 100%; }
+.name-field input:focus { outline: 2px solid var(--primary); outline-offset: 1px; }
+.steps li { margin: 6px 0; }
+.steps b { color: var(--text); }
+.record > div { flex: 1; background: var(--card2); border-radius: 10px; padding: 14px; text-align: center; }
+.record b { display: block; font-size: 1.6rem; }
+.record span { color: var(--muted); font-size: .8rem; }
+@keyframes bob { 50% { transform: translateY(-6px); } }
+
+@media (max-width: 480px) {
+  .hero-sprites { gap: 4px; }
+  .hero-sprites .sprite { width: clamp(32px, 11vw, 52px); }
+  .record { gap: 6px; }
+  .record > div { padding: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-sprites .sprite { animation: none; }
+}
+.guest-card .name-field { flex: 1 1 170px; margin: 0; }
+.guest-card .name-field input { width: 100%; }
+.guest-id span { color: var(--muted); font-size: .72rem; }
+.guest-id strong { font: 700 .85rem ui-monospace, monospace; letter-spacing: .04em; }
+.avatar-picker legend { margin-bottom: 6px; font-size: .82rem; font-weight: 700; }
+.avatar-choice input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.avatar-choice span {
+  display: grid; justify-items: center; gap: 2px; border: 1px solid var(--line);
+  border-radius: 9px; padding: 3px; font-size: .68rem; font-weight: 700;
+}
+.avatar-choice img { object-fit: contain; image-rendering: pixelated; }
+.avatar-choice input:checked + span { background: #fff3b3; border-color: #a97011; }
+.avatar-choice input:focus-visible + span { outline: 2px solid var(--blue); outline-offset: 2px; }
+.avatar-profile .avatar-choice { display: block; }
+[data-theme="dark"] .hero { background: radial-gradient(ellipse at 50% 12%, #3c3549, transparent 56%), var(--card); }

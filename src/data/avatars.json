@@ -1,0 +1,11 @@
+[
+  {"id":"red","name":"Red","game":"FireRed"},
+  {"id":"leaf","name":"Leaf","game":"FireRed / LeafGreen"},
+  {"id":"ethan","name":"Ethan","game":"HeartGold / SoulSilver"},
+  {"id":"lyra","name":"Lyra","game":"HeartGold / SoulSilver"},
+  {"id":"brendan","name":"Brendan","game":"Ruby / Sapphire"},
+  {"id":"may","name":"May","game":"Ruby / Sapphire"},
+  {"id":"dawn","name":"Dawn","game":"Diamond / Pearl"},
+  {"id":"hilbert","name":"Hilbert","game":"Black / White"},
+  {"id":"hilda","name":"Hilda","game":"Black / White"}
+]

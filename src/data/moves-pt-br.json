@@ -1,0 +1,710 @@
+{
+  "tackle": {
+    "name": "Investida",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "scratch": {
+    "name": "Arranhão",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "pound": {
+    "name": "Pancada",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "quick-attack": {
+    "name": "Ataque Rápido",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "slash": {
+    "name": "Talho",
+    "effect": "Tem chance aumentada de causar um acerto crítico."
+  },
+  "body-slam": {
+    "name": "Golpe de Corpo",
+    "effect": "Pode paralisar o alvo."
+  },
+  "strength": {
+    "name": "Força",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "headbutt": {
+    "name": "Cabeçada",
+    "effect": "Pode fazer o alvo hesitar."
+  },
+  "hyper-voice": {
+    "name": "Hipervoz",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "extreme-speed": {
+    "name": "Velocidade Extrema",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "facade": {
+    "name": "Fachada",
+    "effect": "O poder dobra se o usuário estiver queimado, paralisado ou envenenado."
+  },
+  "swift": {
+    "name": "Estrelas Cadentes",
+    "effect": "Nunca erra."
+  },
+  "mega-kick": {
+    "name": "Megachute",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "ember": {
+    "name": "Brasa",
+    "effect": "Pode causar queimadura no alvo."
+  },
+  "flame-wheel": {
+    "name": "Roda de Fogo",
+    "effect": "Pode causar queimadura no alvo e permite que o usuário descongele."
+  },
+  "flamethrower": {
+    "name": "Lança-Chamas",
+    "effect": "Pode causar queimadura no alvo."
+  },
+  "flame-burst": {
+    "name": "Explosão de Chamas",
+    "effect": "Também causa dano aos Pokémon adjacentes ao alvo."
+  },
+  "fire-blast": {
+    "name": "Rajada de Fogo",
+    "effect": "Pode causar queimadura no alvo."
+  },
+  "fire-punch": {
+    "name": "Soco de Fogo",
+    "effect": "Pode causar queimadura no alvo."
+  },
+  "fire-fang": {
+    "name": "Presa de Fogo",
+    "effect": "Pode causar queimadura no alvo e também fazê-lo hesitar."
+  },
+  "heat-wave": {
+    "name": "Onda de Calor",
+    "effect": "Pode causar queimadura no alvo."
+  },
+  "lava-plume": {
+    "name": "Pluma de Lava",
+    "effect": "Pode causar queimadura no alvo."
+  },
+  "mystical-fire": {
+    "name": "Fogo Místico",
+    "effect": "Pode reduzir o Ataque Especial do alvo em um estágio."
+  },
+  "fire-lash": {
+    "name": "Chicote de Fogo",
+    "effect": "Causa dano e reduz a Defesa do alvo em um estágio."
+  },
+  "pyro-ball": {
+    "name": "Bola de Fogo",
+    "effect": "Pode causar queimadura no alvo."
+  },
+  "water-gun": {
+    "name": "Jato d’Água",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "bubble-beam": {
+    "name": "Raio de Bolhas",
+    "effect": "Pode reduzir a Velocidade do alvo em um estágio."
+  },
+  "surf": {
+    "name": "Surfar",
+    "effect": "Causa dano e pode atingir Pokémon que usaram Mergulho."
+  },
+  "hydro-pump": {
+    "name": "Hidrobomba",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "liquidation": {
+    "name": "Liquidação",
+    "effect": "Pode reduzir a Defesa do alvo em um estágio."
+  },
+  "waterfall": {
+    "name": "Cascata",
+    "effect": "Pode fazer o alvo hesitar."
+  },
+  "aqua-jet": {
+    "name": "Aquajato",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "aqua-tail": {
+    "name": "Cauda Aquática",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "scald": {
+    "name": "Escaldar",
+    "effect": "Pode causar queimadura no alvo."
+  },
+  "razor-leaf": {
+    "name": "Folha Navalha",
+    "effect": "Tem chance aumentada de causar um acerto crítico."
+  },
+  "leafage": {
+    "name": "Folhagem",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "magical-leaf": {
+    "name": "Folha Mágica",
+    "effect": "Nunca erra."
+  },
+  "giga-drain": {
+    "name": "Gigadreno",
+    "effect": "Recupera PS do usuário equivalentes à metade do dano causado."
+  },
+  "energy-ball": {
+    "name": "Bola de Energia",
+    "effect": "Pode reduzir a Defesa Especial do alvo em um estágio."
+  },
+  "seed-bomb": {
+    "name": "Bomba de Sementes",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "leaf-blade": {
+    "name": "Lâmina de Folha",
+    "effect": "Tem chance aumentada de causar um acerto crítico."
+  },
+  "power-whip": {
+    "name": "Chicote Poderoso",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "synthesis": {
+    "name": "Síntese",
+    "effect": "Normalmente recupera metade dos PS máximos do usuário. O clima altera a quantidade recuperada."
+  },
+  "horn-leech": {
+    "name": "Chifre Drenante",
+    "effect": "Recupera PS do usuário equivalentes à metade do dano causado."
+  },
+  "drum-beating": {
+    "name": "Batida de Tambor",
+    "effect": "Pode reduzir a Velocidade do alvo em um estágio."
+  },
+  "thunder-shock": {
+    "name": "Choque do Trovão",
+    "effect": "Pode paralisar o alvo."
+  },
+  "spark": {
+    "name": "Faísca",
+    "effect": "Pode paralisar o alvo."
+  },
+  "discharge": {
+    "name": "Descarga",
+    "effect": "Pode paralisar o alvo."
+  },
+  "thunderbolt": {
+    "name": "Raio",
+    "effect": "Pode paralisar o alvo."
+  },
+  "thunder": {
+    "name": "Trovão",
+    "effect": "Pode paralisar o alvo."
+  },
+  "thunder-punch": {
+    "name": "Soco Trovejante",
+    "effect": "Pode paralisar o alvo."
+  },
+  "thunder-fang": {
+    "name": "Presa Elétrica",
+    "effect": "Pode paralisar o alvo e também fazê-lo hesitar."
+  },
+  "shock-wave": {
+    "name": "Onda de Choque",
+    "effect": "Nunca erra."
+  },
+  "ice-shard": {
+    "name": "Estilhaço de Gelo",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "icy-wind": {
+    "name": "Vento Gelado",
+    "effect": "Pode reduzir a Velocidade do alvo em um estágio."
+  },
+  "ice-fang": {
+    "name": "Presa de Gelo",
+    "effect": "Pode congelar o alvo e também fazê-lo hesitar."
+  },
+  "aurora-beam": {
+    "name": "Raio Aurora",
+    "effect": "Pode reduzir o Ataque do alvo em um estágio."
+  },
+  "ice-beam": {
+    "name": "Raio de Gelo",
+    "effect": "Pode congelar o alvo."
+  },
+  "ice-punch": {
+    "name": "Soco de Gelo",
+    "effect": "Pode congelar o alvo."
+  },
+  "blizzard": {
+    "name": "Nevasca",
+    "effect": "Pode congelar o alvo."
+  },
+  "ice-spinner": {
+    "name": "Giro de Gelo",
+    "effect": "O usuário gira com os pés cobertos de gelo e atinge o alvo, removendo o terreno ativo."
+  },
+  "karate-chop": {
+    "name": "Golpe de Caratê",
+    "effect": "Tem chance aumentada de causar um acerto crítico."
+  },
+  "brick-break": {
+    "name": "Quebra-Tijolos",
+    "effect": "Destrói Reflexo e Tela de Luz."
+  },
+  "low-sweep": {
+    "name": "Rasteira",
+    "effect": "Reduz a Velocidade do alvo em um estágio."
+  },
+  "force-palm": {
+    "name": "Palma de Força",
+    "effect": "Pode paralisar o alvo."
+  },
+  "drain-punch": {
+    "name": "Soco Drenante",
+    "effect": "Recupera PS do usuário equivalentes à metade do dano causado."
+  },
+  "close-combat": {
+    "name": "Combate Corpo a Corpo",
+    "effect": "Causa dano e reduz a Defesa e a Defesa Especial do usuário em um estágio."
+  },
+  "cross-chop": {
+    "name": "Golpe Cruzado",
+    "effect": "Tem chance aumentada de causar um acerto crítico."
+  },
+  "aura-sphere": {
+    "name": "Esfera de Aura",
+    "effect": "Nunca erra."
+  },
+  "focus-blast": {
+    "name": "Explosão Focalizada",
+    "effect": "Pode reduzir a Defesa Especial do alvo em um estágio."
+  },
+  "mach-punch": {
+    "name": "Soco Mach",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "superpower": {
+    "name": "Superpoder",
+    "effect": "Causa dano e reduz o Ataque e a Defesa do usuário em um estágio."
+  },
+  "hammer-arm": {
+    "name": "Braço de Martelo",
+    "effect": "Reduz a Velocidade do usuário em um estágio."
+  },
+  "sacred-sword": {
+    "name": "Espada Sagrada",
+    "effect": "Ignora as alterações nos atributos do alvo."
+  },
+  "poison-sting": {
+    "name": "Picada Venenosa",
+    "effect": "Pode envenenar o alvo."
+  },
+  "acid": {
+    "name": "Ácido",
+    "effect": "Pode reduzir a Defesa Especial do alvo em um estágio."
+  },
+  "sludge": {
+    "name": "Lodo",
+    "effect": "Pode envenenar o alvo."
+  },
+  "sludge-bomb": {
+    "name": "Bomba de Lodo",
+    "effect": "Pode envenenar o alvo."
+  },
+  "sludge-wave": {
+    "name": "Onda de Lodo",
+    "effect": "Pode envenenar o alvo."
+  },
+  "poison-jab": {
+    "name": "Jab Venenoso",
+    "effect": "Pode envenenar o alvo."
+  },
+  "poison-fang": {
+    "name": "Presa Venenosa",
+    "effect": "Pode intoxicar gravemente o alvo."
+  },
+  "cross-poison": {
+    "name": "Veneno Cruzado",
+    "effect": "Tem chance aumentada de acerto crítico e pode envenenar o alvo."
+  },
+  "gunk-shot": {
+    "name": "Tiro de Gosma",
+    "effect": "Pode envenenar o alvo."
+  },
+  "mud-slap": {
+    "name": "Tapa de Lama",
+    "effect": "Pode reduzir a Precisão do alvo em um estágio."
+  },
+  "mud-shot": {
+    "name": "Tiro de Lama",
+    "effect": "Pode reduzir a Velocidade do alvo em um estágio."
+  },
+  "mud-bomb": {
+    "name": "Bomba de Lama",
+    "effect": "Pode reduzir a Precisão do alvo em um estágio."
+  },
+  "bulldoze": {
+    "name": "Terraplanagem",
+    "effect": "Pode reduzir a Velocidade do alvo em um estágio."
+  },
+  "earth-power": {
+    "name": "Poder da Terra",
+    "effect": "Pode reduzir a Defesa Especial do alvo em um estágio."
+  },
+  "earthquake": {
+    "name": "Terremoto",
+    "effect": "Causa dano e pode atingir Pokémon que usaram Escavar."
+  },
+  "stomping-tantrum": {
+    "name": "Pisada de Birra",
+    "effect": "Tem o dobro de poder se o último golpe do usuário falhou."
+  },
+  "drill-run": {
+    "name": "Investida Perfurante",
+    "effect": "Tem chance aumentada de causar um acerto crítico."
+  },
+  "gust": {
+    "name": "Rajada de Vento",
+    "effect": "Causa dano e pode atingir Pokémon no ar."
+  },
+  "wing-attack": {
+    "name": "Ataque de Asa",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "air-cutter": {
+    "name": "Corte de Ar",
+    "effect": "Tem chance aumentada de causar um acerto crítico."
+  },
+  "air-slash": {
+    "name": "Talho de Ar",
+    "effect": "Pode fazer o alvo hesitar."
+  },
+  "aerial-ace": {
+    "name": "Ás Aéreo",
+    "effect": "Nunca erra."
+  },
+  "drill-peck": {
+    "name": "Bicada Perfurante",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "psychic": {
+    "name": "Psíquico",
+    "effect": "Pode reduzir a Defesa Especial do alvo em um estágio."
+  },
+  "zen-headbutt": {
+    "name": "Cabeçada Zen",
+    "effect": "Pode fazer o alvo hesitar."
+  },
+  "psycho-cut": {
+    "name": "Corte Psíquico",
+    "effect": "Tem chance aumentada de causar um acerto crítico."
+  },
+  "extrasensory": {
+    "name": "Extrassensorial",
+    "effect": "Pode fazer o alvo hesitar."
+  },
+  "bug-bite": {
+    "name": "Mordida de Inseto",
+    "effect": "Se o alvo estiver segurando uma baga, o golpe causa o dobro de dano e o usuário consome a baga."
+  },
+  "pounce": {
+    "name": "Bote",
+    "effect": "O usuário salta sobre o alvo e reduz a Velocidade dele."
+  },
+  "struggle-bug": {
+    "name": "Ataque de Resistência",
+    "effect": "Pode reduzir o Ataque Especial do alvo em um estágio."
+  },
+  "x-scissor": {
+    "name": "Tesoura X",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "lunge": {
+    "name": "Bote de Inseto",
+    "effect": "Causa dano e reduz o Ataque do alvo em um estágio."
+  },
+  "bug-buzz": {
+    "name": "Zumbido de Inseto",
+    "effect": "Pode reduzir a Defesa Especial do alvo em um estágio."
+  },
+  "leech-life": {
+    "name": "Sanguessuga",
+    "effect": "Recupera PS do usuário equivalentes à metade do dano causado."
+  },
+  "rock-throw": {
+    "name": "Arremesso de Pedra",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "ancient-power": {
+    "name": "Poder Ancestral",
+    "effect": "Pode aumentar todos os atributos de combate do usuário em um estágio."
+  },
+  "rock-tomb": {
+    "name": "Tumba de Pedras",
+    "effect": "Pode reduzir a Velocidade do alvo em um estágio."
+  },
+  "power-gem": {
+    "name": "Gema de Poder",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "rock-slide": {
+    "name": "Deslizamento de Pedras",
+    "effect": "Pode fazer o alvo hesitar."
+  },
+  "stone-edge": {
+    "name": "Gume de Pedra",
+    "effect": "Tem chance aumentada de causar um acerto crítico."
+  },
+  "lick": {
+    "name": "Lambida",
+    "effect": "Pode paralisar o alvo."
+  },
+  "astonish": {
+    "name": "Espanto",
+    "effect": "Pode fazer o alvo hesitar."
+  },
+  "shadow-sneak": {
+    "name": "Espreita Sombria",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "shadow-claw": {
+    "name": "Garra Sombria",
+    "effect": "Tem chance aumentada de causar um acerto crítico."
+  },
+  "shadow-ball": {
+    "name": "Bola Sombria",
+    "effect": "Pode reduzir a Defesa Especial do alvo em um estágio."
+  },
+  "shadow-punch": {
+    "name": "Soco Sombrio",
+    "effect": "Nunca erra."
+  },
+  "bitter-malice": {
+    "name": "Rancor Amargo",
+    "effect": "O usuário ataca com um rancor arrepiante e reduz o Ataque do alvo."
+  },
+  "twister": {
+    "name": "Tornado",
+    "effect": "Pode fazer o alvo hesitar."
+  },
+  "dragon-breath": {
+    "name": "Sopro do Dragão",
+    "effect": "Pode paralisar o alvo."
+  },
+  "dragon-pulse": {
+    "name": "Pulso do Dragão",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "dragon-claw": {
+    "name": "Garra de Dragão",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "dragon-rush": {
+    "name": "Investida do Dragão",
+    "effect": "Pode fazer o alvo hesitar."
+  },
+  "draco-meteor": {
+    "name": "Meteoro do Dragão",
+    "effect": "Causa dano e reduz o Ataque Especial do usuário em dois estágios."
+  },
+  "breaking-swipe": {
+    "name": "Golpe Demolidor",
+    "effect": "Causa dano e reduz o Ataque do alvo em um estágio."
+  },
+  "bite": {
+    "name": "Mordida",
+    "effect": "Pode fazer o alvo hesitar."
+  },
+  "crunch": {
+    "name": "Triturar",
+    "effect": "Pode reduzir a Defesa do alvo em um estágio."
+  },
+  "night-slash": {
+    "name": "Talho Noturno",
+    "effect": "Tem chance aumentada de causar um acerto crítico."
+  },
+  "dark-pulse": {
+    "name": "Pulso Sombrio",
+    "effect": "Pode fazer o alvo hesitar."
+  },
+  "snarl": {
+    "name": "Rosnado",
+    "effect": "Pode reduzir o Ataque Especial do alvo em um estágio."
+  },
+  "metal-claw": {
+    "name": "Garra de Metal",
+    "effect": "Pode aumentar o Ataque do usuário em um estágio."
+  },
+  "bullet-punch": {
+    "name": "Soco Bala",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "magnet-bomb": {
+    "name": "Bomba Magnética",
+    "effect": "Nunca erra."
+  },
+  "mirror-shot": {
+    "name": "Tiro Espelhado",
+    "effect": "Pode reduzir a Precisão do alvo em um estágio."
+  },
+  "flash-cannon": {
+    "name": "Canhão de Luz",
+    "effect": "Pode reduzir a Defesa Especial do alvo em um estágio."
+  },
+  "iron-head": {
+    "name": "Cabeça de Ferro",
+    "effect": "Pode fazer o alvo hesitar."
+  },
+  "iron-tail": {
+    "name": "Cauda de Ferro",
+    "effect": "Pode reduzir a Defesa do alvo em um estágio."
+  },
+  "steel-wing": {
+    "name": "Asa de Aço",
+    "effect": "Pode aumentar a Defesa do usuário em um estágio."
+  },
+  "fairy-wind": {
+    "name": "Vento de Fada",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "draining-kiss": {
+    "name": "Beijo Drenante",
+    "effect": "Recupera PS do usuário equivalentes a 75% do dano causado."
+  },
+  "disarming-voice": {
+    "name": "Voz Desarmante",
+    "effect": "Nunca erra."
+  },
+  "dazzling-gleam": {
+    "name": "Brilho Deslumbrante",
+    "effect": "Causa dano sem efeito adicional."
+  },
+  "moonblast": {
+    "name": "Explosão Lunar",
+    "effect": "Pode reduzir o Ataque Especial do alvo em um estágio."
+  },
+  "play-rough": {
+    "name": "Brincadeira Bruta",
+    "effect": "Pode reduzir o Ataque do alvo em um estágio."
+  },
+  "spirit-break": {
+    "name": "Quebra de Espírito",
+    "effect": "Pode reduzir o Ataque Especial do alvo em um estágio."
+  },
+  "swords-dance": {
+    "name": "Dança das Espadas",
+    "effect": "Aumenta o Ataque do usuário em dois estágios."
+  },
+  "nasty-plot": {
+    "name": "Trama Maligna",
+    "effect": "Aumenta o Ataque Especial do usuário em dois estágios."
+  },
+  "bulk-up": {
+    "name": "Musculação",
+    "effect": "Aumenta o Ataque e a Defesa do usuário em um estágio cada."
+  },
+  "calm-mind": {
+    "name": "Mente Calma",
+    "effect": "Aumenta o Ataque Especial e a Defesa Especial do usuário em um estágio cada."
+  },
+  "dragon-dance": {
+    "name": "Dança do Dragão",
+    "effect": "Aumenta o Ataque e a Velocidade do usuário em um estágio cada."
+  },
+  "quiver-dance": {
+    "name": "Dança Trêmula",
+    "effect": "Aumenta o Ataque Especial, a Defesa Especial e a Velocidade do usuário em um estágio cada."
+  },
+  "coil": {
+    "name": "Enrolar",
+    "effect": "Aumenta o Ataque, a Defesa e a Precisão do usuário em um estágio cada."
+  },
+  "iron-defense": {
+    "name": "Defesa de Ferro",
+    "effect": "Aumenta a Defesa do usuário em dois estágios."
+  },
+  "rock-polish": {
+    "name": "Polimento de Rocha",
+    "effect": "Aumenta a Velocidade do usuário em dois estágios."
+  },
+  "agility": {
+    "name": "Agilidade",
+    "effect": "Aumenta a Velocidade do usuário em dois estágios."
+  },
+  "amnesia": {
+    "name": "Amnésia",
+    "effect": "Aumenta a Defesa Especial do usuário em dois estágios."
+  },
+  "growth": {
+    "name": "Crescimento",
+    "effect": "Aumenta o Ataque e o Ataque Especial do usuário em um estágio cada."
+  },
+  "withdraw": {
+    "name": "Recolher",
+    "effect": "Aumenta a Defesa do usuário em um estágio."
+  },
+  "defense-curl": {
+    "name": "Enrolamento Defensivo",
+    "effect": "Aumenta a Defesa do usuário em um estágio."
+  },
+  "recover": {
+    "name": "Recuperação",
+    "effect": "Recupera metade dos PS máximos do usuário."
+  },
+  "roost": {
+    "name": "Pouso",
+    "effect": "Recupera metade dos PS máximos do usuário."
+  },
+  "soft-boiled": {
+    "name": "Ovo Cozido",
+    "effect": "Recupera metade dos PS máximos do usuário."
+  },
+  "slack-off": {
+    "name": "Preguiça",
+    "effect": "Recupera metade dos PS máximos do usuário."
+  },
+  "milk-drink": {
+    "name": "Beber Leite",
+    "effect": "Recupera metade dos PS máximos do usuário."
+  },
+  "shore-up": {
+    "name": "Fortificação",
+    "effect": "Recupera metade dos PS máximos do usuário, ou dois terços durante uma tempestade de areia."
+  },
+  "thunder-wave": {
+    "name": "Onda de Trovão",
+    "effect": "Paralisa o alvo."
+  },
+  "stun-spore": {
+    "name": "Esporos Paralisantes",
+    "effect": "Paralisa o alvo."
+  },
+  "glare": {
+    "name": "Olhar Intimidante",
+    "effect": "Paralisa o alvo."
+  },
+  "will-o-wisp": {
+    "name": "Fogo-Fátuo",
+    "effect": "Causa queimadura no alvo."
+  },
+  "toxic": {
+    "name": "Tóxico",
+    "effect": "Intoxica gravemente o alvo. O dano aumenta a cada turno."
+  },
+  "poison-powder": {
+    "name": "Pó Venenoso",
+    "effect": "Envenena o alvo."
+  },
+  "sleep-powder": {
+    "name": "Pó do Sono",
+    "effect": "Faz o alvo adormecer."
+  },
+  "hypnosis": {
+    "name": "Hipnose",
+    "effect": "Faz o alvo adormecer."
+  },
+  "spore": {
+    "name": "Esporo",
+    "effect": "Faz o alvo adormecer."
+  }
+}

@@ -1,0 +1,9 @@
+@media (pointer: fine) {
+  :root { cursor: url('/cursors/pikachu-paw.png') 16 2, auto; }
+  :is(.btn, .logo, .icon-btn, .avatar-choice, .switch, a[href]):not(:disabled) {
+    cursor: url('/cursors/pikachu-paw.png') 16 2, pointer;
+  }
+  :is(.tip, .lore-trigger, .avatar-profile, .draft-list > li, .draft-details, .pokedex-entry, .pokedex-toggle):not(:disabled),
+  .avatar-profile .avatar-choice { cursor: url('/cursors/pokedex.png') 7 4, help; }
+  .draft-list .draft-pick:not(:disabled) { cursor: url('/cursors/pokeball.png') 15 15, pointer; }
+}

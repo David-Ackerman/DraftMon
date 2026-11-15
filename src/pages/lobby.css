@@ -1,0 +1,18 @@
+.panel-heading h1 { margin: 0 0 4px; font-size: clamp(1.55rem, 4vw, 2.4rem); overflow-wrap: anywhere; }
+.panel-heading p { margin: 0; }
+.lobby-form label { display: grid; gap: 3px; font-size: .82rem; font-weight: 700; }
+.lobby-form input { width: 100%; background: var(--card); border: 1px solid var(--line); border-radius: 8px; color: var(--text); padding: 9px; font: inherit; }
+.lobby-form select { width: 100%; background: var(--card); border: 1px solid var(--line); border-radius: 8px; color: var(--text); padding: 9px; font: inherit; }
+.invite-code strong { font: 700 1.15rem ui-monospace, monospace; letter-spacing: .1em; }
+.lobby-members li { display: flex; align-items: center; gap: 8px; background: var(--card2); border-radius: 8px; padding: 5px 8px; }
+.lobby-members small { display: block; color: var(--muted); }
+.lobby-members img { object-fit: contain; image-rendering: pixelated; }
+.tournament-match strong { flex: 1 1 130px; }
+.account-page h1 { margin: 0; }
+.account-page p { margin: 0; }
+.account-page a { color: var(--text); text-underline-offset: 3px; }
+.account-panel a { color: var(--text); text-underline-offset: 3px; }
+.lobby-form .tournament-checkbox { display: flex; gap: 7px; align-items: center; }
+.tournament-checkbox input { width: auto; accent-color: var(--blue); }
+.tournament-participants li { display: flex; gap: 5px; align-items: center; background: var(--card2); padding: 3px 8px; border-radius: 8px; }
+.tournament-participants img { image-rendering: pixelated; }

@@ -1,12 +1,12 @@
 /** Draft (region + type rolls) and league bracket logic. Pure functions; pass an Rng. */
 import type { GameData, TrainerData } from './data'
-import { speciesOf, typesOf } from './data'
+import { rarityOf, speciesOf, typesOf } from './data'
 import type { Rng } from './rng'
 import { pick, shuffle } from './rng'
 import type { TeamMember } from './battle'
 
 export const TEAM_SIZE = 6
-export const OPTIONS_PER_ROLL = 3
+export const OPTIONS_PER_ROLL = 10
 export const REROLLS_PER_RUN = 3
 export const PLAYER_LEVEL = 50
 export const LEAGUE_MATCHES = 7
@@ -67,18 +67,26 @@ export function rollOptions(
     type = pick(rng, types.length ? types : [...index.get(region)!.keys()])
   }
 
-  const exact = shuffle(rng, index.get(region)!.get(type) ?? [])
-  const options = exact.slice(0, OPTIONS_PER_ROLL)
-  const matches = options.length
+  const options: string[] = []
+  let hasRare = false
   const fill = (names: string[]) => {
-    for (const n of shuffle(rng, names)) {
+    for (const n of shuffle(rng, [...new Set(names)])) {
       if (options.length >= OPTIONS_PER_ROLL) return
-      if (!options.includes(n)) options.push(n)
+      if (options.includes(n)) continue
+      const rare = rarityOf(data.pokemonByName.get(n)!) !== null
+      if (rare && hasRare) continue
+      options.push(n)
+      hasRare ||= rare
     }
   }
-  fill([...index.get(region)!.values()].flat())
-  fill(regions.flatMap((r) => index.get(r)!.get(type!) ?? []))
-  fill(data.pokemon.map((p) => p.name).filter((n) => !takenSet.has(n)))
+  fill(index.get(region)!.get(type) ?? [])
+  const matches = options.length
+  if (matches < OPTIONS_PER_ROLL) {
+    const wildcards = data.pokemon.filter((p) =>
+      !takenSet.has(p.name) && !rarityOf(p) && p.types.some(({ type }) => type.name === 'normal'))
+    fill(wildcards.filter((p) => data.regionsBySpecies.get(speciesOf(p))?.includes(region)).map((p) => p.name))
+    fill(wildcards.map((p) => p.name))
+  }
   return { region, type, options, matches }
 }
 

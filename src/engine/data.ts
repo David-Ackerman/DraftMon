@@ -5,11 +5,12 @@
  *   pokemon.json  -> array of /pokemon/{id} resources
  *   moves.json    -> array of /move/{id} resources
  *   types.json    -> array of /type/{id} resources (damage_relations)
- *   regions.json  -> array of /pokedex/{id} resources (pokemon_entries)
+ *   regions.json  -> /region/{id} labels and their combined Pokédex entries
  *   trainers.json -> game-specific (PokeAPI has no trainers)
  */
 import pokemonJson from '../data/pokemon.json'
 import movesJson from '../data/moves.json'
+import portugueseMovesJson from '../data/moves-pt-br.json'
 import typesJson from '../data/types.json'
 import regionsJson from '../data/regions.json'
 import trainersJson from '../data/trainers.json'
@@ -22,7 +23,7 @@ export interface NamedRef {
 export interface ApiPokemon {
   id: number
   name: string
-  species?: NamedRef
+  species?: NamedRef & { is_legendary?: boolean; is_mythical?: boolean; descriptions?: Partial<Record<'en' | 'pt-BR', string>> }
   types: { slot: number; type: NamedRef }[]
   stats: { base_stat: number; effort?: number; stat: NamedRef }[]
   abilities?: { ability: NamedRef | null; is_hidden: boolean; slot: number }[]
@@ -31,6 +32,7 @@ export interface ApiPokemon {
     front_default: string | null
     other?: { 'official-artwork'?: { front_default: string | null } } & Record<string, unknown>
   } & Record<string, unknown>
+  cries?: { latest: string | null; legacy?: string | null }
 }
 
 export interface ApiMove {
@@ -69,7 +71,6 @@ export interface ApiType {
 export interface ApiPokedex {
   name: string
   names?: { name: string; language: NamedRef }[]
-  descriptions?: { description: string; language: NamedRef }[]
   pokemon_entries: { entry_number: number; pokemon_species: NamedRef }[]
 }
 
@@ -146,9 +147,6 @@ export const displayName = (slug: string) =>
 
 export const regionLabel = (r: ApiPokedex) => r.names?.find((n) => n.language.name === 'en')?.name ?? displayName(r.name)
 
-export const regionDescription = (r: ApiPokedex) =>
-  r.descriptions?.find((d) => d.language.name === 'en')?.description ?? ''
-
 export const typesOf = (p: ApiPokemon) => [...p.types].sort((a, b) => a.slot - b.slot).map((t) => t.type.name)
 
 export const baseStat = (p: ApiPokemon, stat: StatName) => p.stats.find((s) => s.stat.name === stat)?.base_stat ?? 0
@@ -163,4 +161,16 @@ export const abilityOf = (p: ApiPokemon) =>
 
 export const speciesOf = (p: ApiPokemon) => p.species?.name ?? p.name
 
-export const moveEffect = (m: ApiMove) => m.effect_entries?.find((e) => e.language.name === 'en')?.short_effect ?? ''
+export const rarityOf = (p: ApiPokemon) =>
+  p.species?.is_mythical ? 'Mythical' : p.species?.is_legendary ? 'Legendary' : null
+
+const portugueseMoves: Partial<Record<string, { name: string; effect: string }>> = portugueseMovesJson
+
+export const moveLabel = (slug: string, language: 'en' | 'pt-BR' = 'en') =>
+  (language === 'pt-BR' ? portugueseMoves[slug]?.name : undefined) ?? displayName(slug)
+
+export function moveEffect(move: ApiMove, language: 'en' | 'pt-BR' = 'en') {
+  const translated = language === 'pt-BR' ? portugueseMoves[move.name]?.effect : undefined
+  const text = translated ?? move.effect_entries?.find((entry) => entry.language.name === 'en')?.short_effect
+  return text ? { text, language: translated ? 'pt-BR' : 'en' } : null
+}
