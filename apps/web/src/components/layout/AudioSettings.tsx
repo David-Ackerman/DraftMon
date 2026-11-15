@@ -113,7 +113,7 @@ export function AudioSettings() {
                 onChange={(e) =>
                   sound.update({ [key]: Number(e.target.value) / 100 })
                 }
-                onPointerUp={() => key === 'sfx' && sound.play('land')}
+                onPointerUp={() => key === 'sfx' && sound.play('hit')}
               />
               <span className="text-right text-muted tabular-nums">
                 {Math.round(settings[key] * 100)}

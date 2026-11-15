@@ -1,31 +1,15 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { BattleEvent, BattleResult, Side } from '@draftmon/engine'
-import type { SfxName } from '../../services/sound'
+import type { BattleCue } from '../../services/sound'
 import { sound } from '../../services/sound'
 import { viewAt } from './battleState'
 
-function eventSound(e: BattleEvent, winner: Side): SfxName | null {
-  switch (e.kind) {
+function eventSound(event: BattleEvent, winner: Side): BattleCue | null {
+  switch (event.kind) {
     case 'damage':
-      return e.source
-        ? 'status'
-        : e.crit
-          ? 'crit'
-          : e.mult > 1
-            ? 'super'
-            : e.mult < 1
-              ? 'weak'
-              : 'hit'
-    case 'heal':
-      return 'heal'
-    case 'status':
-      return e.status ? 'status' : null
-    case 'stat':
-      return e.change > 0 ? 'statUp' : 'statDown'
+      return event.source || event.amount <= 0 ? null : 'hit'
     case 'faint':
       return 'faint'
-    case 'miss':
-      return 'miss'
     case 'end':
       return winner === 0 ? 'win' : 'lose'
     default:
@@ -54,12 +38,19 @@ export function useBattlePlayback(
   const [index, setIndex] = useState(0)
   const [speed, setSpeed] = useState(1)
   const logRef = useRef<HTMLDivElement>(null)
-  const skipped = useRef(false)
   const last = result.events.length - 1
   const finished = index >= last
   const view = useMemo(() => viewAt(result, index), [result, index])
   const event = result.events[index]
   const next = result.events[index + 1]
+  const cue = eventSound(event, result.winner)
+
+  useEffect(() => {
+    sound.setBattleActive(true)
+    sound.preload('hit')
+    sound.preload('faint')
+    return () => sound.setBattleActive(false)
+  }, [])
 
   useEffect(() => {
     if (finished) onComplete?.()
@@ -77,23 +68,10 @@ export function useBattlePlayback(
 
   useEffect(() => {
     logRef.current?.scrollTo({ top: logRef.current.scrollHeight })
-    // after a skip only the final result is heard
-    if (skipped.current && index < last) return
-    const event = result.events[index]
-    if (event.kind === 'switch') {
-      sound.cry(result.teams[event.side][event.slot].species)
-      return
-    }
-    if (event.kind === 'move') {
-      sound.move(event.moveType, event.attacking ?? false)
-      return
-    }
-    const name = eventSound(event, result.winner)
-    if (name) sound.play(name)
-  }, [index, last, result])
+    if (cue) return sound.playBattle(cue)
+  }, [cue, index, result])
 
   function skip() {
-    skipped.current = true
     setIndex(last)
   }
 

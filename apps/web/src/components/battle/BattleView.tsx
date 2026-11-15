@@ -105,6 +105,7 @@ export function BattleView({
               {[1, 2, 4].map((s) => (
                 <Button
                   key={s}
+                  className="silent"
                   aria-pressed={speed === s}
                   onClick={() => setSpeed(s)}
                 >
@@ -112,7 +113,7 @@ export function BattleView({
                 </Button>
               ))}
             </div>
-            <Button onClick={skip}>
+            <Button className="silent" onClick={skip}>
               {t('Skip to result', 'Pular para o resultado')}
             </Button>
           </>
@@ -120,7 +121,7 @@ export function BattleView({
           <Button
             tone={won ? 'primary' : 'danger'}
             size="large"
-            className="w-full"
+            className="silent w-full"
             onClick={onDone}
           >
             {replay

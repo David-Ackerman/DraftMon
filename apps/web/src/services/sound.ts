@@ -1,29 +1,18 @@
-import type { ApiPokemon } from '@draftmon/content'
-
 const EFFECTS = {
-  click: 'click.wav',
+  click: 'menu-tap.wav',
   tick: 'roll-step.wav',
-  land: 'land.wav',
   reveal: 'roll-finish.wav',
   catch: 'catch-fast.mp3',
   reroll: 'roll-start.wav',
-  move: 'move.wav',
-  hit: 'hit.wav',
-  super: 'super.wav',
-  weak: 'weak.wav',
-  crit: 'crit.wav',
-  miss: 'miss.wav',
-  faint: 'faint.wav',
-  status: 'status.wav',
-  statUp: 'statUp.wav',
-  statDown: 'statDown.wav',
-  heal: 'heal.wav',
+  hit: 'battle-impact.wav',
+  faint: 'battle-knockout.wav',
   win: 'victory.mp3',
   lose: 'lose.wav',
   champion: 'champion.mp3',
 }
 
 export type SfxName = keyof typeof EFFECTS
+export type BattleCue = Extract<SfxName, 'hit' | 'faint' | 'win' | 'lose'>
 
 export interface AudioSettings {
   master: number
@@ -34,22 +23,30 @@ export interface AudioSettings {
 
 const KEY = 'draft-league-audio-v1'
 const DEFAULTS: AudioSettings = {
-  master: 0.8,
-  sfx: 0.7,
-  music: 0.24,
+  master: 0.5,
+  sfx: 0.5,
+  music: 0.5,
   muted: false,
 }
 
 const TARGET_RMS = 0.06
 const SAMPLE_PEAK = 0.2
-const CRY_DURATION = 0.8
+const MUSIC_TRIM = 0.38
+const BATTLE_MUSIC_TRIM = 0.68
+const SFX_TRIM: Partial<Record<SfxName, number>> = {
+  click: 0.55,
+  tick: 0.28,
+  reveal: 0.52,
+  reroll: 0.52,
+  hit: 0.72,
+  faint: 0.72,
+  win: 0.72,
+  lose: 0.72,
+}
 
 // Ignore silent tails when measuring volume and cap the gain by the sample's peak.
-export function normalizedGain(buffer: AudioBuffer, seconds?: number) {
-  const frames =
-    seconds === undefined
-      ? buffer.length
-      : Math.min(buffer.length, Math.ceil(seconds * buffer.sampleRate))
+export function normalizedGain(buffer: AudioBuffer) {
+  const frames = buffer.length
   const windowSize = Math.max(1, Math.round(buffer.sampleRate * 0.02))
   const channels = Array.from({ length: buffer.numberOfChannels }, (_, index) =>
     buffer.getChannelData(index),
@@ -97,6 +94,7 @@ class SoundEngine {
   private sfxBus: GainNode | null = null
   private musicBus: GainNode | null = null
   private background: HTMLAudioElement | null = null
+  private battleActive = false
   private buffers = new Map<string, Promise<Sample>>()
   private listeners = new Set<() => void>()
   private settings: AudioSettings = this.load()
@@ -168,10 +166,10 @@ class SoundEngine {
       return
     }
     if (!this.background) {
-      this.background = new Audio('/audio/draftmon-background.mp3')
+      this.background = new Audio('/audio/draftmon-league-theme.mp3')
       this.background.loop = true
       this.musicBus = ctx.createGain()
-      this.musicBus.gain.value = this.settings.music * 0.5
+      this.musicBus.gain.value = this.musicVolume()
       ctx
         .createMediaElementSource(this.background)
         .connect(this.musicBus)
@@ -182,17 +180,32 @@ class SoundEngine {
 
   private applyVolumes() {
     if (!this.ctx || !this.masterBus || !this.sfxBus) return
-    const { muted, master, sfx, music } = this.settings
+    const { muted, master, sfx } = this.settings
     const time = this.ctx.currentTime
     this.masterBus.gain.setTargetAtTime(muted ? 0 : master, time, 0.02)
     this.sfxBus.gain.setTargetAtTime(sfx, time, 0.02)
-    this.musicBus?.gain.setTargetAtTime(music * 0.5, time, 0.04)
+    this.musicBus?.gain.setTargetAtTime(this.musicVolume(), time, 0.12)
+  }
+
+  private musicVolume() {
+    return (
+      this.settings.music *
+      MUSIC_TRIM *
+      (this.battleActive ? BATTLE_MUSIC_TRIM : 1)
+    )
+  }
+
+  setBattleActive(active: boolean) {
+    this.battleActive = active
+    this.applyVolumes()
   }
 
   play(name: SfxName) {
-    const volume =
-      name === 'tick' ? 0.28 : name === 'reveal' || name === 'reroll' ? 0.52 : 1
-    this.playSample(`/audio/${EFFECTS[name]}`, 1, undefined, volume)
+    this.playSample(name)
+  }
+
+  playBattle(name: BattleCue) {
+    return this.playSample(name)
   }
 
   preload(name: SfxName) {
@@ -200,29 +213,7 @@ class SoundEngine {
       void this.loadSample(this.ctx, `/audio/${EFFECTS[name]}`).catch(() => {})
   }
 
-  move(type: string, attacking: boolean) {
-    const pitch: Record<string, number> = {
-      fire: 0.8,
-      water: 0.9,
-      electric: 1.45,
-      grass: 1.15,
-      ice: 1.25,
-      rock: 0.72,
-      ground: 0.75,
-      ghost: 0.84,
-      flying: 1.3,
-      psychic: 1.2,
-    }
-    const effect = attacking ? 'move' : 'land'
-    this.playSample(`/audio/${EFFECTS[effect]}`, pitch[type] ?? 1)
-  }
-
-  cry(pokemon: ApiPokemon) {
-    const url = pokemon.cries?.latest ?? pokemon.cries?.legacy
-    if (url) this.playSample(url, 1, CRY_DURATION)
-  }
-
-  private loadSample(ctx: AudioContext, url: string, maxDuration?: number) {
+  private loadSample(ctx: AudioContext, url: string) {
     let buffer = this.buffers.get(url)
     if (!buffer) {
       buffer = fetch(url)
@@ -233,7 +224,7 @@ class SoundEngine {
         .then((bytes) => ctx.decodeAudioData(bytes))
         .then((sample) => ({
           buffer: sample,
-          gain: normalizedGain(sample, maxDuration),
+          gain: normalizedGain(sample),
         }))
         .catch((error) => {
           this.buffers.delete(url)
@@ -244,12 +235,7 @@ class SoundEngine {
     return buffer
   }
 
-  private playSample(
-    url: string,
-    rate = 1,
-    maxDuration?: number,
-    volumeScale = 1,
-  ) {
+  private playSample(name: SfxName) {
     const ctx = this.ctx
     const bus = this.sfxBus
     if (
@@ -260,33 +246,42 @@ class SoundEngine {
       !this.settings.master
     )
       return
+    let cancelled = false
+    let stop: (() => void) | undefined
     const requestedAt = performance.now()
-    void this.loadSample(ctx, url, maxDuration)
+    void this.loadSample(ctx, `/audio/${EFFECTS[name]}`)
       .then(({ buffer, gain: normalGain }) => {
-        if (ctx.state === 'closed' || performance.now() - requestedAt > 250)
+        if (
+          cancelled ||
+          ctx.state === 'closed' ||
+          performance.now() - requestedAt > 250
+        )
           return
-        const volume = normalGain * volumeScale
+        const volume = normalGain * (SFX_TRIM[name] ?? 1)
         const source = ctx.createBufferSource()
         const gain = ctx.createGain()
         gain.gain.value = volume
         source.buffer = buffer
-        source.playbackRate.value = rate
         source.connect(gain).connect(bus)
         source.onended = () => {
+          stop = undefined
           source.disconnect()
           gain.disconnect()
         }
-        if (maxDuration !== undefined && buffer.duration / rate > maxDuration) {
-          const end = ctx.currentTime + maxDuration
-          gain.gain.setValueAtTime(volume, end - 0.08)
-          gain.gain.linearRampToValueAtTime(0, end)
-          source.start()
-          source.stop(end)
-        } else {
-          source.start()
+        stop = () => {
+          if (ctx.state === 'closed') return
+          const now = ctx.currentTime
+          gain.gain.setValueAtTime(volume, now)
+          gain.gain.linearRampToValueAtTime(0, now + 0.02)
+          source.stop(now + 0.02)
         }
+        source.start()
       })
       .catch(() => {})
+    return () => {
+      cancelled = true
+      stop?.()
+    }
   }
 
   dispose() {
