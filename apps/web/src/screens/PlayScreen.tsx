@@ -125,6 +125,7 @@ export default function PlayScreen() {
         aria-label={t('My Pokédex', 'Minha Pokédex')}
         title={t('My Pokédex', 'Minha Pokédex')}
         aria-pressed={phase === 'pokedex'}
+        data-close-header
         onClick={() => {
           if (phase === 'pokedex') {
             setPhase(profileReturn.current)

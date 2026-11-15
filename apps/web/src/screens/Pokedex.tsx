@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { Card } from '../components/ui/Card'
 import { Button } from '../components/ui/Button'
+import { DetailsDialog } from '../components/ui/DetailsDialog'
 import { useEffect, useState } from 'react'
 import type { ApiPokemon } from '@draftmon/content'
 import { gameData } from '@draftmon/content'
@@ -21,18 +22,22 @@ const total = catalog.reduce((sum, { pokemon }) => sum + pokemon.length, 0)
 function PokedexDetails({
   pokemon,
   count,
+  showTitle = true,
 }: {
   pokemon: ApiPokemon
   count: number
+  showTitle?: boolean
 }) {
   const { t } = useLanguage()
   return (
     <Card className="pokedex-details grid gap-[9px] [&_h2]:m-0 [&_h2]:text-[1.1rem]">
-      <h2>
-        {count
-          ? displayName(pokemon.name)
-          : t('Unregistered Pokémon', 'Pokémon ainda não registrado')}
-      </h2>
+      {showTitle && (
+        <h2>
+          {count
+            ? displayName(pokemon.name)
+            : t('Unregistered Pokémon', 'Pokémon ainda não registrado')}
+        </h2>
+      )}
       <p className="m-0 text-[.83rem] font-bold text-brand">
         {t(
           `Used in ${count} ${count === 1 ? 'battle' : 'battles'}`,
@@ -65,7 +70,7 @@ export function Pokedex({
   const [counts, setCounts] = useState(() => cachedUsage(owner))
   const [regionIndex, setRegionIndex] = useState(0)
   const [selected, setSelected] = useState<string | null>(null)
-  const [expanded, setExpanded] = useState<string | null>(null)
+  const [details, setDetails] = useState<string | null>(null)
 
   useEffect(() => {
     let cancelled = false
@@ -79,6 +84,8 @@ export function Pokedex({
 
   const { region, pokemon } = catalog[regionIndex]
   const preview = pokemon.find(({ key }) => key === selected) ?? pokemon[0]
+  const active = pokemon.find(({ key }) => key === details)
+  const activeCount = active ? (counts[active.key] ?? 0) : 0
   const registered = catalog.reduce(
     (sum, entry) =>
       sum + entry.pokemon.filter(({ key }) => counts[key] > 0).length,
@@ -121,7 +128,7 @@ export function Pokedex({
             onClick={() => {
               setRegionIndex(index)
               setSelected(null)
-              setExpanded(null)
+              setDetails(null)
             }}
           >
             {regionLabel(region)}{' '}
@@ -132,22 +139,15 @@ export function Pokedex({
           </Button>
         ))}
       </nav>
-      <div className="pokedex-layout grid grid-cols-[minmax(0,1fr)_minmax(220px,290px)] items-start gap-3.5 touch-toolbar:[grid-template-columns:minmax(0,1fr)]">
+      <div className="grid grid-cols-[minmax(0,1fr)_minmax(220px,290px)] items-start gap-3.5 compact-interaction:grid-cols-1">
         <ul
-          className="pokedex-grid m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(98px,1fr))] gap-2 p-0 touch-toolbar:[grid-template-columns:repeat(auto-fill,minmax(80px,1fr))]"
+          className="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(98px,1fr))] gap-2 p-0 compact-interaction:grid-cols-[repeat(auto-fill,minmax(min(88px,100%),1fr))]"
           aria-label={regionLabel(region)}
         >
           {pokemon.map(({ key, pokemon: entry }, index) => {
             const count = counts[key] ?? 0
             return (
-              <li
-                key={key}
-                className={
-                  expanded === key
-                    ? 'pokedex-entry-open touch-toolbar:[grid-column:1_/_-1]'
-                    : undefined
-                }
-              >
+              <li key={key} className="min-w-0">
                 <button
                   type="button"
                   className={`pokedex-entry grid min-h-[105px] w-full [place-content:center] justify-items-center gap-0.5 rounded-xl border border-line bg-panel p-[5px] text-ink [&_strong]:text-[.75rem] [&_strong]:[line-height:1.15] [&_strong]:[font-weight:650] [&_strong]:wrap-anywhere [&.previewed]:border-brand [&.unregistered]:bg-panel-muted [&:hover]:border-brand ${count ? 'registered' : 'unregistered'} ${preview.key === key ? 'previewed' : ''}`}
@@ -159,13 +159,14 @@ export function Pokedex({
                           `Registro ${index + 1} ainda desconhecido`,
                         )
                   }
+                  aria-haspopup="dialog"
                   onPointerEnter={(event) => {
                     if (event.pointerType !== 'touch') setSelected(key)
                   }}
                   onFocus={() => setSelected(key)}
                   onClick={() => {
                     setSelected(key)
-                    setExpanded(expanded === key ? null : key)
+                    setDetails(key)
                   }}
                 >
                   <span className="pokedex-entry-art grid h-18 w-18 place-items-center [&_>_*]:[grid-area:1_/_1]">
@@ -188,17 +189,12 @@ export function Pokedex({
                   </span>
                   {count > 0 && <strong>{displayName(entry.name)}</strong>}
                 </button>
-                {expanded === key && (
-                  <div className="pokedex-inline hidden touch-toolbar:mt-1.5 touch-toolbar:block">
-                    <PokedexDetails pokemon={entry} count={count} />
-                  </div>
-                )}
               </li>
             )
           })}
         </ul>
         <aside
-          className="pokedex-preview sticky top-3 touch-toolbar:hidden"
+          className="pokedex-preview sticky top-3 compact-interaction:hidden"
           aria-label={t('Pokémon details', 'Detalhes do Pokémon')}
         >
           <PokedexDetails
@@ -207,6 +203,22 @@ export function Pokedex({
           />
         </aside>
       </div>
+      {active && (
+        <DetailsDialog
+          title={
+            activeCount
+              ? displayName(active.pokemon.name)
+              : t('Unregistered Pokémon', 'Pokémon ainda não registrado')
+          }
+          onDismiss={() => setDetails(null)}
+        >
+          <PokedexDetails
+            pokemon={active.pokemon}
+            count={activeCount}
+            showTitle={false}
+          />
+        </DetailsDialog>
+      )}
     </section>
   )
 }

@@ -13,6 +13,7 @@ import { PublicPage } from '../../PublicPage'
 import { publicMetadata } from '../../site'
 import { regions as lore } from '../../../components/pokemon/lore'
 import { Localized } from '../../../components/ui/Localized'
+import { RegionPokemonGrid } from '../../../components/pokemon/RegionPokemonGrid'
 
 const regions = new Map(
   regionalPokedex(gameData).map((entry) => [entry.region.name, entry]),
@@ -71,13 +72,17 @@ export default async function Page({
           )}
         </div>
       </section>
-      <ul className="grid list-none grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-3 p-0">
+      <RegionPokemonGrid>
         {entry.pokemon.map(({ pokemon }) => (
           <li
             key={pokemon.name}
-            className="rounded-panel border border-line bg-panel p-3 text-center"
+            className="min-w-0 rounded-panel border border-line bg-panel text-center"
           >
-            <Link href={`/pokedex/${pokemon.name}`} className="text-brand">
+            <Link
+              href={`/pokedex/${pokemon.name}`}
+              data-pokemon={pokemon.name}
+              className="grid h-full place-content-center gap-1 rounded-panel p-2 text-sm font-semibold wrap-anywhere text-brand no-underline hover:bg-panel-muted focus-visible:outline-2 focus-visible:outline-brand"
+            >
               {spriteOf(pokemon) && (
                 <Image
                   src={spriteOf(pokemon)}
@@ -92,7 +97,7 @@ export default async function Page({
             </Link>
           </li>
         ))}
-      </ul>
+      </RegionPokemonGrid>
     </PublicPage>
   )
 }

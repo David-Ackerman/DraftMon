@@ -1,4 +1,5 @@
 import { Button } from '../ui/Button'
+import { DetailsDialog } from '../ui/DetailsDialog'
 import { cn } from '../ui/cn'
 import { useState } from 'react'
 import { gameData } from '@draftmon/content'
@@ -20,9 +21,11 @@ export function DraftList({
 }) {
   const { t } = useLanguage()
   const [preview, setPreview] = useState<string | null>(null)
-  const [expanded, setExpanded] = useState<string | null>(null)
-  const active = preview ?? roll.options[0]
+  const [details, setDetails] = useState<string | null>(null)
+  const active =
+    preview && roll.options.includes(preview) ? preview : roll.options[0]
   const pokemon = gameData.pokemonByName.get(active)!
+  const detailIndex = details ? roll.options.indexOf(details) : -1
 
   return (
     <div className="draft-results grid grid-cols-[minmax(0,1fr)_minmax(280px,.65fr)] items-start gap-4.5 compact-interaction:[grid-template-columns:minmax(0,1fr)]">
@@ -51,19 +54,35 @@ export function DraftList({
               }}
               onFocus={() => setPreview(name)}
             >
-              <Sprite
-                pokemon={entry}
-                size={44}
-                className="compact-interaction:size-9.5"
-              />
-              <div className="grid gap-[3px] wrap-anywhere">
-                <strong>{displayName(name)}</strong>
-                <div className="flex flex-wrap gap-[5px]">
-                  {typesOf(entry).map((type) => (
-                    <TypeBadge key={type} type={type} small tip={false} />
-                  ))}
-                </div>
-              </div>
+              <button
+                type="button"
+                className="silent col-span-2 grid min-w-0 cursor-pointer grid-cols-subgrid items-center rounded-md text-left focus-visible:outline-2 focus-visible:outline-brand"
+                aria-haspopup="dialog"
+                aria-label={`${t('Details for', 'Detalhes de')} ${displayName(name)}`}
+                onClick={() => setDetails(name)}
+              >
+                <Sprite
+                  pokemon={entry}
+                  size={44}
+                  className="compact-interaction:size-9.5"
+                />
+                <span className="grid gap-[3px] wrap-anywhere">
+                  <strong>
+                    {displayName(name)}{' '}
+                    <span
+                      aria-hidden="true"
+                      className="hidden text-xs text-brand compact-interaction:inline"
+                    >
+                      ⓘ
+                    </span>
+                  </strong>
+                  <span className="flex flex-wrap gap-[5px]">
+                    {typesOf(entry).map((type) => (
+                      <TypeBadge key={type} type={type} small tip={false} />
+                    ))}
+                  </span>
+                </span>
+              </button>
               <span className="grid gap-0.5 text-right text-[.78rem] whitespace-nowrap text-muted">
                 <span>
                   {t('Lv.', 'Nv.')} {PLAYER_LEVEL}
@@ -79,16 +98,6 @@ export function DraftList({
                   <strong>{baseStatTotal(entry)}</strong>
                 </span>
               </span>
-              <Button
-                className="draft-details hidden compact-interaction:[grid-column:2] compact-interaction:inline-flex compact-interaction:justify-self-start"
-                type="button"
-                aria-label={`${t('Details for', 'Detalhes de')} ${displayName(name)}`}
-                aria-expanded={expanded === name}
-                aria-controls={`draft-details-${entry.id}`}
-                onClick={() => setExpanded(expanded === name ? null : name)}
-              >
-                {t('Details', 'Detalhes')}
-              </Button>
               <Button
                 tone="primary"
                 className="draft-pick silent compact-interaction:[grid-column:3]"
@@ -116,14 +125,6 @@ export function DraftList({
                   )}
                 </div>
               )}
-              <div
-                id={`draft-details-${entry.id}`}
-                className="draft-details-inline hidden compact-interaction:[&:not(:empty)]:[grid-column:1_/_-1] compact-interaction:[&:not(:empty)]:block"
-              >
-                {expanded === name && (
-                  <CreatureCard pokemon={entry} offTheme={wildcard} />
-                )}
-              </div>
             </li>
           )
         })}
@@ -137,6 +138,22 @@ export function DraftList({
           offTheme={roll.options.indexOf(active) >= roll.matches}
         />
       </aside>
+      {details && detailIndex !== -1 && (
+        <DetailsDialog
+          title={displayName(details)}
+          onDismiss={() => setDetails(null)}
+        >
+          <CreatureCard
+            pokemon={gameData.pokemonByName.get(details)!}
+            offTheme={detailIndex >= roll.matches}
+            showName={false}
+            onPick={() => {
+              setDetails(null)
+              onPick(details)
+            }}
+          />
+        </DetailsDialog>
+      )}
     </div>
   )
 }

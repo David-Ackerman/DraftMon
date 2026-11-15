@@ -67,7 +67,7 @@ export function AudioSettings() {
   }, [open])
 
   return (
-    <div className="relative" ref={ref}>
+    <div className="audio-settings relative" ref={ref}>
       <Button
         icon
         size="custom"
@@ -81,7 +81,7 @@ export function AudioSettings() {
       {open && (
         <Card
           compact
-          className="absolute [top:calc(100%_+_8px)] right-0 z-60 grid w-65 gap-2.5 p-3.5 shadow-[0_12px_30px_#18244a30]"
+          className="audio-panel absolute [top:calc(100%_+_8px)] right-0 z-60 grid w-65 gap-2.5 p-3.5 shadow-[0_12px_30px_#18244a30]"
           role="dialog"
           aria-label={t('Sound settings', 'Configurações de som')}
         >

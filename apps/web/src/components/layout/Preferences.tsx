@@ -1,9 +1,15 @@
 'use client'
 
+import Image from 'next/image'
 import { Button } from '../ui/Button'
 import { useEffect } from 'react'
 import { setLanguage, useLanguage } from '../../services/language'
 import { setTheme, useTheme } from '../../services/theme'
+
+const languages = [
+  { id: 'en', label: 'English', flag: 'us' },
+  { id: 'pt-BR', label: 'Português (Brasil)', flag: 'br' },
+] as const
 
 export function Preferences() {
   const { language, t } = useLanguage()
@@ -14,17 +20,30 @@ export function Preferences() {
 
   return (
     <>
-      <select
-        className="max-w-35.5 rounded-lg border border-line bg-panel px-[5px] py-[7px] font-[inherit] text-[.82rem] leading-[inherit] text-ink"
+      <div
+        role="group"
         aria-label={t('Language', 'Idioma')}
-        value={language}
-        onChange={(event) =>
-          setLanguage(event.target.value === 'pt-BR' ? 'pt-BR' : 'en')
-        }
+        className="inline-flex items-center gap-1 rounded-xl border border-line bg-panel-muted p-1"
       >
-        <option value="en">English</option>
-        <option value="pt-BR">Português (Brasil)</option>
-      </select>
+        {languages.map(({ id, label, flag }) => (
+          <button
+            key={id}
+            type="button"
+            className="grid h-8 w-11 cursor-pointer place-items-center rounded-lg border border-transparent hover:border-brand focus-visible:outline-2 focus-visible:outline-brand aria-pressed:border-brand aria-pressed:bg-panel"
+            aria-label={label}
+            aria-pressed={language === id}
+            onClick={() => setLanguage(id)}
+          >
+            <Image
+              src={`/flags/${flag}.svg`}
+              width={27}
+              height={18}
+              alt=""
+              className="rounded-[2px]"
+            />
+          </button>
+        ))}
+      </div>
       <Button
         type="button"
         icon

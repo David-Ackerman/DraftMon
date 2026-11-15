@@ -19,14 +19,21 @@ import { StatBars } from './StatBars'
 import { TypeBadge } from './TypeBadge'
 import { MoveChip } from './MoveChip'
 
+export function CatalogCreatureCard({ name }: { name: string }) {
+  const pokemon = gameData.pokemonByName.get(name)
+  return pokemon ? <CreatureCard pokemon={pokemon} showName={false} /> : null
+}
+
 export function CreatureCard({
   pokemon,
   onPick,
   offTheme,
+  showName = true,
 }: {
   pokemon: ApiPokemon
   onPick?: () => void
   offTheme?: boolean
+  showName?: boolean
 }) {
   const { t, language } = useLanguage()
   const moves = chooseMoveset(pokemon, gameData)
@@ -44,7 +51,9 @@ export function CreatureCard({
     <Card
       className={cn(
         'creature-card relative flex flex-col gap-2 [&_.btn]:mt-auto [&_h3]:m-0 [&_h3]:text-[1.25rem]',
-        rarity ? cn(legendaryFrame, 'border-[3px]') : 'border-t-4 [border-top-color:var(--accent)]',
+        rarity
+          ? cn(legendaryFrame, 'border-[3px]')
+          : 'border-t-4 [border-top-color:var(--accent)]',
       )}
       style={{ ['--accent' as string]: main }}
     >
@@ -56,7 +65,7 @@ export function CreatureCard({
       <div className="card-art grid place-items-center rounded-[12px] [padding:6px] [background:radial-gradient(circle,color-mix(in_srgb,var(--accent)_25%,white)_0%,transparent_74%),#f6f8fe] dark:bg-panel-muted">
         <Sprite pokemon={pokemon} size={112} />
       </div>
-      <h3>{displayName(pokemon.name)}</h3>
+      {showName && <h3>{displayName(pokemon.name)}</h3>}
       <div className="flex flex-wrap gap-[5px]">
         {typesOf(pokemon).map((t) => (
           <TypeBadge key={t} type={t} />
@@ -86,7 +95,7 @@ export function CreatureCard({
         ))}
       </div>
       {onPick && (
-        <Button tone="primary" className="w-full" onClick={onPick}>
+        <Button tone="primary" className="silent w-full" onClick={onPick}>
           {t('Catch', 'Capturar')} {displayName(pokemon.name)}
         </Button>
       )}
