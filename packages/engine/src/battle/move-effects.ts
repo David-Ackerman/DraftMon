@@ -176,6 +176,28 @@ function damaging(effects: readonly MoveEffect[]): MoveEffect {
 const statusMove = compose(statusEffects)
 const damagingMove = damaging(damageEffects)
 const damageOnly = damaging([])
+const struggle = damaging([
+  (context) => {
+    const { current, side, active } = context
+    const user = current(side)
+    const amount = Math.min(user.hp, Math.max(1, Math.floor(user.maxHp / 4)))
+    user.hp -= amount
+    return [
+      {
+        kind: 'damage',
+        side,
+        slot: active[side],
+        hp: user.hp,
+        amount,
+        mult: 1,
+        crit: false,
+        text: `${user.name} took ${amount} recoil damage`,
+        pt: `${user.name} sofreu ${amount} de dano de recuo.`,
+      },
+      ...faintEvents(context, side),
+    ]
+  },
+])
 const damageWithStages = damaging([secondaryStages])
 type Category = {
   attack: boolean
@@ -206,6 +228,12 @@ export function resolveMoveEffects(
   side: Side,
   move: ApiMove,
 ): BattleEvent[] {
+  if (move.name === 'struggle') {
+    return struggle(
+      { ...context, side, foe: side === 0 ? 1 : 0, dealt: 0 },
+      move,
+    )
+  }
   const category = move.meta?.category.name ?? ''
   const attack = isDamaging(move)
   const extraEffects = [

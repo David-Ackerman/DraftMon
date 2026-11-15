@@ -1,39 +1,8 @@
-export const pokemon = `
-bulbasaur venusaur charmander charizard squirtle blastoise butterfree pidgeot pikachu raichu
-nidoking clefable ninetales golbat vileplume alakazam machamp tentacruel golem rapidash slowbro
-magneton gengar hypno marowak hitmonlee hitmonchan weezing rhydon starmie scyther electabuzz magmar
-pinsir tauros gyarados lapras eevee vaporeon jolteon flareon aerodactyl snorlax dragonite
-meganium typhlosion feraligatr noctowl ariados lanturn xatu ampharos azumarill sudowoodo
-politoed espeon umbreon slowking misdreavus girafarig forretress steelix granbull scizor
-heracross ursaring skarmory houndoom kingdra donphan porygon2 miltank tyranitar
-sceptile blaziken swampert ludicolo shiftry gardevoir breloom slaking exploud hariyama aggron
-manectric roselia flygon altaria zangoose seviper lunatone solrock whiscash crawdaunt
-claydol armaldo milotic castform banette dusclops absol glalie walrein salamence metagross
-torterra infernape empoleon staraptor luxray roserade rampardos bastiodon floatzel gastrodon
-drifblim lopunny mismagius honchkrow spiritomb garchomp lucario hippowdon drapion toxicroak
-abomasnow weavile magnezone rhyperior electivire magmortar togekiss leafeon glaceon gallade froslass
-serperior emboar samurott stoutland zebstrika gigalith excadrill scolipede whimsicott krookodile
-darmanitan-standard cofagrigus archeops zoroark cinccino gothitelle reuniclus vanilluxe
-sawsbuck galvantula ferrothorn chandelure haxorus beartic mienshao bisharp braviary mandibuzz hydreigon volcarona
-chesnaught delphox greninja talonflame vivillon florges gogoat pangoro aegislash-shield
-aromatisse slurpuff malamar barbaracle dragalge clawitzer heliolisk tyrantrum aurorus
-sylveon hawlucha dedenne goodra klefki trevenant avalugg noivern
-decidueye incineroar primarina toucannon vikavolt ribombee lycanroc-midday toxapex mudsdale
-araquanid lurantis salazzle bewear comfey oranguru passimian golisopod palossand turtonator
-togedemaru mimikyu-disguised drampa kommo-o
-rillaboom cinderace inteleon corviknight orbeetle drednaw coalossal flapple appletun sandaconda
-toxtricity-amped centiskorch grapploct polteageist hatterene grimmsnarl alcremie falinks
-frosmoth copperajah duraludon dragapult
-decidueye-hisui typhlosion-hisui samurott-hisui arcanine-hisui electrode-hisui zoroark-hisui
-sneasler overqwil lilligant-hisui basculegion-male kleavor ursaluna wyrdeer
-meowscarada skeledirge quaquaval lokix pawmot dachsbun arboliva garganacl armarouge ceruledge
-bellibolt kilowattrel mabosstiff grafaiai toedscruel scovillain espathra tinkaton
-bombirdier palafin-zero revavroom cyclizar glimmora greavard houndstone flamigo cetitan
-veluza dondozo tatsugiri-curly annihilape clodsire farigiraf kingambit baxcalibur
-articuno zapdos moltres mewtwo mew raikou entei suicune lugia ho-oh celebi
-regirock regice registeel latias latios jirachi cresselia heatran victini virizion
-zygarde-50 diancie silvally tapu-koko tapu-fini zacian zamazenta kubfu wo-chien chien-pao
-`.trim().split(/\s+/)
+// Additional playable forms kept for existing teams and saved replays.
+export const additionalForms = [
+  'decidueye-hisui', 'typhlosion-hisui', 'samurott-hisui', 'arcanine-hisui',
+  'electrode-hisui', 'zoroark-hisui', 'lilligant-hisui',
+]
 
 export const supportedMoves = `
 tackle scratch pound quick-attack slash body-slam strength headbutt hyper-voice hyper-fang

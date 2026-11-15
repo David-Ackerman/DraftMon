@@ -50,7 +50,7 @@ export function AppLayout({
     <div className="grid grid-cols-[auto_minmax(0,1180px)_auto] justify-center">
       {!accountPage && <SideAds />}
       <div className="min-w-0 px-4 pt-0 pb-12 [grid-area:1_/_2]">
-        <header className="topbar mb-5 flex items-center justify-between gap-3 px-0 py-3.5 [border-bottom:3px_solid_var(--red)] phone-header:flex-wrap">
+        <header className="topbar mb-5 flex flex-wrap items-center justify-between gap-3 px-0 py-3.5 [border-bottom:3px_solid_var(--red)]">
           <button
             className="logo inline-flex cursor-pointer items-center gap-[7px] border-0 bg-none p-0 text-[1.35rem] font-extrabold tracking-[-.02em] text-ink phone:flex-wrap phone:gap-1 phone:text-[.9rem] phone:[&_img]:h-6 phone:[&_img]:w-6 [&_span]:text-brand"
             onClick={onHome}
@@ -65,7 +65,7 @@ export function AppLayout({
             />
             <span>Draftmon</span>
           </button>
-          <div className="topbar-right flex items-center gap-3.5 phone:gap-2 compact-layout:flex-wrap compact-layout:justify-end phone-header:ml-auto phone-header:gap-y-1.5 compact-layout:[&_.run-progress]:[order:1]">
+          <div className="topbar-right ml-auto flex min-w-0 flex-wrap items-center justify-end gap-3.5 phone:gap-2 phone-header:gap-y-1.5 compact-layout:[&_.run-progress]:[order:1]">
             {progress}
             <Preferences />
             {profileAction}

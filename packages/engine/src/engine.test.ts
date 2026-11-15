@@ -153,6 +153,16 @@ describe('type chart', () => {
 })
 
 describe('content', () => {
+  it('includes the original 151 species in Kanto, including Ivysaur', () => {
+    const kanto = regionalPokedex(gameData).find(
+      ({ region }) => region.name === 'kanto',
+    )
+    expect(
+      kanto?.pokemon.filter(({ pokemon }) => pokemon.id <= 151),
+    ).toHaveLength(151)
+    expect(kanto?.pokemon.some(({ key }) => key === 'ivysaur')).toBe(true)
+  })
+
   it('every creature has 1-2 known types, 6 stats, a region and valid moves', () => {
     for (const p of gameData.pokemon) {
       expect(typesOf(p).every((t) => chart.has(t))).toBe(true)
@@ -161,7 +171,9 @@ describe('content', () => {
       expect(
         gameData.regionsBySpecies.get(speciesOf(p))?.length,
       ).toBeGreaterThan(0)
-      expect(chooseMoveset(p, gameData)).toHaveLength(4)
+      const moves = chooseMoveset(p, gameData)
+      expect(moves.length).toBeLessThanOrEqual(4)
+      expect(moves.some((move) => (move.power ?? 0) > 0)).toBe(true)
     }
   })
 

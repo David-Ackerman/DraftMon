@@ -35,12 +35,6 @@
     @slot;
   }
 }
-@custom-variant touch-toolbar {
-  @media (max-width: 680px), (hover: none) {
-    @slot;
-  }
-}
-
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @theme inline {
@@ -62,7 +56,7 @@
   --animate-capture-ball: capture-ball 0.88s ease-in-out both;
   --animate-capture-sprite: capture-sprite 0.48s ease-in-out both;
   --animate-dice-roll: dice-roll 0.5s linear infinite;
-  --animate-draft-foil: draft-foil 6.5s linear infinite;
+  --animate-draft-foil: draft-foil 11s linear infinite;
   --animate-land: land 0.45s ease-out;
   --animate-reel-in: reel-in 0.07s ease-out;
   --animate-shuffle: shuffle 0.5s ease-in-out infinite alternate;

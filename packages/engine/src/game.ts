@@ -21,18 +21,26 @@ export interface Roll {
   matches: number
 }
 
-/** region -> type -> pokemon names (a dual-type creature counts for both types). */
-function buildIndex(data: GameData, taken: Set<string>) {
+type DraftIndex = Map<string, Map<string, string[]>>
+const draftIndexes = new WeakMap<GameData, DraftIndex>()
+
+/** The catalog is fixed for the lifetime of a GameData instance. */
+function draftIndex(data: GameData) {
+  const cached = draftIndexes.get(data)
+  if (cached) return cached
   const index = new Map<string, Map<string, string[]>>()
   for (const p of data.pokemon) {
-    if (taken.has(p.name)) continue
     for (const region of data.regionsBySpecies.get(speciesOf(p)) ?? []) {
       const byType = index.get(region) ?? new Map<string, string[]>()
-      for (const t of typesOf(p))
-        byType.set(t, [...(byType.get(t) ?? []), p.name])
+      for (const t of typesOf(p)) {
+        const candidates = byType.get(t)
+        if (candidates) candidates.push(p.name)
+        else byType.set(t, [p.name])
+      }
       index.set(region, byType)
     }
   }
+  draftIndexes.set(data, index)
   return index
 }
 
@@ -44,19 +52,32 @@ export function rollOptions(
   prev?: Pick<Roll, 'region' | 'type'>,
 ): Roll {
   const takenSet = new Set(taken)
-  const index = buildIndex(data, takenSet)
-  const regions = [...index.keys()]
+  const index = draftIndex(data)
+  const eligibleTypes = new Map(
+    [...index]
+      .map(
+        ([region, byType]) =>
+          [
+            region,
+            [...byType]
+              .filter(([, names]) => names.some((name) => !takenSet.has(name)))
+              .map(([type]) => type),
+          ] as const,
+      )
+      .filter(([, types]) => types.length > 0),
+  )
+  const regions = [...eligibleTypes.keys()]
   if (regions.length === 0) throw new Error('No pokemon left to draft')
 
   let region: string | undefined
   let type: string | undefined
-  if (prev && mode === 'type' && index.has(prev.region)) {
+  if (prev && mode === 'type' && eligibleTypes.has(prev.region)) {
     region = prev.region
-    const types = [...index.get(region)!.keys()].filter((t) => t !== prev.type)
+    const types = eligibleTypes.get(region)!.filter((t) => t !== prev.type)
     type = types.length ? pick(rng, types) : undefined
   } else if (prev && mode === 'region') {
     const withType = regions.filter(
-      (r) => r !== prev.region && index.get(r)!.has(prev.type),
+      (r) => r !== prev.region && eligibleTypes.get(r)!.includes(prev.type),
     )
     if (withType.length) {
       region = pick(rng, withType)
@@ -66,10 +87,9 @@ export function rollOptions(
   if (!region || !type) {
     const pool = prev ? regions.filter((r) => r !== prev.region) : regions
     region = pick(rng, pool.length ? pool : regions)
-    const types = [...index.get(region)!.keys()].filter(
-      (t) => !prev || t !== prev.type,
-    )
-    type = pick(rng, types.length ? types : [...index.get(region)!.keys()])
+    const allowed = eligibleTypes.get(region)!
+    const types = allowed.filter((t) => !prev || t !== prev.type)
+    type = pick(rng, types.length ? types : allowed)
   }
 
   const options: string[] = []
@@ -84,7 +104,9 @@ export function rollOptions(
       hasRare ||= rare
     }
   }
-  fill(index.get(region)!.get(type) ?? [])
+  fill(
+    (index.get(region)!.get(type) ?? []).filter((name) => !takenSet.has(name)),
+  )
   const matches = options.length
   if (matches < OPTIONS_PER_ROLL) {
     const wildcards = data.pokemon.filter(

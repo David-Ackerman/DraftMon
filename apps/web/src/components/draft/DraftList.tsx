@@ -6,19 +6,10 @@ import { baseStatTotal, displayName, rarityOf, typesOf } from '@draftmon/engine'
 import type { Roll } from '@draftmon/engine'
 import { PLAYER_LEVEL } from '@draftmon/engine'
 import { CreatureCard } from '../pokemon/CreatureCard'
+import { legendaryFrame } from '../pokemon/legendaryFrame'
 import { Sprite } from '../pokemon/Sprite'
 import { TypeBadge } from '../pokemon/TypeBadge'
 import { useLanguage } from '../../services/language'
-
-const legendaryBorder = cn(
-  'relative border-[#a7a0bb] shadow-[0_0_12px_var(--rare-glow)]',
-  '[--rare-glow:#9474d655] [--rare-ink:#493572] [--rare-tag:#ede7fa]',
-  '[&.mythical]:[--rare-glow:#ae7adc55] [&.mythical]:[--rare-ink:#5a2a75] [&.mythical]:[--rare-tag:#f2e5ff]',
-  'before:pointer-events-none before:absolute before:-inset-px before:animate-draft-foil before:rounded-[inherit] before:p-0.5',
-  'before:[mask-composite:exclude] before:[mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]',
-  'before:[background:conic-gradient(from_var(--foil-angle),#79809d,#f9fcff_11%,#aebbd4_17%,#9674db_26%,#e3cbfc_36%,#8ebbcf_45%,#faffff_54%,#a1a8c3_63%,#b184da_75%,#f1c5e9_83%,#e4eaf5_92%,#79809d)]',
-  'motion-reduce:before:animate-none [&.mythical::before]:hue-rotate-[23deg]',
-)
 
 export function DraftList({
   roll,
@@ -49,9 +40,11 @@ export function DraftList({
               className={cn(
                 'grid grid-cols-[44px_minmax(0,1fr)_auto_auto] items-center gap-x-3 gap-y-2 rounded-xl border border-line bg-panel px-3 py-[7px]',
                 'compact-interaction:grid-cols-[38px_minmax(0,1fr)_auto] compact-interaction:gap-x-2 compact-interaction:gap-y-[5px]',
-                rarity && [legendaryBorder, rarity.toLowerCase()],
+                rarity && legendaryFrame,
                 name === active &&
-                  'border-[#527fca] bg-[#f3f7ff] dark:bg-[#344260]',
+                  (rarity
+                    ? '[--foil-surface:#f6f1ff] dark:[--foil-surface:#29253e]'
+                    : 'border-[#527fca] bg-[#f3f7ff] dark:bg-[#344260]'),
               )}
               onPointerEnter={(event) => {
                 if (event.pointerType !== 'touch') setPreview(name)
@@ -107,7 +100,7 @@ export function DraftList({
               {(rarity || wildcard) && (
                 <div className="col-span-full flex flex-wrap items-baseline gap-x-2 gap-y-1">
                   {rarity && (
-                    <span className="rounded-md bg-[var(--rare-tag)] px-2 py-[3px] text-[.72rem] font-extrabold text-[var(--rare-ink)]">
+                    <span className="rounded-md bg-[#f9edcf] px-2 py-[3px] text-[.72rem] font-extrabold text-[#65401b] dark:bg-[#453459] dark:text-[#ffe9a5]">
                       <span aria-hidden="true">✦</span>{' '}
                       {t('Legendary', 'Lendário')}
                     </span>

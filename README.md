@@ -74,11 +74,11 @@ See the [backup and restore instructions](docs/deploy.md#backup-and-restore). Th
 
 ## Catalog and assets
 
-The game ships with a local snapshot of the [PokéAPI](https://pokeapi.co/docs/v2#pokemon). It includes 332 Pokémon with stats, types, artwork, cries and supported moves. Legendary and Mythical labels come from the species endpoint. The ten draft regions come from the API's region resources and their associated Pokédexes. A species can appear in more than one region's Pokédex.
+The game ships with a local snapshot of the [PokéAPI](https://pokeapi.co/docs/v2#pokemon). It includes the default form of every listed species and seven additional Hisuian forms. Regional Pokédexes are combined across the listed games. Species absent from all regional Pokédexes are assigned to their generation's debut region. The player Pokédex counts each species once, and Pokémon with no compatible attack use Struggle.
 
 `pnpm content` regenerates the snapshot using Node.js and FFmpeg with WebP support. It reads from `.pokeapi-cache/`, writes catalog data to `packages/content/data` and reuses assets in `apps/web/public`. Run `pnpm content --refresh` to fetch fresh data and artwork. The browser serves the bundled assets locally during play.
 
-- `scripts/content.mjs` defines the selection of Pokémon, compatible moves and opponents. The 12 trainers' teams are adapted for six-on-six battles. `packages/content/data/pokedex-pt-br.json` provides locally bundled translations where PokéAPI has no Portuguese text.
+- `scripts/content.mjs` defines the additional forms, compatible moves and opponents. The 12 trainers' teams are adapted for six-on-six battles. `packages/content/data/pokedex-pt-br.json` provides locally bundled translations. Entries without a Portuguese description display their National Pokédex number.
 - Pokémon artwork and cries come from [PokéAPI Sprites](https://github.com/PokeAPI/sprites) and [PokéAPI Cries](https://github.com/PokeAPI/cries).
 - Trainer portraits come from the [Pokémon Showdown trainer archive](https://play.pokemonshowdown.com/sprites/trainers/).
 - Region art comes from the [Pokémon Center map posters](https://www.pokemoncenter.com/en-gb/product/710-97604/pokemon-region-maps-posters-9-pack) and the [Pokémon Legends: Arceus story page](https://legends.arceus.pokemon.com/en-us/story/).
@@ -88,3 +88,7 @@ The game ships with a local snapshot of the [PokéAPI](https://pokeapi.co/docs/v
 ## Battle mechanics
 
 The simulator uses level-based stats, all 18 types, dual-type effectiveness, same-type attack bonus, physical and special attacks, accuracy, critical hits, priority, stat stages, healing, drain and major status effects. Its move pool is curated for the supported mechanics. Abilities, held items and voluntary switching are outside the simulator.
+
+## License
+
+The original Draftmon source code is available under the [MIT License](LICENSE). Third-party assets, including Pokémon artwork, characters, sounds and trademarks, remain subject to their respective rights and terms. See [Catalog and assets](#catalog-and-assets) for the source credits.

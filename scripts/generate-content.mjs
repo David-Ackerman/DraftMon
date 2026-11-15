@@ -2,7 +2,7 @@ import { execFile } from 'node:child_process'
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import { promisify } from 'node:util'
-import { pokemon, supportedMoves, trainers } from './content.mjs'
+import { additionalForms, supportedMoves, trainers } from './content.mjs'
 
 const root = new URL('../', import.meta.url)
 const api = 'https://pokeapi.co/api/v2/'
@@ -88,11 +88,20 @@ const teams = trainers.map(({ portrait, team, ...trainer }) => ({
   portrait,
 }))
 
-const roster = [...new Set([...pokemon, ...teams.flatMap((trainer) => trainer.pokemon.map(({ name }) => name))])]
+const speciesIndex = await retrieve(`${api}pokemon-species/?limit=2000`, new URL('species-index.json', cache))
+if (speciesIndex.next || speciesIndex.results.length !== speciesIndex.count) throw new Error('Incomplete Pokémon species index.')
+const speciesData = await pool(speciesIndex.results, ({ name }) => resource('pokemon-species', name))
+const speciesByName = new Map(speciesData.map((entry) => [entry.name, entry]))
+const defaults = speciesData.map(({ name, varieties }) => {
+  const entry = varieties.find(({ is_default }) => is_default)
+  if (!entry) throw new Error(`Missing default Pokémon for ${name}`)
+  return entry.pokemon.name
+})
+const roster = [...new Set([...defaults, ...additionalForms, ...teams.flatMap((trainer) => trainer.pokemon.map(({ name }) => name))])]
 const pokemonResources = await pool(roster, (name) => resource('pokemon', name))
 const knownMoves = new Set(pokemonResources.flatMap((entry) => entry.moves.map(({ move }) => move.name)))
 const moveResources = await pool(
-  [...new Set(supportedMoves)].filter((name) => knownMoves.has(name)),
+  [...new Set([...supportedMoves.filter((name) => knownMoves.has(name)), 'struggle'])],
   (name) => resource('move', name),
 )
 // The simulator supports single-turn attacks and a subset of status moves.
@@ -100,6 +109,7 @@ const unsupportedMoves = new Set(['magnitude', 'rock-blast', 'phantom-force', 'y
 const supportedAilments = new Set(['none', 'burn', 'poison', 'paralysis', 'sleep', 'freeze'])
 const moves = moveResources.filter((move) => {
   const { name, meta, power, target, damage_class: damageClass, stat_changes: stats } = move
+  if (name === 'struggle') return true
   if (unsupportedMoves.has(name)) return false
   if (damageClass.name === 'status') {
     return (target.name === 'user' && (meta?.healing > 0 || stats.some(({ change }) => change > 0)))
@@ -122,11 +132,6 @@ const moves = moveResources.filter((move) => {
     })),
 }))
 const movesByName = new Map(moves.map((move) => [move.name, move]))
-const incomplete = pokemonResources.filter((entry) => {
-  const learnset = entry.moves.map(({ move }) => movesByName.get(move.name)).filter(Boolean)
-  return learnset.length < 4 || !learnset.some((move) => move.power > 0)
-})
-if (incomplete.length) throw new Error(`Missing compatible moves for ${incomplete.map(({ name }) => name).join(', ')}`)
 
 const types = (await pool(Array.from({ length: 18 }, (_, index) => index + 1), (id) => resource('type', id)))
   .map(({ name, damage_relations }) => ({
@@ -135,8 +140,6 @@ const types = (await pool(Array.from({ length: 18 }, (_, index) => index + 1), (
   }))
 
 const species = new Set(pokemonResources.map((entry) => entry.species.name))
-const speciesData = await pool([...species], (name) => resource('pokemon-species', name))
-const speciesByName = new Map(speciesData.map((entry) => [entry.name, entry]))
 const portugueseDescriptions = JSON.parse(await readFile(new URL('packages/content/data/pokedex-pt-br.json', root), 'utf8'))
 const regionIds = ['kanto', 'johto', 'hoenn', 'sinnoh', 'unova', 'kalos', 'alola', 'galar', 'hisui', 'paldea']
 const regions = await pool(regionIds, async (regionId) => {
@@ -157,6 +160,16 @@ const regions = await pool(regionIds, async (regionId) => {
     pokemon_entries: [...entries.values()],
   }
 })
+const generationRegions = ['kanto', 'johto', 'hoenn', 'sinnoh', 'unova', 'kalos', 'alola', 'galar', 'paldea']
+const generations = ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix']
+const indexedSpecies = new Set(regions.flatMap(region => region.pokemon_entries.map(entry => entry.pokemon_species.name)))
+for (const entry of speciesData) {
+  if (indexedSpecies.has(entry.name)) continue
+  const debut = generationRegions[generations.indexOf(entry.generation.name.replace('generation-', ''))]
+  const region = regions.find(({ name }) => name === debut)
+  if (!region) throw new Error(`Missing debut region for ${entry.name}`)
+  region.pokemon_entries.push({ entry_number: entry.id, pokemon_species: ref(entry) })
+}
 
 const pokemonData = await pool(pokemonResources, async (entry) => {
   const { id, name, species, types, stats, abilities, moves, sprites, cries } = entry
@@ -170,16 +183,22 @@ const pokemonData = await pool(pokemonResources, async (entry) => {
     }
   }
   descriptions['pt-BR'] ??= portugueseDescriptions[species.name]
+    ?? `Pokémon nº ${speciesByName.get(species.name).id} da Pokédex Nacional.`
   const artwork = sprites.other['official-artwork'].front_default ?? sprites.front_default
   const front = await artworkFor(artwork, id)
-  const cry = await asset(cries.latest ?? cries.legacy, `/cries/${id}.ogg`)
-  if (!front || !cry) throw new Error(`Missing artwork or cry for ${name}`)
+  const cry = await asset(cries?.latest ?? cries?.legacy, `/cries/${id}.ogg`)
+  if (!front) throw new Error(`Missing artwork for ${name}`)
+  const learnset = moves.filter(({ move }) => movesByName.has(move.name)).map(({ move }) => ref(move))
+  if (!learnset.some(({ name }) => (movesByName.get(name).power ?? 0) > 0) &&
+      !learnset.some(({ name }) => name === 'struggle')) {
+    learnset.unshift({ name: 'struggle' })
+  }
   return {
     id, name, species: { name: species.name, is_legendary, is_mythical, descriptions },
     types: types.map(({ slot, type }) => ({ slot, type: ref(type) })),
     stats: stats.map(({ base_stat, stat }) => ({ base_stat, stat: ref(stat) })),
     abilities: abilities.map(({ ability, is_hidden, slot }) => ({ ability: ability && ref(ability), is_hidden, slot })),
-    moves: moves.filter(({ move }) => movesByName.has(move.name)).map(({ move }) => ({ move: ref(move) })),
+    moves: learnset.map((move) => ({ move })),
     sprites: { front_default: front },
     cries: { latest: cry },
   }

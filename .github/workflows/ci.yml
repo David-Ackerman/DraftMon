@@ -44,7 +44,8 @@ jobs:
         run: pnpm db:migrate
         env:
           DATABASE_URL: postgres://draftmon:draftmon-ci@127.0.0.1:5432/draftmon_ci
-      - run: pnpm exec turbo run lint typecheck test build
+      - run: pnpm exec turbo run lint typecheck build
+      - run: pnpm test
       - name: Test the Postgres API
         run: pnpm --filter @draftmon/api exec vitest run src/postgres.test.ts
         env:

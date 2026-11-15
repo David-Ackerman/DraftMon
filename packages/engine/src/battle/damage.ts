@@ -42,7 +42,8 @@ export function calcDamage(
     physical ? 'defense' : 'special-defense',
     crit ? 'positive' : undefined,
   )
-  const mult = effectiveness(chart, move.type.name, target.types)
+  const struggle = move.name === 'struggle'
+  const mult = struggle ? 1 : effectiveness(chart, move.type.name, target.types)
   if (mult === 0) return { damage: 0, mult }
   let dmg =
     Math.floor(
@@ -52,7 +53,7 @@ export function calcDamage(
     ) + 2
   if (crit) dmg *= 1.5
   dmg *= opts.roll ?? 1
-  if (user.types.includes(move.type.name)) dmg *= 1.5
+  if (!struggle && user.types.includes(move.type.name)) dmg *= 1.5
   dmg *= mult
   if (physical && user.status === 'burn') dmg *= 0.5
   return { damage: Math.max(1, Math.floor(dmg)), mult }

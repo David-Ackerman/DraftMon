@@ -121,7 +121,7 @@ export default function PlayScreen() {
       <Button
         icon
         size="custom"
-        className="pokedex-toggle inline-flex h-9 w-auto items-center gap-1 rounded-lg font-[inherit] text-[.75rem] leading-[inherit] font-bold touch-toolbar:w-9 touch-toolbar:justify-center touch-toolbar:[&_span]:hidden [&[aria-pressed='true']]:border-[color:var(--red)] [&[aria-pressed='true']]:bg-panel"
+        className="pokedex-toggle inline-flex min-h-9 shrink-0 items-center justify-center gap-1.5 rounded-lg px-2.5 text-xs leading-tight font-bold whitespace-nowrap aria-pressed:border-[color:var(--red)] aria-pressed:bg-panel"
         aria-label={t('My Pokédex', 'Minha Pokédex')}
         title={t('My Pokédex', 'Minha Pokédex')}
         aria-pressed={phase === 'pokedex'}
@@ -139,6 +139,7 @@ export default function PlayScreen() {
           alt=""
           width={24}
           height={24}
+          className="shrink-0"
           unoptimized
           loading="eager"
         />

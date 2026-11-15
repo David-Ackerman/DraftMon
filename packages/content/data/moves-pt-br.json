@@ -703,6 +703,18 @@
     "name": "Hipnose",
     "effect": "Faz o alvo adormecer."
   },
+  "hyper-fang": {
+    "name": "Hiper Presa",
+    "effect": "O usuário morde o alvo com suas presas."
+  },
+  "tail-glow": {
+    "name": "Cauda Luminosa",
+    "effect": "Aumenta muito o Ataque Especial do usuário."
+  },
+  "struggle": {
+    "name": "Esforço",
+    "effect": "Golpe de último recurso que causa dano ao alvo e também fere o usuário."
+  },
   "spore": {
     "name": "Esporo",
     "effect": "Faz o alvo adormecer."

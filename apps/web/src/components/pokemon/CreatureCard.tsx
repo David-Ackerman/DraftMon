@@ -1,3 +1,5 @@
+import { cn } from '../ui/cn'
+import { legendaryFrame } from './legendaryFrame'
 import { Card } from '../ui/Card'
 import { Button } from '../ui/Button'
 import { useLanguage } from '../../services/language'
@@ -40,7 +42,10 @@ export function CreatureCard({
   const description = descriptions?.[language] ?? descriptions?.en
   return (
     <Card
-      className={`creature-card relative flex flex-col gap-2 [&_.btn]:mt-auto [&_h3]:m-0 [&_h3]:text-[1.25rem] [&.draft-rare]:relative [&.draft-rare]:border-[color:#a7a0bb] [&.draft-rare]:shadow-[0_0_12px_var(--rare-glow)] [&.draft-rare::before]:[padding:3px] [border-top:4px_solid_var(--accent)]${rarity ? `draft-rare [--rare-glow:#9474d655] [--rare-ink:#493572] [--rare-tag:#ede7fa] [&.mythical]:[--rare-glow:#ae7adc55] [&.mythical]:[--rare-ink:#5a2a75] [&.mythical]:[--rare-tag:#f2e5ff] [&.mythical::before]:[filter:hue-rotate(23deg)] [&::before]:pointer-events-none [&::before]:absolute [&::before]:[inset:-1px] [&::before]:animate-draft-foil [&::before]:rounded-[inherit] [&::before]:[mask-composite:exclude] [&::before]:[padding:2px] [&::before]:[content:''] [&::before]:[background:conic-gradient(from_var(--foil-angle),#79809d,#f9fcff_11%,#aebbd4_17%,#9674db_26%,#e3cbfc_36%,#8ebbcf_45%,#faffff_54%,#a1a8c3_63%,#b184da_75%,#f1c5e9_83%,#e4eaf5_92%,#79809d)] [&::before]:[mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] motion-reduce:[&::before]:[animation:none] ${rarity.toLowerCase()}` : ''}`}
+      className={cn(
+        'creature-card relative flex flex-col gap-2 [&_.btn]:mt-auto [&_h3]:m-0 [&_h3]:text-[1.25rem]',
+        rarity ? cn(legendaryFrame, 'border-[3px]') : 'border-t-4 [border-top-color:var(--accent)]',
+      )}
       style={{ ['--accent' as string]: main }}
     >
       {offTheme && (

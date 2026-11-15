@@ -1,0 +1,2 @@
+export const legendaryFrame =
+  'border-2 border-transparent bg-[linear-gradient(var(--foil-surface,var(--card)),var(--foil-surface,var(--card))),conic-gradient(from_var(--foil-angle),#43357a,#8760db_15%,#c5b9ff_25%,#e4b54f_36%,#fff0af_41%,#a277db_50%,#6540b5_63%,#b779d8_73%,#79c8b8_79%,#e0ce83_86%,#43357a)] [background-clip:padding-box,border-box] [background-origin:padding-box,border-box] shadow-[0_0_14px_#9474d64d] motion-safe:animate-draft-foil'

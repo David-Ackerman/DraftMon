@@ -2,6 +2,20 @@ import { expect, test } from 'vitest'
 import { resolveMoveEffects } from './move-effects'
 import { givenBattle } from './testing/battle'
 
+test('Ditto can damage a Ghost-type with Struggle and takes recoil', () => {
+  const context = givenBattle()
+    .withAttacker('ditto')
+    .withDefender('gengar')
+    .context()
+  const ditto = context.current(0)
+  expect(ditto.moves[0].name).toBe('struggle')
+  const events = resolveMoveEffects(context, 0, ditto.moves[0])
+  expect(events.slice(0, 2)).toMatchObject([
+    { kind: 'damage', side: 1, mult: 1 },
+    { kind: 'damage', side: 0, amount: Math.floor(ditto.maxHp / 4) },
+  ])
+})
+
 test('drain follows damage and heals by the amount actually dealt', () => {
   const context = givenBattle()
     .withAttacker('bulbasaur', 'giga-drain')
