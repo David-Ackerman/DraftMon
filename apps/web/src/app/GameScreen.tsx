@@ -1,13 +1,13 @@
 'use client'
 
 import dynamic from 'next/dynamic'
+import { LoadingShell } from '../components/layout/LoadingShell'
 import type { accountRoutes } from '../services/account'
 
-const loading = () => (
-  <p className="mx-auto max-w-5xl px-4" role="status">
-    Loading…
-  </p>
-)
+// The screens read browser-only state (saved runs, the session), so they
+// render on the client. Until their code arrives, the shell paints the real
+// header and footer with a spinner where the content will appear.
+const loading = () => <LoadingShell />
 const Play = dynamic(() => import('../screens/PlayScreen'), {
   ssr: false,
   loading,

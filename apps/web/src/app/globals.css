@@ -68,6 +68,9 @@
   --animate-reel-in: reel-in 0.07s ease-out;
   --animate-shuffle: shuffle 0.5s ease-in-out infinite alternate;
   --animate-wiggle: wiggle 1.6s ease-in-out infinite;
+  --animate-spinner-roll: spinner-roll 0.9s linear infinite;
+  --animate-spinner-hop: spinner-hop 0.9s ease-in-out infinite;
+  --animate-skeleton: skeleton 1.4s ease-in-out infinite;
 }
 
 :root {
@@ -429,4 +432,26 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+@keyframes spinner-roll {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner-hop {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes skeleton {
+  50% {
+    opacity: 0.45;
+  }
 }

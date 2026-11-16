@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useState } from 'react'
 import type { MouseEvent, ReactNode } from 'react'
+import { Spinner } from '../ui/Spinner'
 import { useLanguage } from '../../services/language'
 import { DetailsDialog } from '../ui/DetailsDialog'
 
@@ -14,7 +15,12 @@ const CatalogCard = dynamic(
 
 function LoadingCard() {
   const { t } = useLanguage()
-  return <p role="status">{t('Loading Pokémon…', 'Carregando Pokémon…')}</p>
+  return (
+    <Spinner
+      size="small"
+      label={t('Loading Pokémon…', 'Carregando Pokémon…')}
+    />
+  )
 }
 
 export function RegionPokemonGrid({ children }: { children: ReactNode }) {

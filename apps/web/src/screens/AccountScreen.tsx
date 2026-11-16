@@ -2,6 +2,7 @@ import { useRouter } from 'next/navigation'
 import { AppLayout } from '../components/layout/AppLayout'
 import { useAccount } from '../features/player/usePlayer'
 import { accountLink, accountRoutes } from '../services/account'
+import { Spinner } from '../components/ui/Spinner'
 import { useLanguage } from '../services/language'
 import { AccountPage } from './AccountPage'
 
@@ -23,7 +24,7 @@ export default function AccountScreen({
       onHome={() => router.push(accountLink('/'))}
     >
       {page === 'email' && !sessionReady ? (
-        <p role="status">{t('Loading…', 'Carregando…')}</p>
+        <Spinner label={t('Loading your account…', 'Carregando sua conta…')} />
       ) : (
         <AccountPage page={page} account={account} />
       )}

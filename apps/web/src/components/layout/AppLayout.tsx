@@ -54,14 +54,17 @@ export function AppLayout({
         )}
         <AudioSettings />
       </SiteHeader>
-      <main
-        ref={reportSurface}
-        className="mx-auto w-full max-w-[1180px] min-w-0 flex-1 px-4 pt-6 pb-10"
-      >
-        {children}
-      </main>
+      <div className="mx-auto flex w-full max-w-[1180px] min-w-0 flex-1 flex-col px-4 pt-6 pb-6">
+        <main ref={reportSurface} className="min-w-0 flex-1">
+          {children}
+        </main>
+        {/* Sticks to the bottom of the viewport while scrolling, but stays in
+            the content column so it never covers the footer. */}
+        <div className="sticky bottom-4 z-40 mt-6 ml-auto w-fit">
+          <BugReport game={accountPage ? null : () => reportSurface.current} />
+        </div>
+      </div>
       <SiteFooter />
-      <BugReport game={accountPage ? null : () => reportSurface.current} />
     </div>
   )
 }

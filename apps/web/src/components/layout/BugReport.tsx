@@ -31,6 +31,7 @@ export function BugReport({
 }) {
   const { t } = useLanguage()
   const heading = useId()
+  const tipId = useId()
   const dialog = useRef<HTMLDialogElement>(null)
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
@@ -134,27 +135,30 @@ export function BugReport({
 
   return (
     <>
-      <Button
-        type="button"
-        size="custom"
-        aria-label={label}
-        title={label}
-        className="report-launcher fixed right-[max(14px,env(safe-area-inset-right))] bottom-[max(14px,env(safe-area-inset-bottom))] z-70 min-h-11 rounded-[10px] px-3.5 py-[9px] [font-size:inherit] shadow-[0_4px_18px_#14254a22] max-[1080px]:w-11 max-[1080px]:rounded-full max-[1080px]:p-0 wide-pointer:right-35 extra-wide-pointer:[right:max(180px,calc((100vw_-_1792px)_/_2_+_180px))]"
-        onClick={() => {
-          setIssue(null)
-          setError('')
-          setCanOpenDraft(false)
-          dialog.current?.showModal()
-        }}
-      >
-        <span
-          className="grid size-5 place-items-center rounded-full border font-extrabold"
-          aria-hidden="true"
+      <span className="group relative inline-flex">
+        <Button
+          type="button"
+          size="custom"
+          aria-label={label}
+          aria-describedby={tipId}
+          className="report-launcher size-12 rounded-full p-0 font-display text-[1.5rem] leading-none"
+          onClick={() => {
+            setIssue(null)
+            setError('')
+            setCanOpenDraft(false)
+            dialog.current?.showModal()
+          }}
         >
-          !
+          <span aria-hidden="true">!</span>
+        </Button>
+        <span
+          id={tipId}
+          role="tooltip"
+          className="pointer-events-none absolute top-1/2 right-[calc(100%+12px)] hidden -translate-y-1/2 rounded-xl border-3 border-outline bg-panel px-3 py-1.5 text-[.85rem] font-extrabold whitespace-nowrap text-ink shadow-[3px_3px_0_var(--outline)] group-focus-within:block group-hover:block"
+        >
+          {label}
         </span>
-        <span className="max-[1080px]:hidden">{label}</span>
-      </Button>
+      </span>
       <Card
         ref={dialog}
         as="dialog"

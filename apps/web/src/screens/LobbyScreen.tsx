@@ -1,6 +1,7 @@
 import { useRouter } from 'next/navigation'
 import { AppLayout } from '../components/layout/AppLayout'
 import { usePlayer } from '../features/player/usePlayer'
+import { Spinner } from '../components/ui/Spinner'
 import { useLanguage } from '../services/language'
 import { Lobby } from './Lobby'
 
@@ -29,7 +30,7 @@ export default function LobbyScreen({ room = '' }: { room?: string }) {
           }}
         />
       ) : (
-        <p role="status">{t('Loading…', 'Carregando…')}</p>
+        <Spinner label={t('Loading the lobby…', 'Carregando o lobby…')} />
       )}
     </AppLayout>
   )
