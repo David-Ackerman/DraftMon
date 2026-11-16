@@ -1,4 +1,8 @@
 import { avatars } from '@draftmon/content'
+import {
+  DEFAULT_TOURNAMENT_PLAYERS,
+  tournamentHumanLimit,
+} from '@draftmon/contracts'
 import type { RoomBody } from '@draftmon/contracts'
 import { fail } from '../http'
 import type { Match, Room, Store, TournamentEngine } from '../models'
@@ -13,7 +17,6 @@ import {
 } from './tournament'
 
 const avatarIds = new Set(avatars.map(({ id }) => id))
-const roomLimit = 16
 const textField = (value: string | undefined, max: number) =>
   value?.trim().slice(0, max) ?? ''
 const isDue = (room: Room, now: number) =>
@@ -77,6 +80,11 @@ export function createLobbies(
         ? {
             groups: body.groups,
             bots: body.bots,
+            minimumPlayers:
+              body.minimumPlayers ??
+              (body.bots === undefined
+                ? DEFAULT_TOURNAMENT_PLAYERS
+                : undefined),
             roundMinutes: body.roundMinutes ?? DEFAULT_ROUND_MINUTES,
           }
         : undefined
@@ -121,8 +129,7 @@ export function createLobbies(
       if (room.play || room.rounds.length)
         fail(409, 'This tournament has already started.')
       if (
-        Object.keys(room.members).length + (room.settings?.bots ?? 0) >=
-        roomLimit
+        Object.keys(room.members).length >= tournamentHumanLimit(room.settings)
       )
         fail(409, 'This room is full.')
       if (Object.values(room.members).some(({ id }) => id === player.id))
@@ -141,12 +148,8 @@ export function createLobbies(
       fail(403, 'Only the host can start the tournament.')
     if (room.kind !== 'tournament' || room.play || room.rounds.length)
       fail(409, 'This tournament cannot be started.')
-    if (room.settings) startTournament(room, engine, clock(), randomHex(16))
-    else {
-      const ids = Object.values(room.members).map(({ id }) => id)
-      if (ids.length < 2) fail(409, 'At least two guests must join.')
-      room.rounds.push(makeRound(ids))
-    }
+    room.settings ??= { groups: false, roundMinutes: DEFAULT_ROUND_MINUTES }
+    startTournament(room, engine, clock(), randomHex(16))
     save(room)
     return roomView(room, player.id)
   }

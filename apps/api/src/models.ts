@@ -1,5 +1,5 @@
 import type { Roll, createTournamentEngine } from '@draftmon/engine'
-import type { RoomBody } from '@draftmon/contracts'
+import type { TournamentSettings } from '@draftmon/contracts'
 
 export type Store<T> = { read(): T; write(value: T): void }
 export type ResetToken = { hash: string; issued: number; expires: number }
@@ -55,10 +55,7 @@ export type Room = {
   members: Record<string, Participant>
   rounds: Match[][]
   champion: string | null
-  settings?: Pick<
-    Extract<RoomBody<'create'>, { kind: 'tournament' }>,
-    'groups' | 'bots' | 'roundMinutes'
-  >
+  settings?: TournamentSettings
   play?: Play
   revision?: number
 }

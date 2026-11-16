@@ -30,15 +30,19 @@ export function createTournamentEngine(gameData: GameData) {
   }
 
   function botProfiles(seed: string, count: number) {
-    return shuffle(createRng(seedFromString(seed)), gameData.trainers)
-      .slice(0, count)
-      .map((trainer) => ({
-        id: `bot-${trainer.id}`,
-        name: trainer.name,
+    if (!count || !gameData.trainers.length) return []
+    const trainers = shuffle(createRng(seedFromString(seed)), gameData.trainers)
+    return Array.from({ length: count }, (_, index) => {
+      const trainer = trainers[index % trainers.length]
+      const appearance = Math.floor(index / trainers.length) + 1
+      return {
+        id: `bot-${trainer.id}${appearance > 1 ? `:${appearance}` : ''}`,
+        name: appearance > 1 ? `${trainer.name} #${appearance}` : trainer.name,
         avatar: trainer.sprite,
         bot: true,
         team: trainer.pokemon.map(({ name }) => name),
-      }))
+      }
+    })
   }
 
   function battleTeams(

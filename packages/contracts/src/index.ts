@@ -1,5 +1,7 @@
 import { z } from 'zod'
+import { MIN_TOURNAMENT_PLAYERS, ROOM_PLAYER_LIMIT } from './tournament'
 
+export * from './tournament'
 export * from './bug-report'
 
 const username = z.string()
@@ -24,7 +26,13 @@ export const roomBodies = {
       kind: z.literal('tournament'),
       nameOfRoom: z.string(),
       groups: z.boolean(),
-      bots: z.number().int().min(0).max(8),
+      bots: z.number().int().min(0).max(8).optional(),
+      minimumPlayers: z
+        .number()
+        .int()
+        .min(MIN_TOURNAMENT_PLAYERS)
+        .max(ROOM_PLAYER_LIMIT)
+        .optional(),
       roundMinutes: z
         .union([
           z.literal(5),

@@ -5,6 +5,13 @@ import { Button } from '../components/ui/Button'
 import { useLanguage } from '../services/language'
 import { useState } from 'react'
 import type { FormEvent } from 'react'
+import {
+  DEFAULT_TOURNAMENT_PLAYERS,
+  MIN_TOURNAMENT_PLAYERS,
+  ROOM_PLAYER_LIMIT,
+  tournamentBotCount,
+  tournamentHumanLimit,
+} from '@draftmon/contracts'
 import { avatars, avatarSprite } from '../services/guest'
 import type { Guest } from '../services/guest'
 import { LoreCard } from '../components/pokemon/LoreCard'
@@ -90,7 +97,9 @@ export function Lobby({
     signedIn ? 'tournament' : 'room',
   )
   const [groups, setGroups] = useState(true)
-  const [bots, setBots] = useState(0)
+  const [minimumPlayers, setMinimumPlayers] = useState(
+    DEFAULT_TOURNAMENT_PLAYERS,
+  )
   const [roundMinutes, setRoundMinutes] = useState(10)
   const [code, setCode] = useState(invite)
   const [copyMessage, setCopyMessage] = useState('')
@@ -103,7 +112,7 @@ export function Lobby({
       nameOfRoom: name,
       kind,
       groups,
-      bots,
+      minimumPlayers,
       roundMinutes,
     })
   }
@@ -182,18 +191,31 @@ export function Lobby({
                   {t('Include a group stage', 'Incluir fase de grupos')}
                 </label>
                 <label>
-                  {t('Bot participants', 'Participantes bot')}
+                  {t('Minimum participants', 'Mínimo de participantes')}
                   <select
-                    name="bots"
-                    value={bots}
-                    onChange={(event) => setBots(Number(event.target.value))}
+                    name="minimumPlayers"
+                    value={minimumPlayers}
+                    onChange={(event) =>
+                      setMinimumPlayers(Number(event.target.value))
+                    }
                   >
-                    {Array.from({ length: 9 }, (_, count) => (
+                    {Array.from(
+                      {
+                        length: ROOM_PLAYER_LIMIT - MIN_TOURNAMENT_PLAYERS + 1,
+                      },
+                      (_, index) => index + MIN_TOURNAMENT_PLAYERS,
+                    ).map((count) => (
                       <option key={count} value={count}>
                         {count}
                       </option>
                     ))}
                   </select>
+                  <span className="font-normal text-muted">
+                    {t(
+                      'Bots fill any open spots when you start.',
+                      'Os bots completam as vagas que faltarem quando você iniciar.',
+                    )}
+                  </span>
                 </label>
                 <label>
                   {t(
@@ -258,6 +280,9 @@ export function Lobby({
     )
 
   const isHost = room.host === room.selfId
+  const waitingToStart =
+    room.kind === 'tournament' && !room.play && !room.rounds.length
+  const botCount = tournamentBotCount(room.members.length, room.settings)
   const memberName = (id: string) =>
     room.members.find((member) => member.id === id)?.name ?? id
   const copyInvite = async () => {
@@ -283,7 +308,18 @@ export function Lobby({
               : t('Guest lobby', 'Sala de convidados')}
           </HudTag>
         </div>
-        <Button onClick={onBack}>{t('Home', 'Início')}</Button>
+        <div className="flex flex-wrap gap-2">
+          <Button onClick={onBack}>{t('Home', 'Início')}</Button>
+          {waitingToStart && isHost && (
+            <Button
+              tone="primary"
+              disabled={busy}
+              onClick={() => execute(`/${room.code}/start`, {})}
+            >
+              {t('Start tournament', 'Iniciar torneio')}
+            </Button>
+          )}
+        </div>
       </Card>
       <Card className="panel-heading flex flex-wrap items-center justify-between gap-3 [&_h1]:[margin:0_0_4px] [&_h1]:text-[clamp(1.55rem,4vw,2.4rem)] [&_h1]:wrap-anywhere [&_p]:m-0">
         <div
@@ -334,7 +370,9 @@ export function Lobby({
             <Card>
               <h2>
                 {t('Trainers', 'Treinadores')}{' '}
-                <HudTag>{room.members.length}/16</HudTag>
+                <HudTag>
+                  {room.members.length}/{tournamentHumanLimit(room.settings)}
+                </HudTag>
               </h2>
               <ul className="lobby-members m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(100%,210px),1fr))] gap-[7px] p-0 [&_img]:object-contain [&_img]:[image-rendering:pixelated] [&_li]:flex [&_li]:items-center [&_li]:gap-2 [&_li]:rounded-[8px] [&_li]:bg-panel-muted [&_li]:[padding:5px_8px] [&_small]:block [&_small]:text-muted">
                 {room.members.map((member) => (
@@ -377,111 +415,98 @@ export function Lobby({
               watch={watchReplay}
             />
           )}
-          {room.settings && !room.play && (
+          {waitingToStart && (
             <Card>
               <h2>{t('Tournament rules', 'Regras do torneio')}</h2>
               <p>
-                {room.settings.groups
+                {room.settings?.groups
                   ? t(
                       'Groups followed by knockout',
                       'Fase de grupos seguida de eliminatórias',
                     )
-                  : t('Knockout only', 'Apenas eliminatórias')}{' '}
-                · {room.settings.bots} bot(s)
+                  : t('Knockout only', 'Apenas eliminatórias')}
               </p>
+              {botCount > 0 && (
+                <p className="text-muted">
+                  {t(
+                    `${botCount} ${botCount === 1 ? 'bot will join' : 'bots will join'} when the tournament starts.`,
+                    `${botCount} ${botCount === 1 ? 'bot entra' : 'bots entram'} ao iniciar o torneio.`,
+                  )}
+                </p>
+              )}
               <p className="text-muted">
                 {t(
-                  `You have ${room.settings.roundMinutes ?? 10} minutes to draft your team and the same time in each round to submit your lineup. When time runs out, the game fills in any missing choices at random.`,
-                  `Você tem ${room.settings.roundMinutes ?? 10} minutos para capturar a equipe e o mesmo tempo em cada rodada para enviar a ordem de batalha. Quando o tempo acaba, o jogo sorteia as escolhas que faltam.`,
+                  `You have ${room.settings?.roundMinutes ?? 10} minutes to draft your team and the same time in each round to submit your lineup. When time runs out, the game fills in any missing choices at random.`,
+                  `Você tem ${room.settings?.roundMinutes ?? 10} minutos para capturar a equipe e o mesmo tempo em cada rodada para enviar a ordem de batalha. Quando o tempo acaba, o jogo sorteia as escolhas que faltam.`,
                 )}
               </p>
-              {isHost && (
-                <Button
-                  tone="primary"
-                  disabled={
-                    busy || room.members.length + room.settings.bots < 2
-                  }
-                  onClick={() => execute(`/${room.code}/start`, {})}
-                >
-                  {t('Start tournament', 'Iniciar torneio')}
-                </Button>
-              )}
-            </Card>
-          )}
-          {room.kind === 'tournament' && !room.settings && (
-            <Card className="lobby-bracket">
-              <h2>{t('Tournament bracket', 'Chave do torneio')}</h2>
-              {room.champion && (
-                <HudTag as="p">
-                  {t('Champion', 'Campeão')} · {memberName(room.champion)}
-                </HudTag>
-              )}
-              {!room.rounds.length && (
-                <>
-                  <p className="text-muted">
-                    {t(
-                      'The host can generate the bracket after at least two guests join and record match results.',
-                      'O anfitrião pode gerar a chave com pelo menos dois convidados e registrar os resultados das partidas.',
-                    )}
-                  </p>
-                  {isHost && (
-                    <Button
-                      tone="primary"
-                      disabled={busy || room.members.length < 2}
-                      onClick={() => execute(`/${room.code}/start`, {})}
-                    >
-                      {t('Start tournament', 'Iniciar torneio')}
-                    </Button>
+              {!isHost && (
+                <p role="status">
+                  {t(
+                    'Waiting for the host to start.',
+                    'Aguardando o anfitrião iniciar o torneio.',
                   )}
-                </>
+                </p>
               )}
-              {room.rounds.map((round, index) => (
-                <section key={index} className="mt-3.5">
-                  <h3>
-                    {round.length === 1
-                      ? t('Final', 'Final')
-                      : `${t('Round', 'Rodada')} ${index + 1}`}
-                  </h3>
-                  {round.map((match, slot) => (
-                    <div
-                      className="tournament-match mt-1.5 flex flex-wrap items-center gap-2 rounded-lg bg-panel-muted p-2 [&_strong]:[flex:1_1_130px]"
-                      key={slot}
-                    >
-                      <strong>
-                        {memberName(match.left)}
-                        {match.right
-                          ? ` vs ${memberName(match.right)}`
-                          : t(' · Bye', ' · Avança direto')}
-                      </strong>
-                      {match.winner && (
-                        <HudTag>
-                          {memberName(match.winner)} {t('advances', 'avança')}
-                        </HudTag>
-                      )}
-                      {!match.winner &&
-                        match.right &&
-                        isHost &&
-                        [match.left, match.right].map((winner) => (
-                          <Button
-                            key={winner}
-                            disabled={busy}
-                            onClick={() =>
-                              execute(`/${room.code}/result`, {
-                                round: index,
-                                match: slot,
-                                winner,
-                              })
-                            }
-                          >
-                            {memberName(winner)} {t('wins', 'vence')}
-                          </Button>
-                        ))}
-                    </div>
-                  ))}
-                </section>
-              ))}
             </Card>
           )}
+          {room.kind === 'tournament' &&
+            !room.settings &&
+            room.rounds.length > 0 && (
+              <Card className="lobby-bracket">
+                <h2>{t('Tournament bracket', 'Chave do torneio')}</h2>
+                {room.champion && (
+                  <HudTag as="p">
+                    {t('Champion', 'Campeão')} · {memberName(room.champion)}
+                  </HudTag>
+                )}
+                {room.rounds.map((round, index) => (
+                  <section key={index} className="mt-3.5">
+                    <h3>
+                      {round.length === 1
+                        ? t('Final', 'Final')
+                        : `${t('Round', 'Rodada')} ${index + 1}`}
+                    </h3>
+                    {round.map((match, slot) => (
+                      <div
+                        className="tournament-match mt-1.5 flex flex-wrap items-center gap-2 rounded-lg bg-panel-muted p-2 [&_strong]:[flex:1_1_130px]"
+                        key={slot}
+                      >
+                        <strong>
+                          {memberName(match.left)}
+                          {match.right
+                            ? ` vs ${memberName(match.right)}`
+                            : t(' · Bye', ' · Avança direto')}
+                        </strong>
+                        {match.winner && (
+                          <HudTag>
+                            {memberName(match.winner)} {t('advances', 'avança')}
+                          </HudTag>
+                        )}
+                        {!match.winner &&
+                          match.right &&
+                          isHost &&
+                          [match.left, match.right].map((winner) => (
+                            <Button
+                              key={winner}
+                              disabled={busy}
+                              onClick={() =>
+                                execute(`/${room.code}/result`, {
+                                  round: index,
+                                  match: slot,
+                                  winner,
+                                })
+                              }
+                            >
+                              {memberName(winner)} {t('wins', 'vence')}
+                            </Button>
+                          ))}
+                      </div>
+                    ))}
+                  </section>
+                ))}
+              </Card>
+            )}
         </>
       )}
     </section>

@@ -1,4 +1,5 @@
 import { randomBytes } from 'node:crypto'
+import { tournamentBotCount } from '@draftmon/contracts'
 import type { RoomBody } from '@draftmon/contracts'
 import { fail } from '../http'
 import type {
@@ -37,9 +38,10 @@ export function startTournament(
 ) {
   if (!room.settings) fail(409, 'This tournament cannot be started.')
   const humans = Object.values(room.members)
-  if (humans.length + room.settings.bots < 2)
-    fail(409, 'At least two participants are required.')
-  const bots = engine.botProfiles(seed, room.settings.bots)
+  const bots = engine.botProfiles(
+    seed,
+    tournamentBotCount(humans.length, room.settings),
+  )
   const participants = [
     ...humans,
     ...bots.map(({ id, name, avatar, bot }) => ({ id, name, avatar, bot })),

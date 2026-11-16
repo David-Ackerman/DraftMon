@@ -1,4 +1,5 @@
 import type { Guest } from '../../services/guest'
+import type { TournamentSettings } from '@draftmon/contracts'
 import { requestApi } from '../../services/api'
 import type { TournamentState } from './models'
 
@@ -22,7 +23,7 @@ export interface Room {
   rounds: Match[][]
   champion: string | null
   selfId: string
-  settings?: { groups: boolean; bots: number; roundMinutes?: number }
+  settings?: TournamentSettings
   play?: TournamentState
 }
 

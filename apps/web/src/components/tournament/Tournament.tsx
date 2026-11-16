@@ -287,7 +287,9 @@ export function TournamentReplay({
   const { left, right, result, level } = replay
   const portrait = (player: TournamentMember) =>
     player.bot ? player.avatar : avatarSprite(player.avatar)
-  const avatarId = left.id.startsWith('bot-') ? left.id.slice(4) : left.avatar
+  const trainerId = (player: TournamentMember) =>
+    player.bot ? player.id.replace(/^bot-|:\d+$/g, '') : player.avatar
+  const avatarId = trainerId(left)
   return (
     <BattleView
       result={result}
@@ -304,7 +306,7 @@ export function TournamentReplay({
         stage: '',
         level,
         trainer: {
-          id: right.id.replace(/^bot-/, ''),
+          id: right.bot ? trainerId(right) : right.id,
           name: right.name,
           title: '',
           tier: 1,
