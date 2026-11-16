@@ -123,3 +123,69 @@ test('the host can start with any turnout and bots fill only the missing places'
     await close()
   }
 })
+
+test.each([
+  { kind: 'tournament', inviteGuest: false, bots: 3 },
+  { kind: 'room', inviteGuest: true, bots: 2 },
+])(
+  'a guest host can start a $kind without signing in',
+  async ({ kind, inviteGuest, bots }) => {
+    const { request, close } = await testServer(createApp().app)
+    try {
+      const host = { Authorization: `Bearer ${'a'.repeat(64)}` }
+      const guest = { Authorization: `Bearer ${'b'.repeat(64)}` }
+      const created = await request(
+        '/api/rooms',
+        {
+          kind,
+          nameOfRoom: 'Guest tournament',
+          avatar: 'red',
+          groups: true,
+          minimumPlayers: 4,
+        },
+        host,
+      )
+      expect(created.status).toBe(200)
+      const { code, selfId } = (await created.json()) as {
+        code: string
+        selfId: string
+      }
+      const path = `/api/rooms/${code}`
+      if (inviteGuest) {
+        expect(
+          (await request(`${path}/join`, { avatar: 'leaf' }, guest)).status,
+        ).toBe(200)
+        expect((await request(`${path}/start`, {}, guest)).status).toBe(403)
+      }
+
+      const started = await request(`${path}/start`, {}, host)
+      expect(started.status).toBe(200)
+      expect(await started.json()).toMatchObject({
+        code,
+        selfId,
+        kind: 'tournament',
+        settings: { groups: kind === 'tournament', minimumPlayers: 4 },
+        play: {
+          phase: 'draft',
+          participants: [
+            { id: selfId, ready: false },
+            ...Array.from({ length: Number(inviteGuest) }, () => ({
+              ready: false,
+            })),
+            ...Array.from({ length: bots }, () => ({ bot: true, ready: true })),
+          ],
+        },
+      })
+      if (inviteGuest) {
+        expect(
+          await (await request(path, undefined, guest)).json(),
+        ).toMatchObject({
+          code,
+          play: { phase: 'draft', self: { team: [] } },
+        })
+      }
+    } finally {
+      await close()
+    }
+  },
+)

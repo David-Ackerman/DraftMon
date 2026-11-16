@@ -50,8 +50,6 @@ const errors: Record<string, string> = {
   'The lobby could not save or load that request.':
     'O lobby não conseguiu concluir a operação.',
   'The lobby server is unavailable.': 'O servidor do lobby está indisponível.',
-  'Sign in to create a tournament.':
-    'Entre na sua conta para criar um torneio.',
   'Invalid tournament settings.': 'Configurações do torneio inválidas.',
   'At least two participants are required.':
     'São necessários pelo menos dois participantes.',
@@ -70,14 +68,12 @@ export function Lobby({
   guest,
   playerName,
   invite,
-  signedIn,
   onRoomChange,
   onBack,
 }: {
   guest: Guest
   playerName: string
   invite: string
-  signedIn: boolean
   onRoomChange: (code: string) => void
   onBack: () => void
 }) {
@@ -93,9 +89,7 @@ export function Lobby({
     watchReplay,
   } = useLobbyRoom(guest, invite, onRoomChange)
   const [name, setName] = useState('')
-  const [kind, setKind] = useState<Room['kind']>(
-    signedIn ? 'tournament' : 'room',
-  )
+  const [kind, setKind] = useState<Room['kind']>('tournament')
   const [groups, setGroups] = useState(true)
   const [minimumPlayers, setMinimumPlayers] = useState(
     DEFAULT_TOURNAMENT_PLAYERS,
@@ -164,7 +158,7 @@ export function Lobby({
                   setKind(e.target.value === 'room' ? 'room' : 'tournament')
                 }
               >
-                <option value="tournament" disabled={!signedIn}>
+                <option value="tournament">
                   {t('Friends tournament', 'Torneio entre amigos')}
                 </option>
                 <option value="room">
@@ -172,14 +166,6 @@ export function Lobby({
                 </option>
               </select>
             </label>
-            {!signedIn && (
-              <p className="text-[.82rem] text-muted">
-                {t(
-                  'Sign in to host a tournament. You can join as a guest with an invite.',
-                  'Entre na sua conta para criar um torneio. Com convite, você pode jogar como convidado.',
-                )}
-              </p>
-            )}
             {kind === 'tournament' && (
               <>
                 <label className="tournament-checkbox [&_input]:w-auto [&_input]:[accent-color:var(--blue)]">
@@ -280,9 +266,12 @@ export function Lobby({
     )
 
   const isHost = room.host === room.selfId
-  const waitingToStart =
-    room.kind === 'tournament' && !room.play && !room.rounds.length
-  const botCount = tournamentBotCount(room.members.length, room.settings)
+  const guestLobby = room.kind === 'room'
+  const waitingToStart = !room.play && !room.rounds.length
+  const settings = guestLobby
+    ? { groups: false, minimumPlayers: DEFAULT_TOURNAMENT_PLAYERS }
+    : room.settings
+  const botCount = tournamentBotCount(room.members.length, settings)
   const memberName = (id: string) =>
     room.members.find((member) => member.id === id)?.name ?? id
   const copyInvite = async () => {
@@ -415,11 +404,11 @@ export function Lobby({
               watch={watchReplay}
             />
           )}
-          {waitingToStart && (
+          {waitingToStart && (!guestLobby || isHost) && (
             <Card>
               <h2>{t('Tournament rules', 'Regras do torneio')}</h2>
               <p>
-                {room.settings?.groups
+                {settings?.groups
                   ? t(
                       'Groups followed by knockout',
                       'Fase de grupos seguida de eliminatórias',
@@ -436,8 +425,8 @@ export function Lobby({
               )}
               <p className="text-muted">
                 {t(
-                  `You have ${room.settings?.roundMinutes ?? 10} minutes to draft your team and the same time in each round to submit your lineup. When time runs out, the game fills in any missing choices at random.`,
-                  `Você tem ${room.settings?.roundMinutes ?? 10} minutos para capturar a equipe e o mesmo tempo em cada rodada para enviar a ordem de batalha. Quando o tempo acaba, o jogo sorteia as escolhas que faltam.`,
+                  `You have ${settings?.roundMinutes ?? 10} minutes to draft your team and the same time in each round to submit your lineup. When time runs out, the game fills in any missing choices at random.`,
+                  `Você tem ${settings?.roundMinutes ?? 10} minutos para capturar a equipe e o mesmo tempo em cada rodada para enviar a ordem de batalha. Quando o tempo acaba, o jogo sorteia as escolhas que faltam.`,
                 )}
               </p>
               {!isHost && (

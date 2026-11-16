@@ -20,7 +20,6 @@ export default function LobbyScreen({ room = '' }: { room?: string }) {
       {sessionReady ? (
         <Lobby
           key={`${room}:${account?.id ?? guest.id}`}
-          signedIn={Boolean(account)}
           guest={guest}
           playerName={playerName}
           invite={room}

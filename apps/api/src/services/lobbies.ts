@@ -73,8 +73,6 @@ export function createLobbies(
   function create(player: Player, body: RoomBody<'create'>) {
     const name = textField(body.nameOfRoom, 48)
     if (!name) fail(400, 'Enter a name and choose a room type.')
-    if (body.kind === 'tournament' && !player.account)
-      fail(401, 'Sign in to create a tournament.')
     const settings =
       body.kind === 'tournament'
         ? {
@@ -146,8 +144,16 @@ export function createLobbies(
     const room = joined(player, code)
     if (room.hostKey !== player.key)
       fail(403, 'Only the host can start the tournament.')
-    if (room.kind !== 'tournament' || room.play || room.rounds.length)
+    if (room.play || room.rounds.length)
       fail(409, 'This tournament cannot be started.')
+    if (room.kind === 'room') {
+      room.kind = 'tournament'
+      room.settings = {
+        groups: false,
+        minimumPlayers: DEFAULT_TOURNAMENT_PLAYERS,
+        roundMinutes: DEFAULT_ROUND_MINUTES,
+      }
+    }
     room.settings ??= { groups: false, roundMinutes: DEFAULT_ROUND_MINUTES }
     startTournament(room, engine, clock(), randomHex(16))
     save(room)
