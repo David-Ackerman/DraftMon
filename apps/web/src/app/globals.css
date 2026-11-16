@@ -54,6 +54,9 @@
   --radius-panel: var(--radius);
   --font-display: var(--font-lilita), 'Lilita One', system-ui, sans-serif;
   --font-pixel: var(--font-press-start), ui-monospace, monospace;
+  /* Nunito at 900 clogs up at label sizes; cap the two heaviest weights. */
+  --font-weight-black: 800;
+  --font-weight-extrabold: 700;
   --animate-bob: bob 2.4s ease-in-out infinite;
   --animate-capture-arrival: capture-arrival 0.32s 0.68s
     cubic-bezier(0.2, 0.7, 0.3, 1.25) both;
@@ -96,6 +99,13 @@
     sans-serif;
   font-weight: 600;
   line-height: 1.45;
+  /* Lilita One and Press Start 2P ship a single weight. Without this the
+     browser fakes bold by smearing the glyphs, which made buttons, titles
+     and pixel numbers blurry. */
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 :root[data-theme='dark'] {
@@ -151,6 +161,18 @@
   }
   p {
     margin: 0.3em 0 0.8em;
+  }
+  /* Readability tuning. These sit in the base layer, so any tracking or
+     leading utility set on an element still wins. */
+  .font-display {
+    letter-spacing: 0.015em;
+  }
+  .uppercase {
+    letter-spacing: 0.05em;
+  }
+  .font-pixel {
+    line-height: 1.5;
+    letter-spacing: 0.04em;
   }
 }
 

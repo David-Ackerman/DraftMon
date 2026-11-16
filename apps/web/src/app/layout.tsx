@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Lilita_One, Nunito, Press_Start_2P } from 'next/font/google'
 import type { ReactNode } from 'react'
+import { AutoAds } from '../components/layout/Ads'
 import { siteUrl } from './site'
 import './globals.css'
 
@@ -38,7 +39,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       suppressHydrationWarning
       className={`${nunito.variable} ${lilita.variable} ${pressStart.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <AutoAds />
+      </body>
     </html>
   )
 }

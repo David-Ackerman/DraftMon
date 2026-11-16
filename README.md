@@ -53,14 +53,11 @@ Configure the following environment variables on the Node server to enable email
 
 ## Web advertisements
 
-Draftmon uses three manual display units outside the game controls. The bottom banner sits below the game on all devices. The side units appear at widths of 1366px and above on devices with a fine pointer. Account pages are ad-free.
+Draftmon uses AdSense [Auto ads](https://support.google.com/adsense/answer/9261805). The site loads the AdSense script once on every page and reserves no ad space; Google chooses placements and formats.
 
-Create [display ad units](https://support.google.com/adsense/answer/9274025) in AdSense and set these public build-time variables before running `pnpm build`:
+Set `NEXT_PUBLIC_ADSENSE_CLIENT` to your publisher ID, including the `ca-pub-` prefix, before running `pnpm build`. Without a valid ID the script is not loaded.
 
-- `NEXT_PUBLIC_ADSENSE_CLIENT` with your publisher ID, including the `ca-pub-` prefix.
-- `NEXT_PUBLIC_ADSENSE_LEFT_SLOT`, `NEXT_PUBLIC_ADSENSE_RIGHT_SLOT` and `NEXT_PUBLIC_ADSENSE_BOTTOM_SLOT` with the corresponding numeric ad slot IDs.
-
-Use AdSense's site setup to verify the production domain and publish its `ads.txt` entry at the web root. Keep Auto ads off if you want only the three manual placements. Development mode displays placeholders and makes zero ad requests. Production skips each slot that has no configured ID.
+In AdSense, verify the production domain, publish its `ads.txt` entry at the web root, and turn on Auto ads for the site. Choose formats and exclude pages (for example `/account/*` to keep account pages ad-free) under the site's Auto ads settings. Development mode makes zero ad requests.
 
 ## In-game bug reports
 

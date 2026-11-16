@@ -3,7 +3,6 @@ import type { ReactNode } from 'react'
 import { AccountMenu } from '../account/AccountMenu'
 import type { Account } from '../../services/account'
 import { sound } from '../../services/sound'
-import { AdSlot, SideAds } from './Ads'
 import { AudioSettings } from './AudioSettings'
 import { BugReport } from './BugReport'
 import { Preferences } from './Preferences'
@@ -55,13 +54,12 @@ export function AppLayout({
         )}
         <AudioSettings />
       </SiteHeader>
-      <div className="grid flex-1 grid-cols-[auto_minmax(0,1180px)_auto] items-start justify-center">
-        {!accountPage && <SideAds />}
-        <div className="min-w-0 px-4 pt-6 pb-10 [grid-area:1_/_2]">
-          <main ref={reportSurface}>{children}</main>
-          {!accountPage && <AdSlot placement="bottom" />}
-        </div>
-      </div>
+      <main
+        ref={reportSurface}
+        className="mx-auto w-full max-w-[1180px] min-w-0 flex-1 px-4 pt-6 pb-10"
+      >
+        {children}
+      </main>
       <SiteFooter />
       <BugReport game={accountPage ? null : () => reportSurface.current} />
     </div>
