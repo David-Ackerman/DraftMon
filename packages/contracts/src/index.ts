@@ -1,5 +1,7 @@
 import { z } from 'zod'
 
+export * from './bug-report'
+
 const username = z.string()
 const password = z.string()
 const email = z.string()

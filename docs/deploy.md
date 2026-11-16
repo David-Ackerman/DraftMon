@@ -62,3 +62,7 @@ sudo systemctl enable --now draftmon-deploy.timer
 Set public build settings such as `NEXT_PUBLIC_ADSENSE_*` in `/var/lib/draftmon-deploy/web-build.env`, readable by the `draftmon` user. Application services continue to use their systemd environment files. Keep production data outside the release directory. Use backward-compatible database migrations so the prior application release can start against the current schema.
 
 Check VM progress with `sudo journalctl -u draftmon-deploy.service -n 100`. To retry the same approved revision after fixing a build or startup error, run `sudo /usr/local/sbin/draftmon-deploy --retry`.
+
+For automatic bug reports, create a fine-grained GitHub token restricted to `David-Ackerman/DraftMon` with **Issues: Read and write**. Set `DRAFTMON_GITHUB_TOKEN` in the API service's private `/etc/draftmon/api.env` file on the VM and restart `draftmon-api.service`. `PUBLIC_APP_URL` must be the site's HTTPS origin for screenshot links. The report form can also open the repository's GitHub issue form if automatic submission is unavailable.
+
+[GitHub issue API permissions](https://docs.github.com/en/rest/issues/issues#create-an-issue)

@@ -1,4 +1,8 @@
 import { randomBytes } from 'node:crypto'
+import {
+  bugReportMarkdown,
+  DRAFTMON_GITHUB_REPOSITORY,
+} from '@draftmon/contracts'
 import { mkdir, readFile, unlink, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import type { IncomingMessage } from 'node:http'
@@ -40,11 +44,10 @@ export function createBugReports(
   readRequestBody: ReadBody = readBody,
   recordIssue?: (url: string, data: Record<string, unknown>) => Promise<void>,
 ) {
-  const repository = env.DRAFTMON_GITHUB_REPOSITORY?.trim()
+  const repository =
+    env.DRAFTMON_GITHUB_REPOSITORY?.trim() || DRAFTMON_GITHUB_REPOSITORY
   const token = env.DRAFTMON_GITHUB_TOKEN?.trim()
-  const configured = Boolean(
-    repository && /^[\w.-]+\/[\w.-]+$/.test(repository) && token,
-  )
+  const configured = Boolean(/^[\w.-]+\/[\w.-]+$/.test(repository) && token)
   const appOrigin =
     env.PUBLIC_APP_URL && URL.canParse(env.PUBLIC_APP_URL)
       ? new URL(env.PUBLIC_APP_URL)
@@ -148,14 +151,7 @@ export function createBugReports(
         screenshotURL = `${screenshotOrigin}${reportPath}/screenshots/${name}`
       }
 
-      const plainText = description
-        .split(/\r?\n/)
-        .map((line) => '    ' + line)
-        .join('\n')
-      const body =
-        '## Draftmon bug report\n\n' +
-        plainText +
-        (screenshotURL ? `\n\n[View screenshot](${screenshotURL})` : '')
+      const body = bugReportMarkdown(description, screenshotURL)
       const result = await send(
         `https://api.github.com/repos/${repository}/issues`,
         {

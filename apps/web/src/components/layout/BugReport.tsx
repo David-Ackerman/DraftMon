@@ -2,12 +2,27 @@ import Image from 'next/image'
 import { Button } from '../ui/Button'
 import { Card } from '../ui/Card'
 import { useId, useRef, useState } from 'react'
+import {
+  bugReportMarkdown,
+  DRAFTMON_GITHUB_REPOSITORY,
+} from '@draftmon/contracts'
 import type { BugReportBody } from '@draftmon/contracts'
 import type { FormEvent } from 'react'
 import { useLanguage } from '../../services/language'
 import { captureGame } from '../../services/captureGame'
 import type { CapturedScreenshot } from '../../services/captureGame'
 import { requestApi } from '../../services/api'
+
+function issueDraft(title: string, description: string) {
+  const url = new URL(
+    `https://github.com/${DRAFTMON_GITHUB_REPOSITORY}/issues/new`,
+  )
+  url.searchParams.set('title', title.trim().replace(/[\r\n]+/g, ' '))
+  url.searchParams.set('body', bugReportMarkdown(description))
+  const includesDescription = url.href.length <= 8000
+  if (!includesDescription) url.searchParams.delete('body')
+  return { href: url.href, includesDescription }
+}
 
 export function BugReport({
   game,
@@ -22,10 +37,15 @@ export function BugReport({
   const [screenshot, setScreenshot] = useState<CapturedScreenshot | null>(null)
   const [busy, setBusy] = useState<'capture' | 'submit' | null>(null)
   const [error, setError] = useState('')
+  const [canOpenDraft, setCanOpenDraft] = useState(false)
   const [issue, setIssue] = useState<{ number: number; url: string } | null>(
     null,
   )
   const label = t('Report a problem', 'Relatar problema')
+  const draft =
+    canOpenDraft && title.trim() && description.trim()
+      ? issueDraft(title, description)
+      : null
 
   async function takeScreenshot() {
     const target = game?.()
@@ -50,11 +70,13 @@ export function BugReport({
     event.preventDefault()
     if (busy) return
     setError('')
+    setCanOpenDraft(false)
     setBusy('submit')
     try {
       const created = await requestApi<{ number: number; url: string }>(
         '/api/bug-reports',
         {
+          fallback: 'github_unavailable',
           body: {
             title,
             description,
@@ -77,8 +99,8 @@ export function BugReport({
           'O print é inválido ou grande demais. Tente capturar de novo ou remova o print.',
         ),
         not_configured: t(
-          'GitHub reporting is not configured on this server yet.',
-          'O envio ao GitHub ainda não foi configurado neste servidor.',
+          'Automatic submission is unavailable. You can open the issue form on GitHub.',
+          'O envio automático está indisponível. Você pode abrir o formulário de issue no GitHub.',
         ),
         screenshots_not_configured: t(
           'This server cannot share screenshots yet. Remove the screenshot to send the report.',
@@ -90,6 +112,13 @@ export function BugReport({
         ),
       }
       const code = cause instanceof Error ? cause.message : ''
+      setCanOpenDraft(
+        [
+          'not_configured',
+          'github_unavailable',
+          'screenshots_not_configured',
+        ].includes(code),
+      )
       setError(
         Object.hasOwn(errors, code)
           ? errors[code]
@@ -114,6 +143,7 @@ export function BugReport({
         onClick={() => {
           setIssue(null)
           setError('')
+          setCanOpenDraft(false)
           dialog.current?.showModal()
         }}
       >
@@ -227,6 +257,41 @@ export function BugReport({
               <p className="m-0 py-2.5 text-danger" role="alert">
                 {error}
               </p>
+            )}
+            {draft && (
+              <div className="grid gap-2 rounded-lg border border-line bg-panel-muted p-3 text-sm">
+                <a
+                  className="font-semibold text-brand"
+                  href={draft.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {t(
+                    'Open issue form on GitHub',
+                    'Abrir formulário de issue no GitHub',
+                  )}
+                </a>
+                {!draft.includesDescription && (
+                  <p className="m-0 text-muted">
+                    {t(
+                      'Copy the description above and paste it into GitHub.',
+                      'Copie a descrição acima e cole no GitHub.',
+                    )}
+                  </p>
+                )}
+                {screenshot && (
+                  <a
+                    className="text-brand"
+                    href={screenshot.src}
+                    download="draftmon-problema.jpg"
+                  >
+                    {t(
+                      'Download screenshot to attach on GitHub',
+                      'Baixar print para anexar no GitHub',
+                    )}
+                  </a>
+                )}
+              </div>
             )}
             <Button tone="primary" disabled={busy !== null}>
               {busy === 'submit'
