@@ -1,5 +1,6 @@
 import { Card } from '../ui/Card'
-import { Button } from '../ui/Button'
+import { cn } from '../ui/cn'
+import { headerIcon } from '../ui/headerControl'
 import { useLanguage } from '../../services/language'
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
 import type { AudioSettings as Settings } from '../../services/sound'
@@ -68,20 +69,23 @@ export function AudioSettings() {
 
   return (
     <div className="audio-settings relative" ref={ref}>
-      <Button
-        icon
-        size="custom"
-        className={`audio-toggle grid size-9.5 place-items-center rounded-[10px] text-[1rem] [&.muted]:text-muted ${settings.muted ? 'text-muted' : ''}`}
+      <button
+        type="button"
+        className={cn(
+          headerIcon,
+          'audio-toggle',
+          settings.muted && 'text-muted',
+        )}
         aria-label={t('Sound settings', 'Configurações de som')}
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}
       >
         <SpeakerIcon muted={settings.muted} level={settings.master} />
-      </Button>
+      </button>
       {open && (
         <Card
           compact
-          className="audio-panel absolute [top:calc(100%_+_8px)] right-0 z-60 grid w-65 gap-2.5 p-3.5 shadow-[0_12px_30px_#18244a30]"
+          className="audio-panel absolute [top:calc(100%_+_8px)] right-0 z-60 grid w-65 gap-2.5 p-3.5"
           role="dialog"
           aria-label={t('Sound settings', 'Configurações de som')}
         >

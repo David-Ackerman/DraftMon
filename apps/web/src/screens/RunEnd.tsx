@@ -43,7 +43,7 @@ export function RunEnd({
   return (
     <div className="run-end mx-auto my-6 grid max-w-240 gap-4 [&_h1]:[margin:8px_0] [&_h1]:text-[5rem]">
       <Card className="text-center">
-        <div className="text-[.72rem] font-semibold tracking-[.12em] text-muted uppercase">
+        <div className="text-[.72rem] font-black tracking-[.1em] text-muted uppercase">
           {run.mode === 'daily'
             ? t('Daily challenge', 'Desafio diário')
             : t('Run complete', 'Campanha encerrada')}{' '}
@@ -89,10 +89,10 @@ export function RunEnd({
               return (
                 <li
                   key={m.trainerId}
-                  className={`match-row flex items-center gap-2.5 rounded-[10px] bg-panel-muted px-2.5 py-2 [border-left:4px_solid_var(--good)] [&_img]:rounded-full [&.lost]:[border-left-color:var(--bad)] ${m.won ? 'won' : 'lost'}`}
+                  className={`match-row flex items-center gap-2.5 rounded-xl border-2 border-outline bg-panel-muted px-2.5 py-2 [border-left:4px_solid_var(--good)] [&_img]:rounded-full [&.lost]:[border-left-color:var(--bad)] ${m.won ? 'won' : 'lost'}`}
                 >
                   <span
-                    className={`result-tag grid h-6.5 w-6.5 [flex-shrink:0] place-items-center rounded-md text-[.8rem] font-extrabold dark:text-accent-ink [&.lost]:bg-danger [&.lost]:text-white [&.won]:bg-success [&.won]:text-white ${m.won ? 'won' : 'lost'}`}
+                    className={`result-tag grid h-7 w-7 [flex-shrink:0] place-items-center rounded-lg border-2 border-outline font-pixel text-[.6rem] dark:text-accent-ink [&.lost]:bg-danger [&.lost]:text-white [&.won]:bg-success [&.won]:text-white ${m.won ? 'won' : 'lost'}`}
                   >
                     {m.won ? t('W', 'V') : t('L', 'D')}
                   </span>
@@ -111,7 +111,7 @@ export function RunEnd({
                     />
                   </LoreCard>
                   <div className="grid min-w-0 gap-[1px]">
-                    <div className="text-[.72rem] font-semibold tracking-[.12em] text-muted uppercase">
+                    <div className="text-[.72rem] font-black tracking-[.1em] text-muted uppercase">
                       {stageLabel(m.stage)}
                     </div>
                     <b>
@@ -140,7 +140,7 @@ export function RunEnd({
 
         <Card as="section">
           <h3>{t('Your team', 'Sua equipe')}</h3>
-          <ul className="team-stats m-0 grid list-none gap-1.5 p-0 [&_b]:[flex:1] [&_li]:flex [&_li]:flex-wrap [&_li]:items-center [&_li]:gap-2 [&_li]:rounded-[10px] [&_li]:bg-panel-muted [&_li]:[padding:4px_10px_4px_4px] [&_li.is-mvp]:[outline:2px_solid_var(--primary)]">
+          <ul className="team-stats m-0 grid list-none gap-1.5 p-0 [&_b]:[flex:1] [&_li]:flex [&_li]:flex-wrap [&_li]:items-center [&_li]:gap-2 [&_li]:rounded-xl [&_li]:border-2 [&_li]:border-outline [&_li]:bg-panel-muted [&_li]:[padding:4px_10px_4px_4px] [&_li.is-mvp]:[outline:2px_solid_var(--primary)]">
             {totals.map((member) => {
               const p = gameData.pokemonByName.get(member.name)!
               const isMvp = runMvp?.[0] === member.name

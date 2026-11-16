@@ -192,7 +192,7 @@ export function BugReport({
           </p>
         ) : (
           <form
-            className="lobby-form grid content-start gap-3 [&_.tournament-checkbox]:flex [&_.tournament-checkbox]:items-center [&_.tournament-checkbox]:gap-[7px] [&_input]:w-full [&_input]:rounded-[8px] [&_input]:bg-panel [&_input]:[padding:9px] [&_input]:text-ink [&_input]:[border:1px_solid_var(--line)] [&_input]:[font:inherit] [&_label]:grid [&_label]:gap-[3px] [&_label]:text-[.82rem] [&_label]:font-bold [&_select]:w-full [&_select]:rounded-[8px] [&_select]:bg-panel [&_select]:[padding:9px] [&_select]:text-ink [&_select]:[border:1px_solid_var(--line)] [&_select]:[font:inherit]"
+            className="lobby-form grid content-start gap-3 [&_.tournament-checkbox]:flex [&_.tournament-checkbox]:items-center [&_.tournament-checkbox]:gap-[7px] [&_input]:min-h-12 [&_input]:w-full [&_input]:rounded-xl [&_input]:bg-panel-muted [&_input]:[padding:0_14px] [&_input]:[font-family:inherit] [&_input]:font-extrabold [&_input]:text-ink [&_input]:[border:3px_solid_var(--outline)] [&_label]:grid [&_label]:gap-1.5 [&_label]:text-[.85rem] [&_label]:font-black [&_select]:min-h-12 [&_select]:w-full [&_select]:rounded-xl [&_select]:bg-panel-muted [&_select]:[padding:0_10px] [&_select]:[font-family:inherit] [&_select]:font-extrabold [&_select]:text-ink [&_select]:[border:3px_solid_var(--outline)]"
             onSubmit={submit}
           >
             <label>
@@ -207,7 +207,7 @@ export function BugReport({
             <label>
               {t('Description', 'Descrição')}
               <textarea
-                className="w-full resize-y rounded-lg border border-line bg-panel p-[9px] text-ink [font:inherit]"
+                className="w-full resize-y rounded-lg border-2 border-outline bg-panel p-[9px] text-ink [font:inherit]"
                 required
                 maxLength={4000}
                 rows={5}
@@ -239,7 +239,7 @@ export function BugReport({
             )}
             {screenshot && (
               <Image
-                className="block h-auto max-h-55 w-full rounded-lg border border-line object-contain"
+                className="block h-auto max-h-55 w-full rounded-lg border-2 border-outline object-contain"
                 src={screenshot.src}
                 width={screenshot.width}
                 height={screenshot.height}
@@ -259,7 +259,7 @@ export function BugReport({
               </p>
             )}
             {draft && (
-              <div className="grid gap-2 rounded-lg border border-line bg-panel-muted p-3 text-sm">
+              <div className="grid gap-2 rounded-lg border-2 border-outline bg-panel-muted p-3 text-sm">
                 <a
                   className="font-semibold text-brand"
                   href={draft.href}

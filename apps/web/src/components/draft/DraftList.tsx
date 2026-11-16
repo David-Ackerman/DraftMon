@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { Button } from '../ui/Button'
 import { DetailsDialog } from '../ui/DetailsDialog'
 import { cn } from '../ui/cn'
@@ -41,13 +42,13 @@ export function DraftList({
             <li
               key={name}
               className={cn(
-                'grid grid-cols-[44px_minmax(0,1fr)_auto_auto] items-center gap-x-3 gap-y-2 rounded-xl border border-line bg-panel px-3 py-[7px]',
-                'compact-interaction:grid-cols-[38px_minmax(0,1fr)_auto] compact-interaction:gap-x-2 compact-interaction:gap-y-[5px]',
+                'grid grid-cols-[48px_minmax(0,1fr)_auto_auto] items-center gap-x-3 gap-y-2 rounded-2xl border-2 border-outline bg-panel px-3 py-2 shadow-[3px_3px_0_var(--outline)]',
+                'compact-interaction:grid-cols-[40px_minmax(0,1fr)_auto] compact-interaction:gap-x-2 compact-interaction:gap-y-[5px]',
                 rarity && legendaryFrame,
                 name === active &&
                   (rarity
                     ? '[--foil-surface:#f6f1ff] dark:[--foil-surface:#29253e]'
-                    : 'border-[#527fca] bg-[#f3f7ff] dark:bg-[#344260]'),
+                    : 'border-3 border-[#ffcb05] bg-[#fff8d6] dark:bg-[#3a3a4a]'),
               )}
               onPointerEnter={(event) => {
                 if (event.pointerType !== 'touch') setPreview(name)
@@ -61,13 +62,15 @@ export function DraftList({
                 aria-label={`${t('Details for', 'Detalhes de')} ${displayName(name)}`}
                 onClick={() => setDetails(name)}
               >
-                <Sprite
-                  pokemon={entry}
-                  size={44}
-                  className="compact-interaction:size-9.5"
-                />
+                <span className="grid size-12 place-items-center rounded-xl bg-panel-muted compact-interaction:size-10">
+                  <Sprite
+                    pokemon={entry}
+                    size={44}
+                    className="compact-interaction:size-9"
+                  />
+                </span>
                 <span className="grid gap-[3px] wrap-anywhere">
-                  <strong>
+                  <strong className="font-black">
                     {displayName(name)}{' '}
                     <span
                       aria-hidden="true"
@@ -83,9 +86,10 @@ export function DraftList({
                   </span>
                 </span>
               </button>
-              <span className="grid gap-0.5 text-right text-[.78rem] whitespace-nowrap text-muted">
-                <span>
-                  {t('Lv.', 'Nv.')} {PLAYER_LEVEL}
+              <span className="grid gap-1 text-right text-[.78rem] font-bold whitespace-nowrap text-muted">
+                <span className="font-pixel text-[.58rem]">
+                  {t('Lv', 'Nv')}
+                  {PLAYER_LEVEL}
                 </span>
                 <span
                   className="draft-overall [&_strong]:text-ink [&_strong]:[font-variant-numeric:tabular-nums]"
@@ -109,13 +113,18 @@ export function DraftList({
               {(rarity || wildcard) && (
                 <div className="col-span-full flex flex-wrap items-baseline gap-x-2 gap-y-1">
                   {rarity && (
-                    <span className="rounded-md bg-[#f9edcf] px-2 py-[3px] text-[.72rem] font-extrabold text-[#65401b] dark:bg-[#453459] dark:text-[#ffe9a5]">
-                      <span aria-hidden="true">✦</span>{' '}
+                    <span className="inline-flex items-center gap-1.5 rounded-full border-2 border-outline bg-[#f1e9ff] px-2.5 py-0.5 text-[.72rem] font-black text-[#43357a] uppercase dark:bg-[#2c2550] dark:text-[#e2d7ff]">
+                      <Image
+                        src="/masterball.svg"
+                        width={16}
+                        height={16}
+                        alt=""
+                      />
                       {t('Legendary', 'Lendário')}
                     </span>
                   )}
                   {wildcard && (
-                    <span className="rounded bg-panel-muted px-2 py-[3px] text-[.7rem] text-muted [border-left:2px_solid_#7488ae]">
+                    <span className="rounded-full border-2 border-line bg-panel-muted px-2.5 py-0.5 text-[.7rem] font-bold text-muted">
                       <strong>{t('Wildcard', 'Coringa')}</strong> ·{' '}
                       {t(
                         'A Normal-type Pokémon filling an open slot',

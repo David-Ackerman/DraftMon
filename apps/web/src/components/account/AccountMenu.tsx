@@ -1,4 +1,6 @@
 import { Button } from '../ui/Button'
+import { cn } from '../ui/cn'
+import { headerControl } from '../ui/headerControl'
 import { Card } from '../ui/Card'
 import { useEffect, useState } from 'react'
 import type { FormEvent } from 'react'
@@ -62,14 +64,25 @@ export function AccountMenu({
   }
 
   return (
-    <div className="account-menu relative [&_>_.btn]:block [&_>_.btn]:max-w-37.5 [&_>_.btn]:overflow-hidden [&_>_.btn]:text-ellipsis [&_>_.btn]:whitespace-nowrap phone-header:[&_>_.btn]:max-w-[115px]">
-      <Button type="button" aria-expanded={open} onClick={() => setOpen(!open)}>
-        {account?.username ?? t('Sign in', 'Entrar')}
-      </Button>
+    <div className="account-menu relative">
+      <button
+        type="button"
+        className={cn(
+          headerControl,
+          'max-w-40 px-3.5 phone-header:max-w-[120px]',
+          !account && 'bg-accent text-accent-ink',
+        )}
+        aria-expanded={open}
+        onClick={() => setOpen(!open)}
+      >
+        <span className="truncate">
+          {account?.username ?? t('Sign in', 'Entrar')}
+        </span>
+      </button>
       {open && (
         <Card
           as="form"
-          className="account-panel lobby-form absolute [top:calc(100%_+_8px)] right-0 z-90 grid [width:min(290px,calc(100vw_-_32px))] content-start gap-3 [&_.tournament-checkbox]:flex [&_.tournament-checkbox]:items-center [&_.tournament-checkbox]:gap-[7px] [&_a]:text-ink [&_a]:[text-underline-offset:3px] [&_input]:w-full [&_input]:rounded-[8px] [&_input]:bg-panel [&_input]:[padding:9px] [&_input]:text-ink [&_input]:[border:1px_solid_var(--line)] [&_input]:[font:inherit] [&_label]:grid [&_label]:gap-[3px] [&_label]:text-[.82rem] [&_label]:font-bold [&_select]:w-full [&_select]:rounded-[8px] [&_select]:bg-panel [&_select]:[padding:9px] [&_select]:text-ink [&_select]:[border:1px_solid_var(--line)] [&_select]:[font:inherit]"
+          className="account-panel lobby-form absolute [top:calc(100%_+_8px)] right-0 z-90 grid [width:min(290px,calc(100vw_-_32px))] content-start gap-3 [&_.tournament-checkbox]:flex [&_.tournament-checkbox]:items-center [&_.tournament-checkbox]:gap-[7px] [&_a]:text-ink [&_a]:[text-underline-offset:3px] [&_input]:min-h-12 [&_input]:w-full [&_input]:rounded-xl [&_input]:bg-panel-muted [&_input]:[padding:0_14px] [&_input]:[font-family:inherit] [&_input]:font-extrabold [&_input]:text-ink [&_input]:[border:3px_solid_var(--outline)] [&_label]:grid [&_label]:gap-1.5 [&_label]:text-[.85rem] [&_label]:font-black [&_select]:min-h-12 [&_select]:w-full [&_select]:rounded-xl [&_select]:bg-panel-muted [&_select]:[padding:0_10px] [&_select]:[font-family:inherit] [&_select]:font-extrabold [&_select]:text-ink [&_select]:[border:3px_solid_var(--outline)]"
           onSubmit={submit}
         >
           <h2>

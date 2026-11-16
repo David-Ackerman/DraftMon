@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { HudTag } from '../ui/HudTag'
 import { Button } from '../ui/Button'
 import { Card } from '../ui/Card'
 import { useEffect, useMemo, useRef, useState } from 'react'
@@ -8,11 +7,11 @@ import { displayName, regionLabel } from '@draftmon/engine'
 import type { ApiPokemon } from '@draftmon/content'
 import type { RerollMode, Roll } from '@draftmon/engine'
 import { TEAM_SIZE } from '@draftmon/engine'
-import { Sprite } from '../pokemon/Sprite'
 import { TypeBadge } from '../pokemon/TypeBadge'
 import { LoreCard } from '../pokemon/LoreCard'
 import { regions } from '../pokemon/lore'
 import { CaptureDialog } from './CaptureDialog'
+import { PartySlots } from '../pokemon/PartySlots'
 import { DraftList } from './DraftList'
 import { Dice, Reel } from './RollReel'
 import { sound } from '../../services/sound'
@@ -86,28 +85,37 @@ export function Draft({
 
   return (
     <div className="draft">
-      <div className="mx-0 mt-2 mb-4.5 flex flex-wrap gap-2">
-        {Array.from({ length: TEAM_SIZE }, (_, i) => {
-          const p = run.team[i]
-            ? gameData.pokemonByName.get(run.team[i])
-            : undefined
-          return (
-            <div
-              key={i}
-              className={`slot grid h-16 w-16 place-items-center rounded-xl border-2 border-dashed border-line font-bold text-muted [&.filled]:[border-style:solid] [&.filled]:bg-panel [&.next]:[border-style:dashed] [&.next]:border-accent [&.next]:text-brand ${p ? 'filled' : ''} ${i === run.team.length ? 'next' : ''}`}
-              title={p ? displayName(p.name) : t('Empty', 'Vazio')}
-            >
-              {p ? <Sprite pokemon={p} size={52} /> : <span>{i + 1}</span>}
-            </div>
-          )
-        })}
-      </div>
+      <Card
+        as="section"
+        className="mb-5 flex flex-wrap items-center gap-x-5 gap-y-3 py-3.5"
+        aria-label={t('Your party', 'Sua equipe')}
+      >
+        <div className="grid gap-0.5">
+          <span className="font-display text-[1.35rem] leading-none">
+            {t('Your party', 'Sua equipe')}
+          </span>
+          <span className="font-pixel text-[.62rem] text-muted">
+            {run.team.length}/{TEAM_SIZE}
+          </span>
+        </div>
+        <PartySlots
+          team={run.team}
+          markNext
+          size="small"
+          label={t('Your party', 'Sua equipe')}
+          className="w-full max-w-[420px] min-w-[260px] flex-1"
+        />
+      </Card>
 
-      <div className="roll-header mb-4 flex flex-wrap items-end justify-between gap-4 narrow-layout:items-start [&_.type-badge]:[padding:4px_14px] [&_.type-badge]:text-[.9rem] [&_h2]:mt-1 [&_h2]:flex [&_h2]:items-center [&_h2]:gap-2 [&_h2]:text-[1.7rem]">
-        <div className="roll-title [&_.reel:not(.spinning)]:overflow-visible">
-          <HudTag as="div">
+      <Card
+        as="section"
+        className="roll-header mb-5 flex flex-wrap items-end justify-between gap-4 narrow-layout:items-start [&_.type-badge]:[padding:4px_14px] [&_.type-badge]:text-[.9rem]"
+      >
+        <div className="roll-title grid gap-2 [&_.reel:not(.spinning)]:overflow-visible">
+          <span className="inline-flex items-center gap-2 justify-self-start rounded-full border-2 border-outline bg-accent px-3 py-1 text-[.8rem] font-black text-accent-ink uppercase">
+            <Image src="/pokeball.svg" width={18} height={18} alt="" />
             {t('Catch', 'Captura')} {run.team.length + 1}/{TEAM_SIZE}
-          </HudTag>
+          </span>
           <div className="flex min-h-11 flex-wrap items-center gap-2.5">
             <Reel
               items={regionNames}
@@ -122,7 +130,7 @@ export function Draft({
                 const name = reg ? regionLabel(reg) : displayName(r)
                 const image = `/regions/${r}.webp`
                 const tile = (
-                  <span className="region-reel inline-flex min-w-51.5 items-center gap-[9px] rounded-[10px] border border-line bg-panel p-1 [&_img]:h-13.5 [&_img]:w-25 [&_img]:rounded-[6px] [&_img]:[object-fit:cover] [&_strong]:text-[1.03rem]">
+                  <span className="region-reel inline-flex min-w-51.5 items-center gap-2.5 rounded-xl border-3 border-outline bg-panel-muted p-1 pr-3 shadow-[0_3px_0_var(--outline)] [&_img]:h-13.5 [&_img]:w-25 [&_img]:rounded-lg [&_img]:[object-fit:cover] [&_strong]:font-display [&_strong]:text-[1.2rem] [&_strong]:font-normal">
                     <Image
                       src={image}
                       alt=""
@@ -160,7 +168,7 @@ export function Draft({
             />
           </div>
           {stage === 'ready' && (
-            <p className="text-muted">
+            <p className="m-0 font-bold text-muted">
               {t(
                 'Roll to draw a region and a type.',
                 'Sorteie uma região e um tipo.',
@@ -168,15 +176,16 @@ export function Draft({
             </p>
           )}
         </div>
-        <div className="reroll-box text-right narrow-layout:text-left">
-          <HudTag as="div" muted>
-            {t(
-              `${run.rerollsLeft} rerolls left`,
-              `Tentativas restantes: ${run.rerollsLeft}`,
-            )}
-          </HudTag>
+        <div className="reroll-box grid justify-items-end gap-2 narrow-layout:justify-items-start">
+          <span className="inline-flex items-center gap-2 rounded-xl bg-[#14204a] px-3 py-1.5 text-[.7rem] font-black text-[#dfe6fb] uppercase shadow-[inset_0_0_0_2px_#ffcb05]">
+            {t('Rerolls', 'Tentativas')}
+            <span className="font-pixel text-[.85rem] text-[#ffcb05]">
+              {run.rerollsLeft}
+            </span>
+          </span>
           <div className="flex flex-wrap gap-2">
             <Button
+              tone="secondary"
               className="silent"
               disabled={!canReroll}
               onClick={() => reroll('type')}
@@ -188,6 +197,7 @@ export function Draft({
               ↻ {t('Type', 'Tipo')}
             </Button>
             <Button
+              tone="secondary"
               className="silent"
               disabled={!canReroll}
               onClick={() => reroll('region')}
@@ -199,6 +209,7 @@ export function Draft({
               ↻ {t('Region', 'Região')}
             </Button>
             <Button
+              tone="secondary"
               className="silent"
               disabled={!canReroll}
               onClick={() => reroll('both')}
@@ -211,10 +222,10 @@ export function Draft({
             </Button>
           </div>
         </div>
-      </div>
+      </Card>
 
       {stage !== 'shown' ? (
-        <Card className="card-back grid min-h-105 place-content-center justify-items-center gap-5 [background:repeating-linear-gradient(45deg,#e4edff_0_12px,#fff_12px_24px)] [border:2px_solid_var(--line)] dark:[background:repeating-linear-gradient(45deg,var(--card2)_0_12px,var(--card)_12px_24px)] narrow-layout:min-h-47.5 narrow-layout:gap-3.5">
+        <Card className="card-back grid min-h-105 place-content-center justify-items-center gap-5 bg-[#dff3d2] bg-[url('/pokeball-pattern.svg')] bg-size-[200px] dark:bg-[#1f3a2c] narrow-layout:min-h-47.5 narrow-layout:gap-3.5">
           <Image
             className={`roll-art narrow-layout:h-16 narrow-layout:w-16 [&.shuffling]:animate-shuffle motion-reduce:[&.shuffling]:[animation:none]! ${stage === 'spinning' ? 'shuffling' : ''}`}
             src="/pokeball.svg"
@@ -228,7 +239,7 @@ export function Draft({
             <Button
               tone="primary"
               size="custom"
-              className="roll-btn silent gap-3 rounded-2xl px-8.5 py-4 text-[1.5rem] shadow-[0_12px_30px_#18244a38,0_0_0_6px_#ffcb0533] narrow-layout:[padding:14px_26px] narrow-layout:text-[1.25rem] [&:not(.rolling-label)_.dice]:animate-wiggle"
+              className="roll-btn silent gap-3 rounded-2xl px-9 py-4 text-[1.7rem] shadow-[0_6px_0_var(--outline)] narrow-layout:[padding:14px_26px] narrow-layout:text-[1.3rem] [&:not(.rolling-label)_.dice]:animate-wiggle"
               autoFocus
               onClick={() => {
                 sound.preload('catch')
@@ -243,7 +254,7 @@ export function Draft({
           )}
           {stage === 'spinning' && (
             <div
-              className="roll-btn rolling-label inline-flex items-center gap-3 rounded-2xl border border-line bg-panel-muted px-8.5 py-4 text-[1.5rem] font-bold text-ink shadow-[0_12px_30px_#18244a38,0_0_0_6px_#ffcb0533] narrow-layout:[padding:14px_26px] narrow-layout:text-[1.25rem] [&:not(.rolling-label)_.dice]:animate-wiggle"
+              className="roll-btn rolling-label inline-flex items-center gap-3 rounded-2xl border-3 border-outline bg-panel px-9 py-4 font-display text-[1.7rem] text-ink shadow-[0_6px_0_var(--outline)] narrow-layout:[padding:14px_26px] narrow-layout:text-[1.3rem] [&:not(.rolling-label)_.dice]:animate-wiggle"
               aria-live="polite"
             >
               <Dice rolling /> {t('Rolling…', 'Sorteando…')}

@@ -66,7 +66,7 @@ export function Prep({
           return (
             <div
               key={m.trainer.id}
-              className={`bracket-step flex min-w-30 flex-1 items-center gap-2 rounded-xl border border-line bg-panel px-2.5 py-2 [&_img]:rounded-full [&.current]:border-accent [&.current]:shadow-[0_0_0_3px_#ffcb0522] [&.lost]:border-danger [&.upcoming_img]:[filter:grayscale(1)_brightness(.5)] [&.won]:border-[color:#18775266] ${state}`}
+              className={`bracket-step flex min-w-30 flex-1 items-center gap-2 rounded-2xl border-2 border-outline bg-panel px-2.5 py-2 shadow-[3px_3px_0_var(--outline)] [&_img]:rounded-full [&.current]:border-3 [&.current]:border-[#ffcb05] [&.current]:bg-[#fff8d6] dark:[&.current]:bg-[#3a3a4a] [&.lost]:border-danger [&.upcoming_img]:[filter:grayscale(1)_brightness(.5)] [&.won]:bg-panel-muted ${state}`}
             >
               <Image
                 src={m.trainer.sprite}
@@ -77,7 +77,7 @@ export function Prep({
                 loading="eager"
               />
               <div>
-                <div className="text-[.72rem] font-semibold tracking-[.12em] text-muted uppercase">
+                <div className="text-[.72rem] font-black tracking-[.1em] text-muted uppercase">
                   {stageLabel(m.stage)}
                 </div>
                 <div className="text-[.9rem] font-bold">
@@ -107,7 +107,7 @@ export function Prep({
               />
             </LoreCard>
             <div>
-              <div className="text-[.72rem] font-semibold tracking-[.12em] text-muted uppercase">
+              <div className="text-[.72rem] font-black tracking-[.1em] text-muted uppercase">
                 {stageLabel(match.stage)} · {t('match', 'partida')}{' '}
                 {run.matchIndex + 1}/{run.league.length}
               </div>
@@ -127,7 +127,7 @@ export function Prep({
             {foes.map((f) => (
               <div
                 key={f.name}
-                className="flex items-center gap-2 rounded-[10px] bg-panel-muted px-2 py-1.5"
+                className="flex items-center gap-2 rounded-xl border-2 border-outline bg-panel-muted px-2 py-1.5"
               >
                 <Sprite pokemon={f} size={48} />
                 <div>
@@ -160,7 +160,7 @@ export function Prep({
               return (
                 <li
                   key={name}
-                  className={`order-item flex cursor-grab items-center gap-2.5 rounded-xl border border-line bg-panel-muted px-2.5 py-2 [&.dragging]:[opacity:.5] [&:first-child]:border-brand [&:first-child_.order-num]:text-brand ${dragIndex === i ? 'dragging' : ''}`}
+                  className={`order-item flex cursor-grab items-center gap-2.5 rounded-xl border-2 border-outline bg-panel-muted px-2.5 py-2 [&.dragging]:[opacity:.5] [&:first-child]:border-3 [&:first-child]:border-outline [&:first-child_.order-num]:text-[color:var(--red)] ${dragIndex === i ? 'dragging' : ''}`}
                   draggable
                   onDragStart={() => setDragIndex(i)}
                   onDragOver={(e) => {
@@ -172,7 +172,7 @@ export function Prep({
                   }}
                   onDragEnd={() => setDragIndex(null)}
                 >
-                  <span className="order-num w-9.5 text-center text-[.8rem] font-extrabold text-muted">
+                  <span className="order-num w-9.5 text-center font-pixel text-[.7rem] text-muted">
                     {i === 0 ? t('Lead', 'Líder') : i + 1}
                   </span>
                   <Sprite pokemon={p} size={52} />

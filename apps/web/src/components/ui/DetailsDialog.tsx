@@ -31,7 +31,7 @@ export function DetailsDialog({
     <dialog
       ref={dialog}
       aria-labelledby={titleId}
-      className="fixed inset-0 m-auto max-h-[calc(100dvh_-_2rem)] w-[min(460px,calc(100%_-_2rem))] overflow-y-auto overscroll-contain rounded-panel border border-line bg-panel p-0 text-ink shadow-xl backdrop:bg-[#15234099]"
+      className="fixed inset-0 m-auto max-h-[calc(100dvh_-_2rem)] w-[min(460px,calc(100%_-_2rem))] overflow-y-auto overscroll-contain rounded-panel border-3 border-outline bg-panel p-0 text-ink shadow-[5px_5px_0_var(--outline)] shadow-xl backdrop:bg-[#15234099]"
       onCancel={(event) => {
         event.preventDefault()
         dismiss()

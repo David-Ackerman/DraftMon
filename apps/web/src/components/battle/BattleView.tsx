@@ -36,7 +36,7 @@ export function BattleView({
 
   return (
     <div className="grid gap-3.5">
-      <header className="battle-head flex items-center justify-center gap-2.5 rounded-xl border border-line bg-panel p-2.5 [&_h2]:m-0 [&_h2]:text-left [&_h2]:text-[1.08rem]">
+      <header className="battle-head flex items-center justify-center gap-2.5 rounded-xl border-2 border-outline bg-panel p-2.5 [&_h2]:m-0 [&_h2]:text-left [&_h2]:text-[1.08rem]">
         <HudTag>
           {replay ? t('Replay', 'Replay') : stageLabel(match.stage)}
         </HudTag>
@@ -88,11 +88,11 @@ export function BattleView({
         ref={logRef}
       />
 
-      <div className="flex flex-wrap items-center gap-2 rounded-xl border border-line bg-panel p-2">
+      <div className="flex flex-wrap items-center gap-2 rounded-xl border-2 border-outline bg-panel p-2">
         {!finished ? (
           <>
             <div
-              className="speed-control inline-flex items-center gap-[3px] rounded-[10px] border border-line bg-panel-muted p-[3px] [&_.btn]:border-transparent [&_.btn]:[padding:5px_8px] [&_.btn[aria-pressed='true']]:border-[color:#a97011] [&_.btn[aria-pressed='true']]:bg-accent dark:[&_.btn[aria-pressed='true']]:text-accent-ink"
+              className="speed-control inline-flex items-center gap-[3px] rounded-[10px] border-2 border-outline bg-panel-muted p-[3px] [&_.btn]:border-transparent [&_.btn]:[padding:5px_8px] [&_.btn[aria-pressed='true']]:border-[color:#a97011] [&_.btn[aria-pressed='true']]:bg-accent dark:[&_.btn[aria-pressed='true']]:text-accent-ink"
               role="group"
               aria-label={t('Playback speed', 'Velocidade da reprodução')}
             >

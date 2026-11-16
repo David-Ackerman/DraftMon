@@ -48,7 +48,7 @@ export default async function Page({
   const info = lore[name]
   return (
     <PublicPage>
-      <section className="mb-5 grid gap-5 rounded-panel border border-line bg-panel p-5 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] sm:items-center">
+      <section className="mb-5 grid gap-5 rounded-panel border-3 border-outline bg-panel p-5 shadow-[5px_5px_0_var(--outline)] sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] sm:items-center">
         <Image
           src={`/regions/${name}.webp`}
           alt={regionLabel(entry.region)}
@@ -76,7 +76,7 @@ export default async function Page({
         {entry.pokemon.map(({ pokemon }) => (
           <li
             key={pokemon.name}
-            className="min-w-0 rounded-panel border border-line bg-panel text-center"
+            className="min-w-0 rounded-panel border-3 border-outline bg-panel text-center shadow-[5px_5px_0_var(--outline)]"
           >
             <Link
               href={`/pokedex/${pokemon.name}`}

@@ -13,7 +13,7 @@ import { useBattleOrder } from '../battle/useBattleOrder'
 import { Sprite } from '../pokemon/Sprite'
 import { TypeBadge } from '../pokemon/TypeBadge'
 import { Draft } from '../draft/Draft'
-import { PartySlots } from './PartySlots'
+import { PartySlots } from '../pokemon/PartySlots'
 import { avatars, avatarSprite } from '../../services/guest'
 import { useLanguage } from '../../services/language'
 import type {

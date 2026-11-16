@@ -55,7 +55,7 @@ export default async function Page({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: structured }}
       />
-      <article className="rounded-panel border border-line bg-panel p-5">
+      <article className="rounded-panel border-3 border-outline bg-panel p-5 shadow-[5px_5px_0_var(--outline)]">
         <h1>{title}</h1>
         {sprite && (
           <Image

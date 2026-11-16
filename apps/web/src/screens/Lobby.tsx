@@ -137,7 +137,7 @@ export function Lobby({
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-3.5">
           <Card
             as="form"
-            className="lobby-form grid content-start gap-3 [&_.tournament-checkbox]:flex [&_.tournament-checkbox]:items-center [&_.tournament-checkbox]:gap-[7px] [&_input]:w-full [&_input]:rounded-[8px] [&_input]:bg-panel [&_input]:[padding:9px] [&_input]:text-ink [&_input]:[border:1px_solid_var(--line)] [&_input]:[font:inherit] [&_label]:grid [&_label]:gap-[3px] [&_label]:text-[.82rem] [&_label]:font-bold [&_select]:w-full [&_select]:rounded-[8px] [&_select]:bg-panel [&_select]:[padding:9px] [&_select]:text-ink [&_select]:[border:1px_solid_var(--line)] [&_select]:[font:inherit]"
+            className="lobby-form grid content-start gap-3 [&_.tournament-checkbox]:flex [&_.tournament-checkbox]:items-center [&_.tournament-checkbox]:gap-[7px] [&_input]:min-h-12 [&_input]:w-full [&_input]:rounded-xl [&_input]:bg-panel-muted [&_input]:[padding:0_14px] [&_input]:[font-family:inherit] [&_input]:font-extrabold [&_input]:text-ink [&_input]:[border:3px_solid_var(--outline)] [&_label]:grid [&_label]:gap-1.5 [&_label]:text-[.85rem] [&_label]:font-black [&_select]:min-h-12 [&_select]:w-full [&_select]:rounded-xl [&_select]:bg-panel-muted [&_select]:[padding:0_10px] [&_select]:[font-family:inherit] [&_select]:font-extrabold [&_select]:text-ink [&_select]:[border:3px_solid_var(--outline)]"
             onSubmit={create}
           >
             <h2>{t('Create a room', 'Criar uma sala')}</h2>
@@ -229,7 +229,7 @@ export function Lobby({
           </Card>
           <Card
             as="form"
-            className="lobby-form grid content-start gap-3 [&_.tournament-checkbox]:flex [&_.tournament-checkbox]:items-center [&_.tournament-checkbox]:gap-[7px] [&_input]:w-full [&_input]:rounded-[8px] [&_input]:bg-panel [&_input]:[padding:9px] [&_input]:text-ink [&_input]:[border:1px_solid_var(--line)] [&_input]:[font:inherit] [&_label]:grid [&_label]:gap-[3px] [&_label]:text-[.82rem] [&_label]:font-bold [&_select]:w-full [&_select]:rounded-[8px] [&_select]:bg-panel [&_select]:[padding:9px] [&_select]:text-ink [&_select]:[border:1px_solid_var(--line)] [&_select]:[font:inherit]"
+            className="lobby-form grid content-start gap-3 [&_.tournament-checkbox]:flex [&_.tournament-checkbox]:items-center [&_.tournament-checkbox]:gap-[7px] [&_input]:min-h-12 [&_input]:w-full [&_input]:rounded-xl [&_input]:bg-panel-muted [&_input]:[padding:0_14px] [&_input]:[font-family:inherit] [&_input]:font-extrabold [&_input]:text-ink [&_input]:[border:3px_solid_var(--outline)] [&_label]:grid [&_label]:gap-1.5 [&_label]:text-[.85rem] [&_label]:font-black [&_select]:min-h-12 [&_select]:w-full [&_select]:rounded-xl [&_select]:bg-panel-muted [&_select]:[padding:0_10px] [&_select]:[font-family:inherit] [&_select]:font-extrabold [&_select]:text-ink [&_select]:[border:3px_solid_var(--outline)]"
             onSubmit={join}
           >
             <h2>{t('Join a room', 'Entrar em uma sala')}</h2>
@@ -312,7 +312,7 @@ export function Lobby({
       </Card>
       <Card className="panel-heading flex flex-wrap items-center justify-between gap-3 [&_h1]:[margin:0_0_4px] [&_h1]:text-[clamp(1.55rem,4vw,2.4rem)] [&_h1]:wrap-anywhere [&_p]:m-0">
         <div
-          className="invite-code grid gap-0.5 [&_strong]:[letter-spacing:.1em] [&_strong]:[font:700_1.15rem_ui-monospace,monospace]"
+          className="invite-code grid gap-0.5 [&_strong]:font-pixel [&_strong]:text-[1rem] [&_strong]:font-normal [&_strong]:[letter-spacing:.1em]"
           data-report-private
         >
           <span className="text-[.82rem] text-muted">
@@ -330,7 +330,7 @@ export function Lobby({
         )}
         {copyMessage === 'code' && (
           <input
-            className="w-full rounded-lg border border-line bg-panel-muted p-2 text-ink"
+            className="w-full rounded-lg border-2 border-outline bg-panel-muted p-2 text-ink"
             data-report-private
             aria-label={t('Invite link', 'Link do convite')}
             value={window.location.href}
@@ -363,7 +363,7 @@ export function Lobby({
                   {room.members.length}/{tournamentHumanLimit(room.settings)}
                 </HudTag>
               </h2>
-              <ul className="lobby-members m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(100%,210px),1fr))] gap-[7px] p-0 [&_img]:object-contain [&_img]:[image-rendering:pixelated] [&_li]:flex [&_li]:items-center [&_li]:gap-2 [&_li]:rounded-[8px] [&_li]:bg-panel-muted [&_li]:[padding:5px_8px] [&_small]:block [&_small]:text-muted">
+              <ul className="lobby-members m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(100%,210px),1fr))] gap-[7px] p-0 [&_img]:object-contain [&_img]:[image-rendering:pixelated] [&_li]:flex [&_li]:items-center [&_li]:gap-2 [&_li]:rounded-xl [&_li]:border-2 [&_li]:border-outline [&_li]:bg-panel-muted [&_li]:[padding:5px_8px] [&_small]:block [&_small]:text-muted">
                 {room.members.map((member) => (
                   <li key={member.id}>
                     <LoreCard
@@ -458,7 +458,7 @@ export function Lobby({
                     </h3>
                     {round.map((match, slot) => (
                       <div
-                        className="tournament-match mt-1.5 flex flex-wrap items-center gap-2 rounded-lg bg-panel-muted p-2 [&_strong]:[flex:1_1_130px]"
+                        className="tournament-match mt-1.5 flex flex-wrap items-center gap-2 rounded-xl border-2 border-line bg-panel-muted p-2.5 [&_strong]:[flex:1_1_130px]"
                         key={slot}
                       >
                         <strong>

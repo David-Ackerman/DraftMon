@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import { gameData } from '@draftmon/content'
 import { TEAM_SIZE, displayName, rarityOf } from '@draftmon/engine'
-import { Sprite } from '../pokemon/Sprite'
-import { legendaryFrame } from '../pokemon/legendaryFrame'
+import { Sprite } from './Sprite'
+import { legendaryFrame } from './legendaryFrame'
 import { cn } from '../ui/cn'
 import { useLanguage } from '../../services/language'
 
@@ -15,11 +15,16 @@ export function PartySlots({
   label,
   numbered = false,
   size = 'medium',
+  markNext = false,
+  className = '',
 }: {
   team: string[]
   label: string
   numbered?: boolean
   size?: 'small' | 'medium'
+  /** Ring the first open slot, e.g. the pick being drafted. */
+  markNext?: boolean
+  className?: string
 }) {
   const { t } = useLanguage()
   const sprite = size === 'small' ? 40 : 60
@@ -28,7 +33,7 @@ export function PartySlots({
   return (
     <List
       aria-label={label}
-      className="m-0 grid list-none grid-cols-6 gap-1.5 p-0"
+      className={cn('m-0 grid list-none grid-cols-6 gap-1.5 p-0', className)}
     >
       {slots.map((name, index) => {
         const pokemon = name ? gameData.pokemonByName.get(name) : undefined
@@ -39,6 +44,9 @@ export function PartySlots({
             className={cn(
               'relative grid aspect-square place-items-center rounded-xl bg-panel-muted [--foil-surface:var(--card2)]',
               legendary ? legendaryFrame : 'border-2 border-outline',
+              markNext &&
+                index === team.length &&
+                'border-3 border-[#ffcb05] bg-[#ffcb0526] shadow-[0_0_0_3px_#ffcb0540]',
             )}
           >
             {numbered && pokemon && (

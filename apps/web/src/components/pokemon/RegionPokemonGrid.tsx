@@ -60,7 +60,7 @@ export function RegionPokemonGrid({ children }: { children: ReactNode }) {
         <DetailsDialog title={details.title} onDismiss={() => setDetails(null)}>
           <CatalogCard name={details.name} />
           <Link
-            className="rounded-lg border border-line px-3 py-2.5 text-center font-semibold text-brand"
+            className="rounded-lg border-2 border-outline px-3 py-2.5 text-center font-semibold text-brand"
             href={details.href}
             onClick={() => setDetails(null)}
           >

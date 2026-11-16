@@ -16,7 +16,7 @@ export default function Page() {
       <h1>
         <Localized en="How to play" pt="Como jogar" />
       </h1>
-      <ol className="grid list-decimal gap-3 rounded-panel border border-line bg-panel p-8">
+      <ol className="grid list-decimal gap-3 rounded-panel border-3 border-outline bg-panel p-8 shadow-[5px_5px_0_var(--outline)]">
         <li>
           <Localized
             en="Roll a region and type. Catch one Pokémon from the options and repeat until you have a team of six."

@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { Button } from '../components/ui/Button'
 import { useRef, useState } from 'react'
+import { cn } from '../components/ui/cn'
+import { headerControl } from '../components/ui/headerControl'
 import { AppLayout } from '../components/layout/AppLayout'
 import { RunProgress } from '../components/layout/RunProgress'
 import { useSoloRun } from '../features/solo/useSoloRun'
@@ -118,10 +119,12 @@ export default function PlayScreen() {
     ) : null
   const profileAction = sessionReady &&
     (phase === 'home' || phase === 'end' || phase === 'pokedex') && (
-      <Button
-        icon
-        size="custom"
-        className="pokedex-toggle inline-flex min-h-9 shrink-0 items-center justify-center gap-1.5 rounded-lg px-2.5 text-xs leading-tight font-bold whitespace-nowrap aria-pressed:border-[color:var(--red)] aria-pressed:bg-panel"
+      <button
+        type="button"
+        className={cn(
+          headerControl,
+          'pokedex-toggle aria-pressed:bg-accent aria-pressed:text-accent-ink',
+        )}
         aria-label={t('My Pokédex', 'Minha Pokédex')}
         title={t('My Pokédex', 'Minha Pokédex')}
         aria-pressed={phase === 'pokedex'}
@@ -145,7 +148,7 @@ export default function PlayScreen() {
           loading="eager"
         />
         <span>{t('Pokédex', 'Pokédex')}</span>
-      </Button>
+      </button>
     )
   return (
     <AppLayout

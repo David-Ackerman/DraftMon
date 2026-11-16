@@ -10,6 +10,7 @@ const regular = cva(
         default:
           'bg-panel-muted text-ink enabled:hover:bg-[#dce8ff] dark:enabled:hover:bg-[#33406b]',
         primary: 'primary bg-accent text-accent-ink enabled:hover:bg-[#ffd84a]',
+        secondary: 'bg-[#2a75bb] text-white enabled:hover:bg-[#3184d2]',
         danger: 'danger bg-[#dc3445] text-white',
       },
       size: {
@@ -23,7 +24,7 @@ const regular = cva(
 )
 
 type ButtonProps = ComponentPropsWithoutRef<'button'> & {
-  tone?: 'default' | 'primary' | 'danger'
+  tone?: 'default' | 'primary' | 'secondary' | 'danger'
   size?: 'default' | 'large' | 'custom'
   icon?: boolean
 }

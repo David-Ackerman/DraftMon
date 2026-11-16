@@ -42,7 +42,7 @@ export function BattleLog({
     <div
       ref={ref}
       aria-live="polite"
-      className="h-80 overflow-y-auto rounded-panel border border-line bg-panel px-3.5 py-3 text-[.92rem] max-[860px]:h-65"
+      className="h-80 overflow-y-auto rounded-panel border-3 border-outline bg-panel px-3.5 py-3 text-[.92rem] shadow-[5px_5px_0_var(--outline)] max-[860px]:h-65"
     >
       {events.map((event, index) => {
         if (event.kind === 'turn') {

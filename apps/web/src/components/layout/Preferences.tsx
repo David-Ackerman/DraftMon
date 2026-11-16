@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { Button } from '../ui/Button'
+import { headerControl, headerIcon } from '../ui/headerControl'
 import { cn } from '../ui/cn'
 import { useEffect, useId, useRef, useState } from 'react'
 import type { KeyboardEvent } from 'react'
@@ -109,7 +109,7 @@ export function LanguageSelect() {
       <button
         ref={trigger}
         type="button"
-        className="silent inline-flex h-11 cursor-pointer items-center gap-2 rounded-xl border-3 border-outline bg-panel px-2.5 font-display text-base text-ink shadow-[0_3px_0_var(--outline)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ffcb05]"
+        className={headerControl}
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={open ? listId : undefined}
@@ -185,18 +185,32 @@ export function Preferences() {
   return (
     <>
       <LanguageSelect />
-      <Button
+      <button
         type="button"
-        icon
-        size="custom"
-        className="size-11 rounded-xl border-3 text-[1.15rem] shadow-[0_3px_0_var(--outline)]"
+        className={headerIcon}
         aria-label={t('Dark mode', 'Modo escuro')}
         title={t('Dark mode', 'Modo escuro')}
         aria-pressed={theme === 'dark'}
         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
       >
-        <span aria-hidden="true">{theme === 'dark' ? '☀' : '☾'}</span>
-      </Button>
+        <svg
+          viewBox="0 0 24 24"
+          width="20"
+          height="20"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          {theme === 'dark' ? (
+            <path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8" />
+          ) : (
+            <path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" />
+          )}
+        </svg>
+      </button>
     </>
   )
 }

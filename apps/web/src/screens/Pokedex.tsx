@@ -150,7 +150,7 @@ export function Pokedex({
               <li key={key} className="min-w-0">
                 <button
                   type="button"
-                  className={`pokedex-entry grid min-h-[105px] w-full [place-content:center] justify-items-center gap-0.5 rounded-xl border border-line bg-panel p-[5px] text-ink [&_strong]:text-[.75rem] [&_strong]:[line-height:1.15] [&_strong]:[font-weight:650] [&_strong]:wrap-anywhere [&.previewed]:border-brand [&.unregistered]:bg-panel-muted [&:hover]:border-brand ${count ? 'registered' : 'unregistered'} ${preview.key === key ? 'previewed' : ''}`}
+                  className={`pokedex-entry grid min-h-[105px] w-full [place-content:center] justify-items-center gap-0.5 rounded-xl border-2 border-outline bg-panel p-[5px] text-ink [&_strong]:text-[.75rem] [&_strong]:[line-height:1.15] [&_strong]:[font-weight:650] [&_strong]:wrap-anywhere [&.previewed]:border-brand [&.unregistered]:bg-panel-muted [&:hover]:border-brand ${count ? 'registered' : 'unregistered'} ${preview.key === key ? 'previewed' : ''}`}
                   aria-label={
                     count
                       ? displayName(entry.name)

@@ -19,7 +19,7 @@ export default function Page() {
         {regionalPokedex(gameData).map(({ region, pokemon }) => (
           <li
             key={region.name}
-            className="rounded-panel border border-line bg-panel"
+            className="rounded-panel border-3 border-outline bg-panel shadow-[5px_5px_0_var(--outline)]"
           >
             <Link
               href={`/regions/${region.name}`}

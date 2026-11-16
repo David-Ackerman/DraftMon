@@ -21,7 +21,7 @@ export function LoreCard({
   const [games, generation, en, pt] = entry
   const card = (
     <span
-      className={`lore-popover absolute [top:calc(100%_+_3px)] left-0 z-80 hidden [width:min(255px,calc(100vw_-_36px))] cursor-auto rounded-[11px] bg-panel [padding:12px] text-left text-[.8rem] [line-height:1.45] text-ink shadow-[0_8px_22px_#18244a33] [border:1px_solid_var(--line)] [&_strong]:text-[1rem] [&.lore-region]:[width:min(348px,calc(100vw_-_36px))] compact-layout:[&.lore-region]:fixed compact-layout:[&.lore-region]:[inset:auto_16px_16px] compact-layout:[&.lore-region]:w-auto ${region ? 'lore-region' : ''}`}
+      className={`lore-popover absolute [top:calc(100%_+_3px)] left-0 z-80 hidden [width:min(255px,calc(100vw_-_36px))] cursor-auto rounded-[11px] bg-panel [padding:12px] text-left text-[.8rem] [line-height:1.45] text-ink shadow-[0_8px_22px_#18244a33] [border:3px_solid_var(--outline)] [&_strong]:text-[1rem] [&.lore-region]:[width:min(348px,calc(100vw_-_36px))] compact-layout:[&.lore-region]:fixed compact-layout:[&.lore-region]:[inset:auto_16px_16px] compact-layout:[&.lore-region]:w-auto ${region ? 'lore-region' : ''}`}
       id={id}
       role="tooltip"
     >

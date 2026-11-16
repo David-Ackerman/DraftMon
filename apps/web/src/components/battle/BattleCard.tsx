@@ -197,7 +197,7 @@ export function BattleCard({
           {team.map((m, i) => (
             <span
               key={i}
-              className={`bench-mon grid rounded-lg border border-line bg-panel p-0.5 [&.active]:border-brand [&.out]:[opacity:.35] [&.out]:[filter:grayscale(1)] ${i === slot ? 'active' : ''} ${view.hp[side][i] <= 0 ? 'out' : ''}`}
+              className={`bench-mon grid rounded-lg border-2 border-outline bg-panel p-0.5 [&.active]:border-brand [&.out]:[opacity:.35] [&.out]:[filter:grayscale(1)] ${i === slot ? 'active' : ''} ${view.hp[side][i] <= 0 ? 'out' : ''}`}
               title={`${m.name} ${Math.max(0, view.hp[side][i])}/${m.maxHp}`}
             >
               <Sprite pokemon={m.species} size={34} />
