@@ -4,9 +4,9 @@ import { useLanguage } from '../../services/language'
 type Placement = 'left' | 'right' | 'bottom'
 
 const placementClasses: Record<Placement, string> = {
-  left: 'col-start-1 row-start-1 mt-[94px] ml-3 mr-[134px]',
-  right: 'col-start-3 row-start-1 mt-[94px] ml-[134px] mr-3',
-  bottom: 'mt-[150px] max-[1080px]:pr-12',
+  left: 'sticky top-4 col-start-1 row-start-1 mt-6 ml-3 mr-[134px]',
+  right: 'sticky top-4 col-start-3 row-start-1 mt-6 ml-[134px] mr-3',
+  bottom: 'mt-12 max-[1080px]:pr-12',
 }
 
 const publisher = process.env.NEXT_PUBLIC_ADSENSE_CLIENT?.trim()
@@ -78,10 +78,10 @@ export function AdSlot({ placement }: { placement: Placement }) {
       className={`flex flex-col items-center gap-1.5 ${placementClasses[placement]}`}
       aria-label={label}
     >
-      <span className="text-[.7rem] text-muted">{label}</span>
+      <span className="text-[.7rem] font-extrabold text-muted">{label}</span>
       {preview ? (
         <div
-          className={`rounded-[10px] border border-dashed border-line bg-panel ${creative}`}
+          className={`rounded-xl border-2 border-dashed border-muted/60 bg-panel/70 ${creative}`}
           aria-hidden="true"
         />
       ) : (

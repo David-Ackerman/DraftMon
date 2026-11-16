@@ -20,6 +20,8 @@ export interface TournamentState {
     ready: boolean
     wins: number
     draftForfeit: boolean
+    /** Empty for other trainers while the draft is running. */
+    team?: string[]
   })[]
   rounds: { type: 'groups' | 'knockout'; matches: TournamentMatch[] }[]
   champion: string | null

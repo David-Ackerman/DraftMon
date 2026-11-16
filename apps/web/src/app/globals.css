@@ -42,6 +42,8 @@
   --color-panel: var(--card);
   --color-panel-muted: var(--card2);
   --color-line: var(--line);
+  --color-outline: var(--outline);
+  --color-header: var(--header);
   --color-ink: var(--text);
   --color-muted: var(--muted);
   --color-accent: var(--primary);
@@ -50,6 +52,8 @@
   --color-danger: var(--bad);
   --color-success: var(--good);
   --radius-panel: var(--radius);
+  --font-display: var(--font-lilita), 'Lilita One', system-ui, sans-serif;
+  --font-pixel: var(--font-press-start), ui-monospace, monospace;
   --animate-bob: bob 2.4s ease-in-out infinite;
   --animate-capture-arrival: capture-arrival 0.32s 0.68s
     cubic-bezier(0.2, 0.7, 0.3, 1.25) both;
@@ -64,45 +68,51 @@
 }
 
 :root {
-  --bg: #f6f8fe;
+  --bg: #eef3ff;
   --card: #ffffff;
-  --card2: #edf2ff;
-  --line: #cadaf4;
-  --text: #18244a;
-  --muted: #516184;
+  --card2: #f1f5ff;
+  --line: #c9d6f2;
+  --outline: #14204a;
+  --text: #14204a;
+  --muted: #4b5a80;
   --primary: #ffcb05;
-  --primary-text: #18244a;
-  --blue: #214f9c;
+  --primary-text: #14204a;
+  --blue: #2a75bb;
   --red: #dc3445;
+  --header: #dc3445;
   --good: #187752;
   --bad: #bc233b;
-  --side0: #2554a4;
-  --side1: #b92338;
-  --radius: 14px;
+  --side0: #2a75bb;
+  --side1: #c42a3a;
+  --radius: 16px;
   color-scheme: light;
   font-family:
-    'Inter',
+    var(--font-nunito),
+    'Nunito',
     system-ui,
     -apple-system,
     'Segoe UI',
     Roboto,
     sans-serif;
+  font-weight: 600;
   line-height: 1.45;
 }
 
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --bg: #111522;
-  --card: #1c2437;
-  --card2: #253047;
-  --line: #3e4b67;
+  --bg: #10162b;
+  --card: #1c2440;
+  --card2: #252f52;
+  --line: #3a4a7d;
+  --outline: #04060f;
   --text: #f0f3ff;
   --muted: #b7c2dc;
-  --blue: #a8c8ff;
+  --blue: #8cc0ff;
   --red: #ff6878;
+  --header: #b3202e;
   --good: #73d8af;
   --bad: #ff96a5;
-  --side0: #9dbfff;
+  --side0: #8cc0ff;
   --side1: #ff9aa7;
 }
 
@@ -116,43 +126,42 @@
   }
   body {
     background-color: var(--bg);
-    background-image:
-      url('/pokeball-pattern.svg'),
-      radial-gradient(ellipse at 12% 0%, #e0ebff, transparent 52%),
-      radial-gradient(ellipse at 90% 40%, #fff5d7, transparent 45%);
-    background-size:
-      240px 240px,
-      auto,
-      auto;
+    background-image: url('/pokeball-pattern.svg');
+    background-size: 240px 240px;
     color: var(--text);
-    min-height: 100vh;
-  }
-  [data-theme='dark'] body {
-    background-image:
-      url('/pokeball-pattern.svg'),
-      radial-gradient(ellipse at 12% 0%, #233458, transparent 52%),
-      radial-gradient(ellipse at 90% 40%, #302943, transparent 45%);
+    min-height: 100dvh;
   }
   h1,
   h2,
   h3 {
     margin: 0 0 0.4em;
-    font-weight: 700;
-    line-height: 1.15;
+    font-family: var(--font-lilita), 'Lilita One', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
   }
   h1 {
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    letter-spacing: -0.02em;
+    font-size: clamp(2.1rem, 5vw, 3.4rem);
   }
   h2 {
-    font-size: 1.4rem;
+    font-size: 1.55rem;
   }
   h3 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
   p {
     margin: 0.3em 0 0.8em;
   }
+}
+
+/* Yellow lettering with a blue outline for the Draftmon name. */
+.wordmark {
+  font-family: var(--font-lilita), 'Lilita One', system-ui, sans-serif;
+  color: #ffcb05;
+  -webkit-text-stroke: 6px #2a5aa8;
+  paint-order: stroke fill;
+  text-shadow: 0 3px 0 #14204a;
+  letter-spacing: 0.02em;
 }
 
 @media (pointer: fine) {

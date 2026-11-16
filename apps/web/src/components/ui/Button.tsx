@@ -3,30 +3,22 @@ import { cva } from 'class-variance-authority'
 import { cn } from './cn'
 
 const regular = cva(
-  'btn inline-flex cursor-pointer items-center justify-center gap-2 border font-[inherit] leading-[inherit] font-semibold [transition:transform_.08s,background_.15s,border-color_.15s] enabled:active:translate-y-px disabled:cursor-not-allowed disabled:opacity-40',
+  'btn inline-flex cursor-pointer items-center justify-center gap-2 border-3 border-outline font-display leading-[1.15] tracking-[.01em] shadow-[0_4px_0_var(--outline)] [transition:transform_.08s,box-shadow_.08s,background_.15s] enabled:active:translate-y-[3px] enabled:active:shadow-[0_1px_0_var(--outline)] disabled:cursor-not-allowed disabled:opacity-40',
   {
     variants: {
       tone: {
         default:
-          'border-line bg-panel-muted text-ink enabled:hover:border-[#5380c7] enabled:hover:bg-[#dce8ff] dark:enabled:hover:bg-[#344260]',
-        primary:
-          'primary border-brand bg-accent text-accent-ink enabled:hover:bg-[#ffd866]',
-        danger:
-          'danger border-danger bg-danger text-white dark:text-accent-ink',
+          'bg-panel-muted text-ink enabled:hover:bg-[#dce8ff] dark:enabled:hover:bg-[#33406b]',
+        primary: 'primary bg-accent text-accent-ink enabled:hover:bg-[#ffd84a]',
+        danger: 'danger bg-[#dc3445] text-white',
       },
       size: {
-        default: 'rounded-[10px] px-3.5 py-[9px] [font-size:inherit]',
-        large: 'rounded-[10px] px-[22px] py-[13px] text-[1.05rem]',
+        default: 'min-h-11 rounded-xl px-4 py-2 text-[1rem]',
+        large:
+          'min-h-14 rounded-2xl px-6 py-3 text-[1.25rem] shadow-[0_5px_0_var(--outline)]',
         custom: '',
       },
     },
-    compoundVariants: [
-      {
-        tone: 'primary',
-        size: ['default', 'large'],
-        class: 'shadow-[inset_0_-2px_0_#bf890030]',
-      },
-    ],
   },
 )
 
@@ -45,7 +37,7 @@ export function Button({
 }: ButtonProps) {
   const appearance = icon
     ? cn(
-        'icon-btn cursor-pointer border border-line bg-panel-muted text-ink disabled:cursor-default disabled:opacity-30',
+        'icon-btn cursor-pointer border-2 border-outline bg-panel-muted text-ink disabled:cursor-default disabled:opacity-30',
         size !== 'custom' && 'h-7 w-8 rounded-lg text-[.7rem]',
       )
     : regular({ tone, size })

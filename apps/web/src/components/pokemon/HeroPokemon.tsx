@@ -15,7 +15,7 @@ const showcase = [
   .filter(Boolean)
 
 export const heroPanel =
-  'flex flex-col items-center rounded-[26px] border border-line px-4.5 pt-9 pb-7 text-center [background:radial-gradient(ellipse_at_50%_12%,#fff1a0_0%,transparent_55%),linear-gradient(#eaf2ff,#fff_70%)] dark:[background:radial-gradient(ellipse_at_50%_12%,#3c3549,transparent_56%),var(--card)]'
+  'flex flex-col items-center rounded-[26px] border-3 border-outline px-4.5 pt-9 pb-7 text-center shadow-[6px_6px_0_var(--outline)] [background:radial-gradient(ellipse_at_50%_12%,#fff1a0_0%,transparent_55%),var(--card)] dark:[background:radial-gradient(ellipse_at_50%_12%,#3c3549,transparent_56%),var(--card)]'
 
 export function HeroPokemon() {
   return (

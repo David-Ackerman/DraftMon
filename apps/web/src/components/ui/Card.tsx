@@ -4,7 +4,7 @@ import { cva } from 'class-variance-authority'
 import { cn } from './cn'
 
 const card = cva(
-  'rounded-panel border border-line bg-panel shadow-[0_3px_12px_#214f9c0d]',
+  'rounded-panel border-3 border-outline bg-panel shadow-[5px_5px_0_var(--outline)]',
   {
     variants: { compact: { true: '', false: 'p-4.5' } },
   },

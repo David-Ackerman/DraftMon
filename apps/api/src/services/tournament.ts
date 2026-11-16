@@ -355,6 +355,14 @@ export function tournamentView(play: Play, id: string) {
           : bots.has(member.id) || Boolean(play.orders[member.id]),
       wins: wins.get(member.id) ?? 0,
       draftForfeit: play.draftForfeits?.includes(member.id) ?? false,
+      // Parties stay private while drafting. Afterwards they are sorted so the
+      // catch order, which is also the default battle order, stays hidden.
+      team:
+        member.id === id
+          ? play.drafts[member.id].team
+          : play.phase === 'draft'
+            ? []
+            : [...play.drafts[member.id].team].sort(),
     })),
     rounds: play.rounds.map(({ type, matches }) => ({
       type,

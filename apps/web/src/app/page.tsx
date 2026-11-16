@@ -38,7 +38,7 @@ export default async function Page({
         </p>
         <Link
           href="/play"
-          className="rounded-lg bg-accent px-6 py-3 font-semibold text-accent-ink no-underline"
+          className="inline-flex min-h-14 items-center rounded-2xl border-3 border-outline bg-accent px-7 py-3 font-display text-[1.3rem] text-accent-ink no-underline shadow-[0_5px_0_var(--outline)] hover:bg-[#ffd84a]"
         >
           <Localized en="Play Draftmon" pt="Jogar Draftmon" />
         </Link>

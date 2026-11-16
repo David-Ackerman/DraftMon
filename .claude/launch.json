@@ -2,10 +2,16 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "dev",
+      "name": "api",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["exec", "vite", "--port", "5173", "--strictPort"],
-      "port": 5173
+      "runtimeArgs": ["--filter", "@draftmon/api", "dev"],
+      "port": 4000
+    },
+    {
+      "name": "web",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "@draftmon/web", "dev"],
+      "port": 3000
     }
   ]
 }

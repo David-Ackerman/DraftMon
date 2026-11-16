@@ -83,3 +83,16 @@ test('an automatic lineup faces the opponent who submitted their own order', () 
   expect(tournamentView(room.play, 'C')).toMatchObject({ champion: 'A' })
   expect(tournamentView(room.play, 'C').rounds[1].matches[0]).toMatchObject({ winner: 'A', watch: true })
 })
+
+test('other parties stay hidden while drafting and are revealed sorted afterwards', () => {
+  const room = roomWith(2)
+  const battle = engine()
+  startTournament(room, battle)
+  tournamentAction(room, 'A', { action: 'catch', body: { pokemon: 'six', pick: 0, rerolls: 3 } }, battle)
+  const drafting = tournamentView(room.play, 'B').participants
+  expect(drafting.find(({ id }) => id === 'A').team).toEqual([])
+  expect(tournamentView(room.play, 'A').participants.find(({ id }) => id === 'A').team).toEqual(['six'])
+  advanceTournament(room, battle, room.play.deadlineAt)
+  const revealed = tournamentView(room.play, 'B').participants.find(({ id }) => id === 'A').team
+  expect(revealed).toEqual([...room.play.drafts.A.team].sort())
+})

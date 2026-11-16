@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import { cva } from 'class-variance-authority'
 
 const tag = cva(
-  'inline-flex items-center rounded-md bg-[#e5edfd] px-2 py-[3px] leading-[1.3] font-[750] dark:bg-panel-muted',
+  'inline-flex items-center rounded-full border-2 border-outline bg-panel-muted px-2.5 py-[3px] leading-[1.3] font-[850]',
   {
     variants: {
       muted: {
