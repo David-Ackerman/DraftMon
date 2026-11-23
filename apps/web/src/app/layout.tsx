@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Lilita_One, Nunito, Press_Start_2P } from 'next/font/google'
 import type { ReactNode } from 'react'
-import { AutoAds } from '../components/layout/Ads'
+import { ADSENSE_CLIENT, AutoAds } from '../components/layout/Ads'
 import { siteUrl } from './site'
 import './globals.css'
 
@@ -30,6 +30,8 @@ export const metadata: Metadata = {
   description:
     'Draft a Pokémon team by region and type, battle Gym Leaders and play tournaments with friends.',
   icons: { icon: '/pokeball.svg' },
+  // Lets AdSense confirm the site belongs to this account.
+  other: { 'google-adsense-account': ADSENSE_CLIENT },
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {

@@ -55,9 +55,9 @@ Configure the following environment variables on the Node server to enable email
 
 Draftmon uses AdSense [Auto ads](https://support.google.com/adsense/answer/9261805). The site loads the AdSense script once on every page and reserves no ad space; Google chooses placements and formats.
 
-Set `NEXT_PUBLIC_ADSENSE_CLIENT` to your publisher ID, including the `ca-pub-` prefix, before running `pnpm build`. Without a valid ID the script is not loaded.
+The publisher ID is set in `apps/web/src/components/layout/Ads.tsx` (`ADSENSE_CLIENT`). Every page also carries the `google-adsense-account` meta tag so AdSense can verify the site. Keep `apps/web/public/ads.txt` in sync with that ID.
 
-In AdSense, verify the production domain, publish its `ads.txt` entry at the web root, and turn on Auto ads for the site. Choose formats and exclude pages (for example `/account/*` to keep account pages ad-free) under the site's Auto ads settings. Development mode makes zero ad requests.
+In AdSense, verify the production domain and turn on Auto ads for the site. Choose formats and exclude pages (for example `/account/*` to keep account pages ad-free) under the site's Auto ads settings. Development mode makes zero ad requests.
 
 ## In-game bug reports
 

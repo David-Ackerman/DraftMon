@@ -14,7 +14,7 @@ The web app runs on Vercel. Railway runs the Hono API and its tournament deadlin
 ## Deploy the web app
 
 1. Import the same Git repository into Vercel. Set Root Directory to `apps/web` and include source files outside that directory. Use the Next.js framework preset and Node.js 24.
-2. Enable the pinned pnpm version with `ENABLE_EXPERIMENTAL_COREPACK=1` in the Vercel project. Set `API_URL` to the API's HTTPS origin and `NEXT_PUBLIC_SITE_URL` to the web app's canonical HTTPS origin. Set `NEXT_PUBLIC_ADSENSE_CLIENT` to your AdSense publisher ID to load Auto ads. These values are read at build time.
+2. Enable the pinned pnpm version with `ENABLE_EXPERIMENTAL_COREPACK=1` in the Vercel project. Set `API_URL` to the API's HTTPS origin and `NEXT_PUBLIC_SITE_URL` to the web app's canonical HTTPS origin. These values are read at build time.
 3. Add your web domain in Vercel and follow its DNS instructions. The web app sends browser requests to `/api/*` on the same domain and Next forwards them to the API. Rebuild after changing the API origin.
 4. Verify the home page, a Pokédex entry, sign-in and a guest invitation using the public deployment. Test password recovery and bug reports with the configured service accounts.
 
@@ -59,7 +59,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable --now draftmon-deploy.timer
 ```
 
-Set public build settings such as `NEXT_PUBLIC_ADSENSE_CLIENT` in `/var/lib/draftmon-deploy/web-build.env`, readable by the `draftmon` user. Application services continue to use their systemd environment files. Keep production data outside the release directory. Use backward-compatible database migrations so the prior application release can start against the current schema.
+Set any public build settings in `/var/lib/draftmon-deploy/web-build.env`, readable by the `draftmon` user. Application services continue to use their systemd environment files. Keep production data outside the release directory. Use backward-compatible database migrations so the prior application release can start against the current schema.
 
 Check VM progress with `sudo journalctl -u draftmon-deploy.service -n 100`. To retry the same approved revision after fixing a build or startup error, run `sudo /usr/local/sbin/draftmon-deploy --retry`.
 
