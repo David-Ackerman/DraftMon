@@ -7,6 +7,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     '/',
     '/how-to-play',
+    '/about',
+    '/privacy',
     '/pokedex',
     ...gameData.pokemon.map(({ name }) => '/pokedex/' + name),
     ...gameData.regions.map(({ name }) => '/regions/' + name),
